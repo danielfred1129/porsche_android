@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PorscheTower</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="title_login">SIGN-IN</string>
+    <string name="font_porsche">PorscheFont</string>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

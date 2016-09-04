@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorNavBar">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="title_color">#FFFFFF</color>
+    <color name="title_desc_color">#7380b0</color>
+    <color name="login_hint_color">#4f4e55</color>
+    <color name="title_login_color">#4f4e55</color>
+    <color name="btn_signin_color">#dddddd</color>
+    <color name="colorBlack">#000000</color>
+
+    <!-- Forgot -->
+    <color name="forgot_desc_color">#656565</color>
+
+    <!-- Post Views -->
+    <color name="like_normal_color">#5b5a78</color>
+    <color name="like_select_color">#3b3b4e</color>
+
+    <color name="badge_color">#985965</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>
