@@ -13,4 +13,14 @@
     <dimen name="login_loginbutton_height">45dp</dimen>
     <dimen name="button_text_size">30sp</dimen>
     <dimen name="edittext_padding">10dp</dimen>
+
+    <!--Home Activity-->
+    <dimen name="settings_button_width">80dp</dimen>
+
+    <!--Settings fragment-->
+    <dimen name="logout_button_width">100dp</dimen>
+    <dimen name="logout_button_height">40dp</dimen>
+    <dimen name="settingpanel_margin">160dp</dimen>
+    <dimen name="settingpanel_textsize">30sp</dimen>
+    <dimen name="settingbutton_textsize">20sp</dimen>
 </resources>

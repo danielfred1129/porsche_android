@@ -11,14 +11,60 @@
         android:layout_height="@dimen/nav_bar_height"
         android:background="@color/colorNavBar" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-        </LinearLayout>
-    </RelativeLayout>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/activity_home_sub"
+                    android:layout_width="@dimen/settings_button_width"
+                    android:layout_height="@dimen/settings_button_width"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:onClick="onSubCategory"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/btn_settings" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/activity_home_settings_btn"
+                    android:layout_width="@dimen/settings_button_width"
+                    android:layout_height="@dimen/settings_button_width"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:onClick="onSettings"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/btn_settings" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_bottom_layout"
+        android:layout_below="@+id/main_top_layout">
+
+        <FrameLayout
+            android:id="@+id/home_fragment"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/main_bottom_layout"
         android:layout_width="match_parent"
@@ -26,13 +72,46 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorNavBar" >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:textColor="@color/title_color"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/activity_home_home_button"
+                    android:layout_width="@dimen/settings_button_width"
+                    android:layout_height="@dimen/settings_button_width"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:onClick="onHome"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/btn_home" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/activity_home_plus_button"
+                    android:layout_width="@dimen/settings_button_width"
+                    android:layout_height="@dimen/settings_button_width"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:onClick="onPlus"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/btn_plus" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

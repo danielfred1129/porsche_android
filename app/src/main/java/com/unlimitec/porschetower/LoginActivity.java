@@ -1,5 +1,6 @@
 package com.unlimitec.porschetower;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import org.apache.http.Header;
@@ -7,22 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.net.Uri;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.unlimitec.porschetower.datamodel.UserObject;
-import com.unlimitec.network.PorscheTowerResponseHandler;
-import com.unlimitec.utils.UserUtils;
-import com.unlimitec.utils.Utils;
+import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
+import com.unlimitec.porschetower.utils.UserUtils;
+import com.unlimitec.porschetower.utils.Utils;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtPassword;
+    private TextView txt_porsche_design, txt_tower_miami, txt_p0001;
+    private Button activity_login_btn;
     private int nNew;
 
     @Override
@@ -32,6 +35,18 @@ public class LoginActivity extends AppCompatActivity {
 
         edtEmail = (EditText) findViewById(R.id.activity_login_email);
         edtPassword = (EditText) findViewById(R.id.activity_login_password);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
+
+        txt_porsche_design = (TextView) findViewById(R.id.txt_porsche_design);
+        txt_porsche_design.setTypeface(font);
+        txt_tower_miami = (TextView) findViewById(R.id.txt_tower_miami);
+        txt_tower_miami.setTypeface(font);
+        txt_p0001 = (TextView) findViewById(R.id.txt_p0001);
+        txt_p0001.setTypeface(font);
+
+        activity_login_btn = (Button) findViewById(R.id.activity_login_btn);
+        activity_login_btn.setTypeface(font);
 
         nNew = 1;
 
@@ -79,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                             user.setFirstName(json.getString("first_name"));
                             user.setLastName(json.getString("last_name"));
                             user.setEmail(json.getString("email"));
+                            user.setUserPass(json.getString("password"));
                             user.setPhone(json.getString("phone"));
                             user.setUnit(json.getJSONObject("unit"));
                             user.setId(json.getString("id"));

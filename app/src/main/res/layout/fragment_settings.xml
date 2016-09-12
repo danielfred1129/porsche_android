@@ -1,0 +1,186 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.unlimitec.porschetower.Fragments.SettingsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/setting_background">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/settingpanel_margin"
+            android:layout_marginRight="@dimen/settingpanel_margin"
+            android:background="@mipmap/setting_panel">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/linearLayout">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+                    <Button
+                        android:id="@+id/btn_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/log_out"
+                        android:textSize="@dimen/settingbutton_textsize"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/btn_logout" />
+
+                    <Button
+                        android:id="@+id/btn_reset_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset_password"
+                        android:onClick="onResetPW"
+                        android:textSize="@dimen/settingbutton_textsize"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/btn_reset_password" />
+
+                    <Button
+                        android:id="@+id/btn_touchid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/touch_id"
+                        android:onClick="onTouchID"
+                        android:textSize="@dimen/settingbutton_textsize"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/btn_logout" />
+
+                    <Button
+                        android:id="@+id/btn_onoff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onOnOff"
+                        android:layout_gravity="center_vertical"
+                        android:background="@mipmap/btn_touchid_on" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/language_setting"
+                            android:textSize="@dimen/settingpanel_textsize"
+                            android:id="@+id/txt_language_setting" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/english"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_english"
+                            android:background="@mipmap/btn_language_first_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/german"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_german"
+                            android:background="@mipmap/btn_language_middle_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/italian"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_italian"
+                            android:background="@mipmap/btn_language_middle_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/spanish"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_spanish"
+                            android:background="@mipmap/btn_language_last_normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/automatic_car_elevator_log_out_time"
+                            android:textSize="@dimen/settingpanel_textsize"
+                            android:id="@+id/txt_logout_time" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 Minute"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_1min"
+                            android:background="@mipmap/btn_language_first_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 Minutes"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_2min"
+                            android:background="@mipmap/btn_language_middle_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 Minutes"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_3min"
+                            android:background="@mipmap/btn_language_middle_normal" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4 Minutes"
+                            android:textSize="@dimen/settingbutton_textsize"
+                            android:id="@+id/btn_4min"
+                            android:background="@mipmap/btn_language_last_normal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
