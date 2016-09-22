@@ -1,5 +1,6 @@
 package com.unlimitec.porschetower;
 
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,13 +13,19 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.unlimitec.porschetower.Fragments.HomeFragment;
 import com.unlimitec.porschetower.Fragments.SettingsFragment;
+import com.unlimitec.porschetower.datamodel.UserObject;
+import com.unlimitec.porschetower.utils.UserUtils;
+
+import org.w3c.dom.Text;
 
 public class HomeActivity extends FragmentActivity {
 
     ImageButton btnSubCategory;
+    private TextView txt_main_title, txt_sub_title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,14 @@ public class HomeActivity extends FragmentActivity {
 
         btnSubCategory = (ImageButton) findViewById(R.id.activity_home_sub);
         btnSubCategory.setVisibility(View.GONE);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
+        txt_main_title = (TextView) findViewById(R.id.txt_main_title);
+        txt_main_title.setTypeface(font);
+        txt_sub_title = (TextView) findViewById(R.id.txt_sub_title);
+        txt_sub_title.setTypeface(font);
+
+        UserObject user = UserUtils.getSession(this);
 
         HomeFragment home_fragment = new HomeFragment();
 
@@ -48,7 +63,6 @@ public class HomeActivity extends FragmentActivity {
     public void onPlus(View v)
     {
         Log.d("onPlus", "Plus button clicked");
-
     }
 
     public void onHome(View v)

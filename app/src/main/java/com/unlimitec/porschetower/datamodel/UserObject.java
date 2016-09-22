@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class UserObject implements Serializable {
 	private int index;
@@ -14,8 +15,10 @@ public class UserObject implements Serializable {
 	private JSONObject unit;
     private String userPass;
 	private String language;
+	private String locale;
 	private String id;
 	private int catID;
+	private int logoutTime;
 
 	public int getIndex() {
 		return index;
@@ -73,6 +76,14 @@ public class UserObject implements Serializable {
 		this.language = language;
 	}
 
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -88,6 +99,10 @@ public class UserObject implements Serializable {
     public void setCatID(int catID) {
         this.catID = catID;
     }
+
+	public int getLogoutTime() { return logoutTime; }
+
+	public void setLogoutTime(int logoutTime) { this.logoutTime = logoutTime; }
 
     public boolean isChecked = false;
 }

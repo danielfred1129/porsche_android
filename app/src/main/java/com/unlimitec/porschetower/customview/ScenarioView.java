@@ -42,7 +42,7 @@ public class ScenarioView extends ImageView {
 
     public ScenarioView(Context context, AttributeSet attrs){
         super(context, attrs);
-        setBackgroundResource(R.mipmap.setting_background);
+        setBackgroundResource(R.drawable.setting_background);
         mHandler = new Handler();
         clouds = new CloudPosition[MAX_CLOUDS];
     }

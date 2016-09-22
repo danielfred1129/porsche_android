@@ -2,9 +2,11 @@ package com.unlimitec.porschetower.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.unlimitec.porschetower.R;
+import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.LoginActivity;
+
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +37,9 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button btn_logout, btn_reset_password, btn_english, btn_german, btn_italian, btn_spanish, btn_1min, btn_2min, btn_3min, btn_4min;
+
 
     private View rootView;
 
@@ -79,63 +87,73 @@ public class SettingsFragment extends Fragment {
 
     private void initializeControl()
     {
-        Button btn_logout = (Button) rootView.findViewById(R.id.btn_logout);
+        btn_logout = (Button) rootView.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onLogout(v);
             }
         });
-        Button btn_reset_password = (Button) rootView.findViewById(R.id.btn_reset_password);
+        btn_reset_password = (Button) rootView.findViewById(R.id.btn_reset_password);
         btn_reset_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onResetPassword(v);
             }
         });
-        Button btn_touchid = (Button) rootView.findViewById(R.id.btn_touchid);
-        btn_touchid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onTouchID(v);
-            }
-        });
-        Button btn_onoff = (Button) rootView.findViewById(R.id.btn_onoff);
-        btn_onoff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onOnOff(v);
-            }
-        });
-        Button btn_english = (Button) rootView.findViewById(R.id.btn_english);
+        btn_english = (Button) rootView.findViewById(R.id.btn_english);
         btn_english.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onEnglish(v);
             }
         });
-        btn_english.setBackgroundResource(R.mipmap.btn_language_first_selected);
-        Button btn_german = (Button) rootView.findViewById(R.id.btn_german);
+        btn_german = (Button) rootView.findViewById(R.id.btn_german);
         btn_german.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onGerman(v);
             }
         });
-        Button btn_italian = (Button) rootView.findViewById(R.id.btn_italian);
+        btn_italian = (Button) rootView.findViewById(R.id.btn_italian);
         btn_italian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItalian(v);
             }
         });
-        Button btn_spanish = (Button) rootView.findViewById(R.id.btn_spanish);
+        btn_spanish = (Button) rootView.findViewById(R.id.btn_spanish);
         btn_spanish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSpanish(v);
             }
         });
+        btn_1min = (Button) rootView.findViewById(R.id.btn_1min);
+        btn_1min.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                on1Min(v);
+            }
+        });
+        btn_2min = (Button) rootView.findViewById(R.id.btn_2min);
+        btn_2min.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                on2Min(v);
+            }
+        });
+        btn_3min = (Button) rootView.findViewById(R.id.btn_3min);
+        btn_3min.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                on3Min(v);
+            }
+        });
+        btn_4min = (Button) rootView.findViewById(R.id.btn_4min);
+        btn_4min.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                on4Min(v);
+            }
+        });
+        updateSetting();
     }
 
     @Override
@@ -172,28 +190,146 @@ public class SettingsFragment extends Fragment {
     {
         Log.d("onResetPassword", "ResetPassword button clicked");
     }
-    public void onTouchID(View v)
-    {
-        Log.d("onTouchID", "TouchID button clicked");
-    }
-    public void onOnOff(View v)
-    {
-        Log.d("onOnOff", "OnOff button clicked");
-    }
     public void onEnglish(View v)
     {
         Log.d("onEnglish", "English button clicked");
+        UserObject user = UserUtils.getSession(getContext());
+        Locale locale = new Locale("en");
+        user.setLocale(locale.toString());
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        setAppLocale(locale);
+        updateSetting();
     }
     public void onGerman(View v)
     {
         Log.d("onGerman", "German button clicked");
+        UserObject user = UserUtils.getSession(getContext());
+        Locale locale = new Locale("de");
+        user.setLocale(locale.toString());
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        setAppLocale(locale);
+        updateSetting();
     }
     public void onItalian(View v)
     {
         Log.d("onItalian", "Italian button clicked");
+        UserObject user = UserUtils.getSession(getContext());
+        Locale locale = new Locale("it");
+        user.setLocale(locale.toString());
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        setAppLocale(locale);
+        updateSetting();
     }
     public void onSpanish(View v)
     {
         Log.d("onSpanish", "Spanish button clicked");
+        UserObject user = UserUtils.getSession(getContext());
+        Locale locale = new Locale("es");
+        user.setLocale(locale.toString());
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        setAppLocale(locale);
+        updateSetting();
+    }
+    public void on1Min(View v)
+    {
+        UserObject user = UserUtils.getSession(getContext());
+        user.setLogoutTime(1);
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        updateSetting();
+    }
+    public void on2Min(View v)
+    {
+        UserObject user = UserUtils.getSession(getContext());
+        user.setLogoutTime(2);
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        updateSetting();
+    }
+    public void on3Min(View v)
+    {
+        UserObject user = UserUtils.getSession(getContext());
+        user.setLogoutTime(3);
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        updateSetting();
+    }
+    public void on4Min(View v)
+    {
+        UserObject user = UserUtils.getSession(getContext());
+        user.setLogoutTime(4);
+        UserUtils.storeSession(getActivity().getBaseContext(), user);
+        updateSetting();
+    }
+    public void setAppLocale(Locale locale)
+    {
+        Resources res = getActivity().getBaseContext().getResources();
+        // Change locale settings in the app.
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+    }
+    private void updateSetting()
+    {
+        UserObject user = UserUtils.getSession(getContext());
+
+        // Set Language buttons
+        String language = user.getLocale().toString();
+        if (language.equals("en"))
+        {
+            btn_english.setBackgroundResource(R.drawable.btn_language_first_selected);
+            btn_german.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_italian.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_spanish.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (language.equals("de"))
+        {
+            btn_english.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_german.setBackgroundResource(R.drawable.btn_language_middle_selected);
+            btn_italian.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_spanish.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (language.equals("it"))
+        {
+            btn_english.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_german.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_italian.setBackgroundResource(R.drawable.btn_language_middle_selected);
+            btn_spanish.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (language.equals("es"))
+        {
+            btn_english.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_german.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_italian.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_spanish.setBackgroundResource(R.drawable.btn_language_last_selected);
+        }
+        // Set Logout Setting
+        int logoutTime = user.getLogoutTime();
+        if (logoutTime == 1)
+        {
+            btn_1min.setBackgroundResource(R.drawable.btn_language_first_selected);
+            btn_2min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_3min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_4min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (logoutTime == 2)
+        {
+            btn_1min.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_2min.setBackgroundResource(R.drawable.btn_language_middle_selected);
+            btn_3min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_4min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (logoutTime == 3)
+        {
+            btn_1min.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_2min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_3min.setBackgroundResource(R.drawable.btn_language_middle_selected);
+            btn_4min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+        }
+        else if (logoutTime == 4)
+        {
+            btn_1min.setBackgroundResource(R.drawable.btn_language_first_normal);
+            btn_2min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_3min.setBackgroundResource(R.drawable.btn_language_middle_normal);
+            btn_4min.setBackgroundResource(R.drawable.btn_language_last_selected);
+        }
     }
 }

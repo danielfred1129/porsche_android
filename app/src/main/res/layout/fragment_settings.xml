@@ -8,13 +8,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/setting_background">
+        android:background="@drawable/setting_background">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/settingpanel_margin"
             android:layout_marginRight="@dimen/settingpanel_margin"
-            android:background="@mipmap/setting_panel">
+            android:background="@drawable/setting_panel">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -35,8 +35,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/log_out"
                         android:textSize="@dimen/settingbutton_textsize"
-                        android:layout_gravity="center_vertical"
-                        android:background="@mipmap/btn_logout" />
+                        android:layout_gravity="left"
+                        android:background="@drawable/btn_logout" />
 
                     <Button
                         android:id="@+id/btn_reset_password"
@@ -45,26 +45,8 @@
                         android:text="@string/reset_password"
                         android:onClick="onResetPW"
                         android:textSize="@dimen/settingbutton_textsize"
-                        android:layout_gravity="center_vertical"
-                        android:background="@mipmap/btn_reset_password" />
-
-                    <Button
-                        android:id="@+id/btn_touchid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/touch_id"
-                        android:onClick="onTouchID"
-                        android:textSize="@dimen/settingbutton_textsize"
-                        android:layout_gravity="center_vertical"
-                        android:background="@mipmap/btn_logout" />
-
-                    <Button
-                        android:id="@+id/btn_onoff"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="onOnOff"
-                        android:layout_gravity="center_vertical"
-                        android:background="@mipmap/btn_touchid_on" />
+                        android:layout_gravity="right"
+                        android:background="@drawable/btn_reset_password" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -99,7 +81,7 @@
                             android:text="@string/english"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_english"
-                            android:background="@mipmap/btn_language_first_normal" />
+                            android:background="@drawable/btn_language_first_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -107,7 +89,7 @@
                             android:text="@string/german"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_german"
-                            android:background="@mipmap/btn_language_middle_normal" />
+                            android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -115,7 +97,7 @@
                             android:text="@string/italian"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_italian"
-                            android:background="@mipmap/btn_language_middle_normal" />
+                            android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -123,7 +105,7 @@
                             android:text="@string/spanish"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_spanish"
-                            android:background="@mipmap/btn_language_last_normal" />
+                            android:background="@drawable/btn_language_last_normal" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -152,7 +134,7 @@
                             android:text="1 Minute"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_1min"
-                            android:background="@mipmap/btn_language_first_normal" />
+                            android:background="@drawable/btn_language_first_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -160,7 +142,7 @@
                             android:text="2 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_2min"
-                            android:background="@mipmap/btn_language_middle_normal" />
+                            android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -168,7 +150,7 @@
                             android:text="3 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_3min"
-                            android:background="@mipmap/btn_language_middle_normal" />
+                            android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
                             android:layout_width="wrap_content"
@@ -176,7 +158,7 @@
                             android:text="4 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
                             android:id="@+id/btn_4min"
-                            android:background="@mipmap/btn_language_last_normal" />
+                            android:background="@drawable/btn_language_last_normal" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

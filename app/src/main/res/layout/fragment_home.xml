@@ -20,7 +20,7 @@
                 android:layout_width="1000dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/home_background2"/>
+                android:src="@drawable/home_background2"/>
         </FrameLayout>
 
     </HorizontalScrollView>

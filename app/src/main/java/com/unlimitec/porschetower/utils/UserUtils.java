@@ -27,7 +27,9 @@ public class UserUtils {
 				json.put("unit", session.getUnit());
 				json.put("id", session.getId());
 				json.put("language", session.getLanguage());
+				json.put("locale", session.getLocale());
 				json.put("cat_id", session.getCatID());
+				json.put("logoutTime", session.getLogoutTime());
 
 				context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit()
 						.putString(SESSION_KEY, json.toString()).commit();
@@ -60,7 +62,9 @@ public class UserUtils {
 				user.setUnit(json.getJSONObject("unit"));
 				user.setId(json.getString("id"));
 				user.setLanguage(json.getString("language"));
+				user.setLocale(json.getString("locale"));
 				user.setIndex(json.getInt("cat_id"));
+				user.setLogoutTime(json.getInt("logoutTime"));
 			} else {
 				return null;
 			}

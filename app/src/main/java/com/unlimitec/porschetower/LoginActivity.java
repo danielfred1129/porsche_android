@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +23,15 @@ import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtPassword;
-    private TextView txt_porsche_design, txt_tower_miami, txt_p0001;
+    private TextView txt_porsche_design, txt_tower_miami, txt_p0001, txt_login;
     private Button activity_login_btn;
     private int nNew;
+    private String tempLocale;
+    private int tempLogoutTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         txt_tower_miami.setTypeface(font);
         txt_p0001 = (TextView) findViewById(R.id.txt_p0001);
         txt_p0001.setTypeface(font);
+        txt_login = (TextView) findViewById(R.id.txt_login);
+        txt_login.setTypeface(font);
 
         activity_login_btn = (Button) findViewById(R.id.activity_login_btn);
         activity_login_btn.setTypeface(font);
@@ -54,6 +61,12 @@ public class LoginActivity extends AppCompatActivity {
         if (user != null) {
             edtEmail.setText(user.getEmail());
             edtPassword.setText(user.getUserPass());
+            if (user.getLocale() != null) {
+                tempLocale = user.getLocale();
+            }
+            if (user.getLogoutTime() != 0) {
+                tempLogoutTime = user.getLogoutTime();
+            }
 
             nNew = 0;
             onLogin(null);
@@ -100,13 +113,34 @@ public class LoginActivity extends AppCompatActivity {
                             user.setId(json.getString("id"));
                             user.setLanguage(json.getString("language"));
                             user.setCatID(json.getInt("cat_id"));
+
+                            if (tempLocale == null)
+                            {
+                                Locale current = getResources().getConfiguration().locale;
+                                user.setLocale(current.toString());
+                            }
+                            else
+                            {
+                                user.setLocale(tempLocale);
+                            }
+
+                            if (tempLogoutTime == 0)
+                            {
+                                user.setLogoutTime(1);
+                            }
+                            else
+                            {
+                                user.setLogoutTime(tempLogoutTime);
+                            }
+
                             UserUtils.storeSession(LoginActivity.this, user);
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
                         else {
-                            String login_url = "http://192.168.1.87/porsche/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
+                            String login_url = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
+//                            String login_url = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
 
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(login_url));
                             startActivity(browserIntent);

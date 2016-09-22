@@ -111,5 +111,6 @@
     <string name="spanish">Spanish</string>
     <string name="language_setting">Language Setting</string>
     <string name="automatic_car_elevator_log_out_time">Automatic Car Elevator Log-out Time</string>
-    <string name="font_porsche_design">PorscheDesignFont</string>
+    <string name="main_title">PORSCHE DESIGN</string>
+
 </resources>
