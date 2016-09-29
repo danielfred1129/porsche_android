@@ -1,3 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_d2960773ebd66f97dc1b0f63c8d764d77738e2a2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\buddy\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_8241cd4e20b41fe1e807ef46ea02b8033440eea5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_d4f33ab22507f53724066cf585fb941fc906ce8e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_8e36d9ed482d85a8ceaac3b20325d469f22b4979.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_3d5e28d272250f477b24fb01514c5ba193e135d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f5d9593bdb704650046ca1facb99718267cd5ddc">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7f71b4e3ea51ace7d45f9b76914495ef992c7d20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.4.0_9cd004eea37c1bf94d646b0cc610823d94fd70b8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_854ff4d7da4d4f51ff4cfb37695d79e951e66a5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\libs\android-async-http-1.4.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.6_d1edd2b26ddf6875aaacccb091105d6f29038ab6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="b264b9e2665ab43447da001e64c0833b303ae918">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run_709cb0e43506164299b729c4115d5c096cefe327.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_ab10d7f013ad0f240ddde66d84238a7877d97ecd.jar" />
+    </item>
+
+</items>
