@@ -4,9 +4,10 @@
     <shared>
       <config>
         <devices>
+          <device id="Nexus 6" />
+          <device id="Nexus 4" />
           <device id="Nexus 5" />
           <device id="3.7in WVGA (Nexus One)" />
-          <device id="Nexus 6" />
           <device id="3.2in HVGA slider (ADP1)" />
           <device id="10.1in WXGA (Tablet)" />
           <device id="7in WSVGA (Tablet)" />
@@ -47,143 +48,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb92a138-20bc-40dd-b269-ad21c80c54bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/DiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/BaseDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/LimitedAgeDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/UnlimitedDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Editor$FaultHidingOutputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Editor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Entry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/LruDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/StrictLineReader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/StrictLineReader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/impl/ext/Util.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/naming/FileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/naming/HashCodeFileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/disc/naming/Md5FileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/BaseMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/LimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/MemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/FIFOLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/FuzzyKeyMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/LRULimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/LargestLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/LimitedAgeMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/LruMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/UsingFreqLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/cache/memory/impl/WeakMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DefaultConfigurationFactory$DefaultThreadFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DefaultConfigurationFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DisplayBitmapTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DisplayImageOptions$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DisplayImageOptions$Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/DisplayImageOptions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoader$SyncImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$NetworkDeniedImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$SlowNetworkImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderEngine$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoaderEngine.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ImageLoadingInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$TaskCancelledException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/ProcessAndDisplayImageTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/ContentLengthInputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/FailReason$FailType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/FailReason.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/FlushedInputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/ImageScaleType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/ImageSize.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/LoadedFrom.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/QueueProcessingType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/ViewScaleType$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/ViewScaleType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/BlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/Deque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LIFOLinkedBlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$AbstractItr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$DescendingItr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Itr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/decode/BaseImageDecoder$ExifInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/decode/BaseImageDecoder$ImageFileInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/decode/BaseImageDecoder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/decode/ImageDecoder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/decode/ImageDecodingInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/BitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/FadeInBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/RoundedBitmapDisplayer$RoundedDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/RoundedBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/RoundedVignetteBitmapDisplayer$RoundedVignetteDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/RoundedVignetteBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/display/SimpleBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/download/BaseImageDownloader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/download/BaseImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/download/ImageDownloader$Scheme.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/download/ImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/imageaware/ImageAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/imageaware/ImageViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/imageaware/NonViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/imageaware/ViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/listener/ImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/listener/ImageLoadingProgressListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/listener/PauseOnScrollListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/listener/SimpleImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/core/process/BitmapProcessor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/DiskCacheUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/ImageSizeUtils$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/ImageSizeUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/IoUtils$CopyListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/IoUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/L.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/MemoryCacheUtils$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/MemoryCacheUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/debug/com/nostra13/universalimageloader/utils/StorageUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental-safeguard/debug/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugAndroidTestShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-19.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-19.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-debug.aar" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-release.aar" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/imageLoaderLibrary.iml" afterPath="$PROJECT_DIR$/imageLoaderLibrary/imageLoaderLibrary.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/release/classes.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/release/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/manifests/aapt/release/AndroidManifest.xml" />
     </list>
     <ignored path="porsche_android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -219,9 +99,15 @@
       <file leaf-file-name="activity_home.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-              <folding />
+            <state relative-caret-position="207">
+              <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+              <folding>
+                <element signature="e#2181#2208#0" expanded="true" />
+                <element signature="e#2644#2670#0" expanded="true" />
+                <element signature="e#3180#3210#0" expanded="true" />
+                <element signature="e#3253#3283#0" expanded="true" />
+                <element signature="e#3399#3417#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -245,8 +131,8 @@
       <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="374">
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -255,8 +141,8 @@
       <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="412">
+              <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -285,16 +171,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_settings.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="fragment_settings.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-              <folding />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="74" column="51" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="51" />
+              <folding>
+                <element signature="e#1829#1846#0" expanded="true" />
+                <element signature="e#1888#1919#0" expanded="true" />
+                <element signature="e#2334#2358#0" expanded="true" />
+                <element signature="e#2452#2483#0" expanded="true" />
+                <element signature="e#3496#3522#0" expanded="true" />
+                <element signature="e#3568#3598#0" expanded="true" />
+                <element signature="e#4308#4325#0" expanded="true" />
+                <element signature="e#4371#4402#0" expanded="true" />
+                <element signature="e#4799#4815#0" expanded="true" />
+                <element signature="e#4861#4892#0" expanded="true" />
+                <element signature="e#5289#5306#0" expanded="true" />
+                <element signature="e#5352#5383#0" expanded="true" />
+                <element signature="e#5781#5798#0" expanded="true" />
+                <element signature="e#5844#5875#0" expanded="true" />
+                <element signature="e#6576#6621#0" expanded="true" />
+                <element signature="e#6667#6697#0" expanded="true" />
+                <element signature="e#7458#7489#0" expanded="true" />
+                <element signature="e#7940#7971#0" expanded="true" />
+                <element signature="e#8423#8454#0" expanded="true" />
+                <element signature="e#8906#8937#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2">
+          <provider editor-type-id="android-designer2">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -303,30 +223,23 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="37" column="68" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="68" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2241#2242#0" expanded="false" />
+                <element signature="e#2295#2296#0" expanded="false" />
+                <element signature="e#2710#2711#0" expanded="false" />
+                <element signature="e#2778#2779#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="63" column="52" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
+            <state relative-caret-position="411">
+              <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SettingsFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2516">
-              <caret line="188" column="39" selection-start-line="188" selection-start-column="39" selection-end-line="188" selection-end-column="39" />
-              <folding>
-                <element signature="e#5596#5597#0" expanded="true" />
-                <element signature="e#5628#5629#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -2786,10 +2699,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/UserUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
       </list>
     </option>
   </component>
@@ -2798,6 +2711,25 @@
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AndroidLintSuspicious0dp</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2824,7 +2756,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Changed Files">
           <PATH>
@@ -2836,16 +2767,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porsche_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2864,6 +2785,73 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -2874,6 +2862,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="99e3ce70" />
     <property name="last_opened_file_path" value="I:/Source/outsourcing/PorscheAppDemo" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -3257,29 +3246,30 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45545658" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3287,7 +3277,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -3317,7 +3306,28 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="e#1829#1846#0" expanded="true" />
+            <element signature="e#1888#1919#0" expanded="true" />
+            <element signature="e#2334#2358#0" expanded="true" />
+            <element signature="e#2452#2483#0" expanded="true" />
+            <element signature="e#3496#3522#0" expanded="true" />
+            <element signature="e#3568#3598#0" expanded="true" />
+            <element signature="e#4308#4325#0" expanded="true" />
+            <element signature="e#4371#4402#0" expanded="true" />
+            <element signature="e#4799#4815#0" expanded="true" />
+            <element signature="e#4861#4892#0" expanded="true" />
+            <element signature="e#5289#5306#0" expanded="true" />
+            <element signature="e#5352#5383#0" expanded="true" />
+            <element signature="e#5781#5798#0" expanded="true" />
+            <element signature="e#5844#5875#0" expanded="true" />
+            <element signature="e#6576#6621#0" expanded="true" />
+            <element signature="e#6667#6697#0" expanded="true" />
+            <element signature="e#7458#7489#0" expanded="true" />
+            <element signature="e#7940#7971#0" expanded="true" />
+            <element signature="e#8423#8454#0" expanded="true" />
+            <element signature="e#8906#8937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3325,7 +3335,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="37" column="68" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2241#2242#0" expanded="false" />
+            <element signature="e#2295#2296#0" expanded="false" />
+            <element signature="e#2710#2711#0" expanded="false" />
+            <element signature="e#2778#2779#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3342,8 +3358,8 @@
         <state relative-caret-position="0">
           <caret line="188" column="39" selection-start-line="188" selection-start-column="39" selection-end-line="188" selection-end-column="39" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3359,7 +3375,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="32" column="51" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="51" />
-          <folding />
+          <folding>
+            <element signature="e#1829#1846#0" expanded="true" />
+            <element signature="e#1888#1919#0" expanded="true" />
+            <element signature="e#2334#2358#0" expanded="true" />
+            <element signature="e#2452#2483#0" expanded="true" />
+            <element signature="e#3496#3522#0" expanded="true" />
+            <element signature="e#3568#3598#0" expanded="true" />
+            <element signature="e#4308#4325#0" expanded="true" />
+            <element signature="e#4371#4402#0" expanded="true" />
+            <element signature="e#4799#4815#0" expanded="true" />
+            <element signature="e#4861#4892#0" expanded="true" />
+            <element signature="e#5289#5306#0" expanded="true" />
+            <element signature="e#5352#5383#0" expanded="true" />
+            <element signature="e#5781#5798#0" expanded="true" />
+            <element signature="e#5844#5875#0" expanded="true" />
+            <element signature="e#6576#6621#0" expanded="true" />
+            <element signature="e#6667#6697#0" expanded="true" />
+            <element signature="e#7458#7489#0" expanded="true" />
+            <element signature="e#7940#7971#0" expanded="true" />
+            <element signature="e#8423#8454#0" expanded="true" />
+            <element signature="e#8906#8937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3368,8 +3405,8 @@
         <state relative-caret-position="0">
           <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3385,7 +3422,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="e#1829#1846#0" expanded="true" />
+            <element signature="e#1888#1919#0" expanded="true" />
+            <element signature="e#2334#2358#0" expanded="true" />
+            <element signature="e#2452#2483#0" expanded="true" />
+            <element signature="e#3496#3522#0" expanded="true" />
+            <element signature="e#3568#3598#0" expanded="true" />
+            <element signature="e#4308#4325#0" expanded="true" />
+            <element signature="e#4371#4402#0" expanded="true" />
+            <element signature="e#4799#4815#0" expanded="true" />
+            <element signature="e#4861#4892#0" expanded="true" />
+            <element signature="e#5289#5306#0" expanded="true" />
+            <element signature="e#5352#5383#0" expanded="true" />
+            <element signature="e#5781#5798#0" expanded="true" />
+            <element signature="e#5844#5875#0" expanded="true" />
+            <element signature="e#6576#6621#0" expanded="true" />
+            <element signature="e#6667#6697#0" expanded="true" />
+            <element signature="e#7458#7489#0" expanded="true" />
+            <element signature="e#7940#7971#0" expanded="true" />
+            <element signature="e#8423#8454#0" expanded="true" />
+            <element signature="e#8906#8937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3394,8 +3452,8 @@
         <state relative-caret-position="0">
           <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3404,7 +3462,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="e#2181#2208#0" expanded="true" />
+            <element signature="e#2644#2670#0" expanded="true" />
+            <element signature="e#3180#3210#0" expanded="true" />
+            <element signature="e#3253#3283#0" expanded="true" />
+            <element signature="e#3399#3417#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3427,7 +3491,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2241#2242#0" expanded="false" />
+            <element signature="e#2295#2296#0" expanded="false" />
+            <element signature="e#2710#2711#0" expanded="false" />
+            <element signature="e#2778#2779#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3451,7 +3521,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#1829#1846#0" expanded="true" />
+            <element signature="e#1888#1919#0" expanded="true" />
+            <element signature="e#2334#2358#0" expanded="true" />
+            <element signature="e#2452#2483#0" expanded="true" />
+            <element signature="e#3496#3522#0" expanded="true" />
+            <element signature="e#3568#3598#0" expanded="true" />
+            <element signature="e#4308#4325#0" expanded="true" />
+            <element signature="e#4371#4402#0" expanded="true" />
+            <element signature="e#4799#4815#0" expanded="true" />
+            <element signature="e#4861#4892#0" expanded="true" />
+            <element signature="e#5289#5306#0" expanded="true" />
+            <element signature="e#5352#5383#0" expanded="true" />
+            <element signature="e#5781#5798#0" expanded="true" />
+            <element signature="e#5844#5875#0" expanded="true" />
+            <element signature="e#6576#6621#0" expanded="true" />
+            <element signature="e#6667#6697#0" expanded="true" />
+            <element signature="e#7458#7489#0" expanded="true" />
+            <element signature="e#7940#7971#0" expanded="true" />
+            <element signature="e#8423#8454#0" expanded="true" />
+            <element signature="e#8906#8937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3460,8 +3551,8 @@
         <state relative-caret-position="0">
           <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3470,7 +3561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3478,7 +3568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3544,8 +3633,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3554,14 +3643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="52" column="49" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3604,7 +3685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="113" column="53" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3636,24 +3716,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
+        <state relative-caret-position="2108">
           <caret line="188" column="39" selection-start-line="188" selection-start-column="39" selection-end-line="188" selection-end-column="39" />
           <folding>
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="false" />
+            <element signature="e#5628#5629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3673,7 +3742,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="37" column="68" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2241#2242#0" expanded="false" />
+            <element signature="e#2295#2296#0" expanded="false" />
+            <element signature="e#2710#2711#0" expanded="false" />
+            <element signature="e#2778#2779#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3681,22 +3756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -3712,23 +3771,88 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="207">
+          <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+          <folding>
+            <element signature="e#2181#2208#0" expanded="true" />
+            <element signature="e#2644#2670#0" expanded="true" />
+            <element signature="e#3180#3210#0" expanded="true" />
+            <element signature="e#3253#3283#0" expanded="true" />
+            <element signature="e#3399#3417#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="63" column="52" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
+        <state relative-caret-position="162">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="74" column="51" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="51" />
+          <folding>
+            <element signature="e#1829#1846#0" expanded="true" />
+            <element signature="e#1888#1919#0" expanded="true" />
+            <element signature="e#2334#2358#0" expanded="true" />
+            <element signature="e#2452#2483#0" expanded="true" />
+            <element signature="e#3496#3522#0" expanded="true" />
+            <element signature="e#3568#3598#0" expanded="true" />
+            <element signature="e#4308#4325#0" expanded="true" />
+            <element signature="e#4371#4402#0" expanded="true" />
+            <element signature="e#4799#4815#0" expanded="true" />
+            <element signature="e#4861#4892#0" expanded="true" />
+            <element signature="e#5289#5306#0" expanded="true" />
+            <element signature="e#5352#5383#0" expanded="true" />
+            <element signature="e#5781#5798#0" expanded="true" />
+            <element signature="e#5844#5875#0" expanded="true" />
+            <element signature="e#6576#6621#0" expanded="true" />
+            <element signature="e#6667#6697#0" expanded="true" />
+            <element signature="e#7458#7489#0" expanded="true" />
+            <element signature="e#7940#7971#0" expanded="true" />
+            <element signature="e#8423#8454#0" expanded="true" />
+            <element signature="e#8906#8937#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>

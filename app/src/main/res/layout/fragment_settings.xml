@@ -5,34 +5,44 @@
     tools:context="com.unlimitec.porschetower.Fragments.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="100"
+        android:gravity="center"
         android:background="@drawable/setting_background">
-        <RelativeLayout
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="60"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/settingpanel_margin"
-            android:layout_marginRight="@dimen/settingpanel_margin"
-            android:background="@drawable/setting_panel">
+            android:background="@drawable/setting_panel"
+            android:weightSum="1"
+            android:gravity="center">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/linearLayout">
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:id="@+id/linearLayout"
+                android:weightSum="1">
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:weightSum="1">
+
                     <Button
                         android:id="@+id/btn_logout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="match_parent"
                         android:text="@string/log_out"
                         android:textSize="@dimen/settingbutton_textsize"
                         android:layout_gravity="left"
@@ -40,8 +50,9 @@
 
                     <Button
                         android:id="@+id/btn_reset_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="match_parent"
                         android:text="@string/reset_password"
                         android:onClick="onResetPW"
                         android:textSize="@dimen/settingbutton_textsize"
@@ -52,13 +63,16 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_gravity="center"
+                    android:weightSum="1">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
                         android:layout_gravity="center">
 
                         <TextView
@@ -71,12 +85,15 @@
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center">
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:weightSum="1">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="@string/english"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -84,7 +101,8 @@
                             android:background="@drawable/btn_language_first_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="@string/german"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -92,7 +110,8 @@
                             android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="@string/italian"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -100,7 +119,8 @@
                             android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="@string/spanish"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -111,7 +131,8 @@
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
                         android:layout_gravity="center">
 
                         <TextView
@@ -124,12 +145,15 @@
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center">
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:weightSum="1">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="1 Minute"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -137,7 +161,8 @@
                             android:background="@drawable/btn_language_first_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="2 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -145,7 +170,8 @@
                             android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="3 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -153,7 +179,8 @@
                             android:background="@drawable/btn_language_middle_normal" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
                             android:layout_height="wrap_content"
                             android:text="4 Minutes"
                             android:textSize="@dimen/settingbutton_textsize"
@@ -163,6 +190,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-        </RelativeLayout>
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

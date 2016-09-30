@@ -23,6 +23,6 @@
     <dimen name="settingpanel_margin">160dp</dimen>
     <dimen name="settingpanel_textsize">30sp</dimen>
     <dimen name="settingbutton_textsize">24sp</dimen>
-    <dimen name="maintitle_textsize">60dp</dimen>
-    <dimen name="subtitle_textsize">52dp</dimen>
+    <dimen name="maintitle_textsize">44dp</dimen>
+    <dimen name="subtitle_textsize">36dp</dimen>
 </resources>
