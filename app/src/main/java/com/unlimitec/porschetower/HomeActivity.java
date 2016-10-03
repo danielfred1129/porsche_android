@@ -22,10 +22,10 @@ import com.unlimitec.porschetower.utils.UserUtils;
 
 import org.w3c.dom.Text;
 
-public class HomeActivity extends FragmentActivity {
+public class HomeActivity extends BaseActivity {
 
-    ImageButton btnSubCategory;
-    private TextView txt_main_title, txt_sub_title;
+    public ImageButton btnSubCategory,btnPlus;
+    public TextView txt_main_title, txt_sub_title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,8 @@ public class HomeActivity extends FragmentActivity {
         txt_main_title.setTypeface(font);
         txt_sub_title = (TextView) findViewById(R.id.txt_sub_title);
         txt_sub_title.setTypeface(font);
+
+        String[] mPorschoDesginStringArray = getResources().getStringArray(R.array.title_string_array);
 
         UserObject user = UserUtils.getSession(this);
 

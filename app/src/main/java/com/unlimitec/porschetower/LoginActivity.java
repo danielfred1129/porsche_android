@@ -18,6 +18,10 @@ import android.net.Uri;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
 import com.unlimitec.porschetower.utils.UserUtils;
@@ -71,6 +75,19 @@ public class LoginActivity extends AppCompatActivity {
             nNew = 0;
             onLogin(null);
         }
+
+        initImageLoader();
+    }
+
+    public void initImageLoader() {
+        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(getApplicationContext());
+        config.threadPriority(Thread.NORM_PRIORITY - 2);
+        config.denyCacheImageMultipleSizesInMemory();
+        config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
+        config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
+        config.tasksProcessingOrder(QueueProcessingType.LIFO);
+        config.writeDebugLogs(); // Remove for release app
+        ImageLoader.getInstance().init(config.build());
     }
 
     public void onLogin(View v) {
@@ -139,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
                         else {
-                            String login_url = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
+                            String login_url = Utils.LOGIN_BASE_URL + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
 //                            String login_url = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
 
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(login_url));

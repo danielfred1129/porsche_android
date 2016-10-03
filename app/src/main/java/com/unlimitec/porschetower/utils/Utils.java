@@ -1,13 +1,20 @@
 package com.unlimitec.porschetower.utils;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
@@ -18,6 +25,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.unlimitec.porschetower.R;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -34,10 +42,46 @@ public class Utils {
     //public static String GYM_NEAR_ME = "https://maps.googleapis.com/maps/api/place/search/json?radius=50000&types=gym&sensor=false&key=AIzaSyDR-3g9gQvYcZM7uVJiUPazVjNIIBq8RZE&location=";
 	public static String BASE_URL = "http://192.168.0.87/porsche/index.php/mobile/Mobile/";
 //	public static String BASE_URL = "http://fitcline.org/index.php/mobile/";
+	public static String LOGIN_BASE_URL = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=";
+//	public static String LOGIN_BASE_URL = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=";
 
     public static String[] categories = new String[]{"ALL", "WEIGHT", "BENCH", "SQUAT",
                                                 "DEADLIFT", "PULLUPS", "PUSHUPS", "MILERUN"};
     public static String[] units = new String[]{"kg", "lbs", "sec"};
+
+	/**
+	 * get screen width for all resolutions
+	 *
+	 * @return return height
+	 */
+	public static int gettingScreentwidth(Activity context) {
+		Display display = context.getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+		return height;
+	}
+
+
+	/**
+	 * add fragment to backstack
+	 *
+	 * @param fragment          fragment want to add
+	 * @param appCompatActivity
+	 * @param addToBackStack    should add to back stack
+	 */
+	public static void addFragmentToBackstack(Fragment fragment, AppCompatActivity appCompatActivity, boolean addToBackStack) {
+
+		FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+		FragmentTransaction mFragmentTransaction = fragmentManager.beginTransaction();
+		if (addToBackStack) {
+			mFragmentTransaction.addToBackStack(fragment.getClass().getName());
+		}
+		mFragmentTransaction.add(R.id.home_fragment, fragment);
+		mFragmentTransaction.commit();
+
+	}
 	
 	public static void showAlert(Context context, String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);

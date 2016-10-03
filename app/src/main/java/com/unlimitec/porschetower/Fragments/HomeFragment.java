@@ -1,17 +1,34 @@
 package com.unlimitec.porschetower.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.unlimitec.porschetower.R;
+import com.unlimitec.porschetower.customview.CustomPager;
+import com.unlimitec.porschetower.pagertransformations.BackPageTransformer;
+import com.unlimitec.porschetower.pagertransformations.FrontPageTransformer;
+import com.unlimitec.porschetower.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +48,82 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private View rootView;
+
+    /**
+     * this text will show title for given desgin
+     */
+    TextView mDesginShowingTxt;
+
+    /*
+    this is front visible view
+     */
+    CustomPager mFrontViewPager;
+
+    /*
+    this is back side view
+     */
+    CustomPager mBackViewPager;
+
+    /**
+     * loop to givee infinite effect to pager
+     */
+    int LOOP = 3000;
+
+
+    /**
+     * this is margin between two pages in viewpager
+     */
+    private final int PAGE_MARGEN = 50;
+
+    /**
+     * use to handle click on image to show subtitle
+     */
+    private int pagerCurrentPos = 0;
+
+    //    String[] mPorschoDesginStringArray = {getString(R.string.title_car_elevator),
+//            getString(R.string.title_in_unit),
+//            getString(R.string.title_car_concierge),
+//            getString(R.string.title_pool_beach),
+//            getString(R.string.title_wellness),
+//            getString(R.string.title_activities),
+//            getString(R.string.title_dining),
+//            getString(R.string.title_documents),
+//            getString(R.string.title_information_board),
+//            getString(R.string.title_local_info),
+//            getString(R.string.title_concierge)
+//    };
+
+    String[] mPorschoDesginStringArray;
+
+    int[] frontviewarry = {R.drawable._concierge_,
+            R.drawable.elevator,
+            R.drawable.apartament,
+            R.drawable.garage,
+            R.drawable.pool_beach,
+            R.drawable.wellness,
+            R.drawable.activities,
+            R.drawable.dining,
+            R.drawable.noticeboard,
+            R.drawable.info,
+            R.drawable.cloud
+    };
+
+
+    int[] backviewarray = {R.drawable.elevator_,
+            R.drawable.apartment,
+            R.drawable.garage_,
+            R.drawable.poolbeach_,
+            R.drawable.wellness_,
+            R.drawable.ativities_,
+            R.drawable.dinning_,
+            R.drawable.noticeboard_,
+            R.drawable.info_,
+            R.drawable.cloud_,
+            R.drawable._concierge
+    };
+
+    List<Integer> mFrontList = new ArrayList<>();
+    List<Integer> mBackList = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -60,33 +153,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final HorizontalScrollView scrollView = (HorizontalScrollView)rootView.findViewById(R.id.scroll_view);
-        final ImageView imageView = (ImageView)rootView.findViewById(R.id.background);
-        final ViewPager viewPager = (ViewPager)rootView.findViewById(R.id.view_pager);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                int x = (int) ((viewPager.getWidth() * position + positionOffsetPixels) * computeFactor());
-                scrollView.scrollTo(x, 0);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-
-            private float computeFactor() {
-                return (imageView.getWidth() - viewPager.getWidth()) /
-                        (float)(viewPager.getWidth() * (viewPager.getAdapter().getCount() - 1));
-            }
-        });
-
+        mFrontViewPager = (CustomPager) rootView.findViewById(R.id.front_vp);
+        mBackViewPager = (CustomPager) rootView.findViewById(R.id.backgroup_vp);
+        mPorschoDesginStringArray = (String[]) getActivity().getResources().getStringArray(R.array.title_string_array);
         return rootView;
     }
 
@@ -121,4 +191,218 @@ public class HomeFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        settingMeasures();
+        settingDataInList();
+        settingUpPagerAdatpers();
+        setListeners();
+    }
+
+    /**
+     * here we set dependencies of viewpagers,offscreenlimit,pagemargin,transformation
+     */
+    private void settingMeasures() {
+
+        int screenwidth = Utils.gettingScreentwidth(getActivity());
+
+        /**
+         * synchronizing both viewpagers
+         */
+        mFrontViewPager.setViewPager(mBackViewPager);
+        mBackViewPager.setViewPager(mFrontViewPager);
+
+//        mFrontViewPager.setOffscreenPageLimit(6);
+//        mBackViewPager.setOffscreenPageLimit(6);
+        mFrontViewPager.setPageTransformer(false, new FrontPageTransformer());
+        mBackViewPager.setPageTransformer(false, new BackPageTransformer());
+
+        int mfrontPageMargin = (int) ((int) screenwidth * (float) 7.4 / 100);
+        mFrontViewPager.setPageMargin(mfrontPageMargin);
+        mBackViewPager.setPageMargin(-(int) screenwidth / 3 - PAGE_MARGEN);
+
+
+    }
+
+
+    /**
+     * setting data for both viewpagers
+     */
+    private void settingDataInList() {
+        mFrontList = new ArrayList<>();
+        mBackList = new ArrayList<>();
+
+        for (int i = 0; i < backviewarray.length; i++) {
+
+            mFrontList.add(frontviewarry[i]);
+            mBackList.add(backviewarray[i]);
+        }
+
+    }
+
+    private void settingUpPagerAdatpers() {
+
+        mBackViewPager.setAdapter(new BackViewPagerAdatper());
+        mFrontViewPager.setAdapter(new FrontViewPagerAdapter());
+        mFrontViewPager.setCurrentItem(298);
+        mBackViewPager.setCurrentItem(297);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFrontViewPager.setOffscreenPageLimit(6);
+                mBackViewPager.setOffscreenPageLimit(6);
+            }
+        }, 1000);
+    }
+
+
+    private void setListeners() {
+
+
+        mFrontViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mBackViewPager.setCurrentItem(mFrontViewPager.getCurrentItem(), true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+//            }
+        });
+
+        mBackViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                int pos = position % mFrontList.size();
+                pagerCurrentPos = pos;
+                TextView txt_sub_title = (TextView) getActivity().findViewById(R.id.txt_sub_title);
+                txt_sub_title.setText(mPorschoDesginStringArray[pos]);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+
+    private class FrontViewPagerAdapter extends PagerAdapter {
+
+
+        @Override
+        public int getCount() {
+            return mFrontList.size() * LOOP;
+        }
+
+        @Override
+        public float getPageWidth(int position) {
+            return 0.31f;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, final int position) {
+
+            final int pos = position % mFrontList.size();
+
+            View view = getActivity().getLayoutInflater().inflate(R.layout.front_view_row, container, false);
+            ImageView image = (ImageView) view.findViewById(R.id.front_iamge);
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int posss = pagerCurrentPos >= 10 ? -1 : pagerCurrentPos;
+                    if ((posss + 1) == pos) {
+                        Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
+                    } else if ((pagerCurrentPos) == pos) {
+                        mFrontViewPager.setCurrentItem(mFrontViewPager.getCurrentItem() - 1, true);
+                    } else if ((pagerCurrentPos) < pos || (pagerCurrentPos) > pos) {
+                        mFrontViewPager.setCurrentItem(mFrontViewPager.getCurrentItem() + 1, true);
+                    }
+                }
+
+            });
+            ImageLoader.getInstance().displayImage("drawable://" + mFrontList.get(pos), image, setUpDisplayOptions());
+            container.addView(view);
+
+            return view;
+        }
+
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object view) {
+            container.removeView((View) view);
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+    }
+
+    private class BackViewPagerAdatper extends PagerAdapter {
+
+
+        @Override
+        public int getCount() {
+            return mBackList.size() * LOOP;
+        }
+
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+
+            int pos = position % mFrontList.size();
+            View view = getActivity().getLayoutInflater().inflate(R.layout.back_view, container, false);
+            ImageView image = (ImageView) view.findViewById(R.id.back_iamge);
+            ImageLoader.getInstance().displayImage("drawable://" + mBackList.get(pos), image, setUpDisplayOptions());
+            container.addView(view);
+
+
+            return view;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object view) {
+            container.removeView((View) view);
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+    }
+
+
+    private DisplayImageOptions setUpDisplayOptions() {
+        return new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.mipmap.ic_launcher)
+                .showImageForEmptyUri(R.mipmap.ic_launcher)
+                .showImageOnFail(R.mipmap.ic_launcher)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                .considerExifParams(true)
+                .build();
+    }
 }

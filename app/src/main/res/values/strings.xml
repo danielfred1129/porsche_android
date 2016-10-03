@@ -113,4 +113,95 @@
     <string name="automatic_car_elevator_log_out_time">Automatic Car Elevator Log-out Time</string>
     <string name="main_title">PORSCHE DESIGN</string>
 
+    <!--Subtitles-->
+    <string-array name="title_string_array">
+        <item>CAR ELEVATOR</item>
+        <item>IN-UNIT</item>
+        <item>CAR CONCIERGE</item>
+        <item>POOL BEACH</item>
+        <item>WELLNESS</item>
+        <item>ACTIVITIES</item>
+        <item>DINING</item>
+        <item>DOCUMENTS</item>
+        <item>INFORMATIN BOARD</item>
+        <item>LOCAL INFO</item>
+        <item>CONCIERGE</item>
+    </string-array>
+
+    <!--Car Elevator Strings-->
+    <string-array name="car_elevator_titles">
+        <item>Request Car Elevator</item>
+        <item>Schedule Car Elevator</item>
+        <item>Scheduled Pickups</item>
+    </string-array>
+
+    <!--In Unit Strings-->
+    <string-array name="in_unit_titles">
+        <item>Request Maintenance</item>
+        <item>Request Front Desk Call Back</item>
+        <item>View Front Desk Camera</item>
+        <item>Request Security</item>
+    </string-array>
+
+    <!--Car Concierge Strings-->
+    <string-array name="car_concierge_titles">
+        <item>Detailing</item>
+        <item>Service</item>
+        <item>Storage</item>
+    </string-array>
+
+    <!--Pool Beach Strings-->
+    <string-array name="pool_beach_titles">
+        <item>Pool</item>
+        <item>Beach</item>
+    </string-array>
+
+    <!--Wellness Strings-->
+    <string-array name="wellness_titles">
+        <item>Salon Spa</item>
+        <item>Fitness</item>
+        <item>Request Room</item>
+    </string-array>
+
+    <!--Activities Strings-->
+    <string-array name="activities_titles">
+        <item>Golf Sim</item>
+        <item>Racing Sim</item>
+        <item>Theater</item>
+        <item>Community Room</item>
+    </string-array>
+
+    <!--Dining Strings-->
+    <string-array name="dining_titles">
+        <item>In House Dining</item>
+        <item>Request a Call</item>
+    </string-array>
+
+    <!--Documents Strings-->
+    <string-array name="documents_titles">
+        <item>Documents</item>
+        <item>Unit Manual</item>
+    </string-array>
+
+    <!--Information Board Strings-->
+    <string-array name="info_board_titles">
+        <item>Directory</item>
+        <item>Personal Notifications</item>
+        <item>Building Maintenance</item>
+        <item>Building Events</item>
+    </string-array>
+
+    <!--Local Info Strings-->
+    <string name="local_info_titles">
+        <item>Weather</item>
+        <item>View Weather</item>
+        <item>View Beach</item>
+    </string>
+
+    <!--Concierge Strings-->
+    <string-array name="concierge_titles">
+        <item>Request HouseKeeping</item>
+        <item>Request Transportation</item>
+        <item>Dry Cleaning</item>
+    </string-array>
 </resources>
