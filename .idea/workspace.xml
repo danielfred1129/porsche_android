@@ -48,132 +48,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb92a138-20bc-40dd-b269-ad21c80c54bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/BaseActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/BaseFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/CustomPager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/BackPageTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/FrontPageTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/back_view.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/front_view_row.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_bar_layout.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/generated/source/buildConfig/release/com/nostra13/universalimageloader/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/bundles/release/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/DiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/BaseDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/LimitedAgeDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/UnlimitedDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Editor$FaultHidingOutputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Editor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Entry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/LruDiskCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/StrictLineReader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/StrictLineReader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/impl/ext/Util.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/naming/FileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/naming/HashCodeFileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/disc/naming/Md5FileNameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/BaseMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/LimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/MemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/FIFOLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/FuzzyKeyMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/LRULimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/LargestLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/LimitedAgeMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/LruMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/UsingFreqLimitedMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/cache/memory/impl/WeakMemoryCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DefaultConfigurationFactory$DefaultThreadFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DefaultConfigurationFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DisplayBitmapTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DisplayImageOptions$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DisplayImageOptions$Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/DisplayImageOptions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoader$SyncImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$NetworkDeniedImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderConfiguration$SlowNetworkImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderEngine$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoaderEngine.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ImageLoadingInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask$TaskCancelledException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/LoadAndDisplayImageTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/ProcessAndDisplayImageTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/ContentLengthInputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/FailReason$FailType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/FailReason.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/FlushedInputStream.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/ImageScaleType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/ImageSize.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/LoadedFrom.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/QueueProcessingType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/ViewScaleType$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/ViewScaleType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/BlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/Deque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LIFOLinkedBlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$AbstractItr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$DescendingItr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Itr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/decode/BaseImageDecoder$ExifInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/decode/BaseImageDecoder$ImageFileInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/decode/BaseImageDecoder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/decode/ImageDecoder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/decode/ImageDecodingInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/BitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/FadeInBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/RoundedBitmapDisplayer$RoundedDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/RoundedBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/RoundedVignetteBitmapDisplayer$RoundedVignetteDrawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/RoundedVignetteBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/display/SimpleBitmapDisplayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/download/BaseImageDownloader$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/download/BaseImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/download/ImageDownloader$Scheme.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/download/ImageDownloader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/imageaware/ImageAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/imageaware/ImageViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/imageaware/NonViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/imageaware/ViewAware.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/listener/ImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/listener/ImageLoadingProgressListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/listener/PauseOnScrollListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/listener/SimpleImageLoadingListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/core/process/BitmapProcessor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/DiskCacheUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/ImageSizeUtils$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/ImageSizeUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/IoUtils$CopyListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/IoUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/L.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/MemoryCacheUtils$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/MemoryCacheUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/classes/release/com/nostra13/universalimageloader/utils/StorageUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental-safeguard/release/tag.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/compileReleaseAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-release.aar" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/MenuFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/adapters/PorscheListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheEditText.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheTextView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_list_textview.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -181,28 +62,21 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_imageLoaderLibrary_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-19.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-19.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-debug.aar" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/outputs/aar/imageLoaderLibrary-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/PorscheTowerApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/PorscheTowerApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/Utils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/imageLoaderLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
@@ -245,76 +119,104 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-236">
-              <caret line="95" column="39" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="39" />
+            <state relative-caret-position="302">
+              <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1025#1055#0" expanded="true" />
+                <element signature="e#2004#2024#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackPageTransformer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/BackPageTransformer.java">
+      <file leaf-file-name="MenuFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/MenuFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
-              <folding />
+            <state relative-caret-position="612">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding>
+                <element signature="e#2724#3406#0" expanded="true" />
+                <element signature="e#3405#3406#0" expanded="true" />
+                <element signature="e#3499#3500#0" expanded="true" />
+                <element signature="e#3538#3539#0" expanded="true" />
+                <element signature="e#3582#3583#0" expanded="true" />
+                <element signature="e#3614#3615#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontPageTransformer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/FrontPageTransformer.java">
+      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="198">
+              <caret line="335" column="64" selection-start-line="335" selection-start-column="64" selection-end-line="335" selection-end-column="64" />
+              <folding>
+                <element signature="e#9157#9158#0" expanded="true" />
+                <element signature="e#9193#9194#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomPager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/CustomPager.java">
+      <file leaf-file-name="PorscheListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/adapters/PorscheListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1509">
-              <caret line="129" column="9" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="292">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#584#585#0" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_home.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+      <file leaf-file-name="menu_list_textview.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_list_textview.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="153">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PorscheTextView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheTextView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#316#317#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_menu.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="562">
+              <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -326,36 +228,23 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+            <state relative-caret-position="254">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
               <folding>
                 <element signature="e#4308#4325#0" expanded="true" />
-                <element signature="e#7458#7489#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2356#2357#0" expanded="true" />
-                <element signature="e#2410#2411#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -622,11 +511,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processReleaseUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare porsche_android:imageLoaderLibrary:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preparePorsche_androidImageLoaderLibraryUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Uninstalls the Release build." />
@@ -1295,11 +1179,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="processReleaseUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare porsche_android:imageLoaderLibrary:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="preparePorsche_androidImageLoaderLibraryUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Uninstalls the Release build." />
@@ -2386,7 +2265,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$" value="5892147669728" />
-        <entry key="F:\My Work\Dany Lou\Ben Haas\porsche_android" value="5894292744922" />
+        <entry key="F:\My Work\Dany Lou\Ben Haas\porsche_android" value="5897074440022" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2804,12 +2683,10 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_scenario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-v16/activity_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/ScenarioView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/datamodel/UserObject.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/UserUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/back_view.xml" />
@@ -2822,14 +2699,23 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/Utils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/BackPageTransformer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/FrontPageTransformer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/CustomPager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/menu_view_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheTextView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheEditText.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/adapters/PorscheListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/menu_list_textview.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/MenuFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java" />
       </list>
     </option>
   </component>
@@ -2883,6 +2769,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2960,6 +2858,24 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="porsche_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2995,68 +2911,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="porschetower" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porsche_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porschetower" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porsche_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porschetower" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porsche_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porschetower" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pagertransformations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3099,7 +2953,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="datamodel" />
+              <option name="myItemId" value="customview" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3121,7 +2975,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="customview" />
+              <option name="myItemId" value="adapters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3134,31 +2988,15 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Changed Files">
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="porsche_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -3172,7 +3010,7 @@
     <property name="device.picker.selection" value="99e3ce70" />
     <property name="last_opened_file_path" value="I:/Source/outsourcing/PorscheAppDemo_1004/PorscheAppDemo" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="android.project.structure.last.selected" value="imageLoaderLibrary" />
+    <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RecentsManager">
@@ -3180,6 +3018,7 @@
       <recent name="com.unlimitec.porschetower" />
     </key>
     <key name="android.template.packageName">
+      <recent name="com.unlimitec.porschetower.Fragments" />
       <recent name="com.unlimitec.porschetower" />
     </key>
     <key name="android.template.parentActivityClass">
@@ -3569,9 +3408,18 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3582,16 +3430,16 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.532294" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5077951" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31514478" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3830735" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33296213" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25160944" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -3632,99 +3480,11 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="40" />
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-          <folding>
-            <element signature="e#4308#4325#0" expanded="true" />
-            <element signature="e#7458#7489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
-          <folding>
-            <element signature="e#5596#5597#0" expanded="false" />
-            <element signature="e#5628#5629#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/org/json/JSONObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="547" column="0" selection-start-line="547" selection-start-column="0" selection-end-line="547" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#5596#5597#0" expanded="false" />
-            <element signature="e#5628#5629#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_scenario.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/java/lang/StringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3819,7 +3579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3835,7 +3594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3884,7 +3642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="612" column="0" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3892,7 +3649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3900,7 +3656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3924,9 +3679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3954,23 +3706,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/BackPageTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="157" column="30" selection-start-line="157" selection-start-column="30" selection-end-line="157" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="574">
+          <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_view_layout.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/FrontPageTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3985,14 +3741,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/data/res/layout/simple_list_item_1.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/data/res/values/ids.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/CustomPager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1887">
+          <caret line="129" column="9" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="134">
+          <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
+          <folding>
+            <element signature="e#981#1007#0" expanded="true" />
+            <element signature="e#1142#1167#0" expanded="true" />
+            <element signature="e#3720#3745#0" expanded="true" />
+            <element signature="e#4029#4054#0" expanded="true" />
+            <element signature="e#4202#4217#0" expanded="true" />
+            <element signature="e#4728#4753#0" expanded="true" />
+            <element signature="e#4799#4827#0" expanded="true" />
+            <element signature="e#4975#4993#0" expanded="true" />
+            <element signature="e#5438#5466#0" expanded="true" />
+            <element signature="e#5515#5543#0" expanded="true" />
+            <element signature="e#5750#5775#0" expanded="true" />
+            <element signature="e#6004#6037#0" expanded="true" />
+            <element signature="e#6242#6263#0" expanded="true" />
+            <element signature="e#6362#6387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheEditText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#319#320#0" expanded="false" />
+            <element signature="e#349#350#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4001,8 +3831,33 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+        <state relative-caret-position="302">
+          <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+          <folding>
+            <element signature="e#1025#1055#0" expanded="true" />
+            <element signature="e#2004#2024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/PorscheTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu_list_textview.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -4012,66 +3867,76 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+        <state relative-caret-position="254">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
           <folding>
             <element signature="e#4308#4325#0" expanded="true" />
-            <element signature="e#7458#7489#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/BackPageTransformer.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/widget/AdapterView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        <state relative-caret-position="290">
+          <caret line="778" column="18" selection-start-line="778" selection-start-column="18" selection-end-line="778" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/pagertransformations/FrontPageTransformer.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/customview/CustomPager.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1509">
-          <caret line="129" column="9" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+        <state relative-caret-position="562">
+          <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/HomeActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/adapters/PorscheListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="292">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2356#2357#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/MenuFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#2724#3406#0" expanded="true" />
+            <element signature="e#3405#3406#0" expanded="true" />
+            <element signature="e#3499#3500#0" expanded="true" />
+            <element signature="e#3538#3539#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
+            <element signature="e#3614#3615#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/unlimitec/porschetower/Fragments/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-236">
-          <caret line="95" column="39" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="39" />
+        <state relative-caret-position="198">
+          <caret line="335" column="64" selection-start-line="335" selection-start-column="64" selection-end-line="335" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#9157#9158#0" expanded="true" />
+            <element signature="e#9193#9194#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>

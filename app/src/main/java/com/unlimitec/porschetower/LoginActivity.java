@@ -46,16 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.activity_login_password);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
-
-        txt_porsche_design = (TextView) findViewById(R.id.txt_porsche_design);
-        txt_porsche_design.setTypeface(font);
-        txt_tower_miami = (TextView) findViewById(R.id.txt_tower_miami);
-        txt_tower_miami.setTypeface(font);
-        txt_p0001 = (TextView) findViewById(R.id.txt_p0001);
-        txt_p0001.setTypeface(font);
-        txt_login = (TextView) findViewById(R.id.txt_login);
-        txt_login.setTypeface(font);
-
         activity_login_btn = (Button) findViewById(R.id.activity_login_btn);
         activity_login_btn.setTypeface(font);
 

@@ -1,19 +1,16 @@
 package com.unlimitec.porschetower.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +18,10 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.unlimitec.porschetower.HomeActivity;
 import com.unlimitec.porschetower.R;
 import com.unlimitec.porschetower.customview.CustomPager;
+import com.unlimitec.porschetower.customview.PorscheTextView;
 import com.unlimitec.porschetower.pagertransformations.BackPageTransformer;
 import com.unlimitec.porschetower.pagertransformations.FrontPageTransformer;
 import com.unlimitec.porschetower.utils.Utils;
@@ -30,14 +29,7 @@ import com.unlimitec.porschetower.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,21 +71,8 @@ public class HomeFragment extends Fragment {
      * use to handle click on image to show subtitle
      */
     private int pagerCurrentPos = 0;
-
-    //    String[] mPorschoDesginStringArray = {getString(R.string.title_car_elevator),
-//            getString(R.string.title_in_unit),
-//            getString(R.string.title_car_concierge),
-//            getString(R.string.title_pool_beach),
-//            getString(R.string.title_wellness),
-//            getString(R.string.title_activities),
-//            getString(R.string.title_dining),
-//            getString(R.string.title_documents),
-//            getString(R.string.title_information_board),
-//            getString(R.string.title_local_info),
-//            getString(R.string.title_concierge)
-//    };
-
     String[] mPorschoDesginStringArray;
+    TypedArray mMenuTitleTypedArray;
 
     int[] frontviewarry = {R.drawable._concierge_,
             R.drawable.elevator,
@@ -157,6 +136,7 @@ public class HomeFragment extends Fragment {
         mFrontViewPager = (CustomPager) rootView.findViewById(R.id.front_vp);
         mBackViewPager = (CustomPager) rootView.findViewById(R.id.backgroup_vp);
         mPorschoDesginStringArray = (String[]) getActivity().getResources().getStringArray(R.array.title_string_array);
+        mMenuTitleTypedArray = getActivity().getResources().obtainTypedArray(R.array.menutitles_array);
         return rootView;
     }
 
@@ -294,8 +274,9 @@ public class HomeFragment extends Fragment {
             public void onPageSelected(int position) {
                 int pos = position % mFrontList.size();
                 pagerCurrentPos = pos;
-                TextView txt_sub_title = (TextView) getActivity().findViewById(R.id.txt_sub_title);
+                PorscheTextView txt_sub_title = (PorscheTextView) getActivity().findViewById(R.id.txt_sub_title);
                 txt_sub_title.setText(mPorschoDesginStringArray[pos]);
+
             }
 
             @Override
@@ -334,6 +315,21 @@ public class HomeFragment extends Fragment {
                     int posss = pagerCurrentPos >= 10 ? -1 : pagerCurrentPos;
                     if ((posss + 1) == pos) {
                         Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
+
+                        //Get TitleArray as a CharSequence
+                        CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(pos);
+                        // Convert CharSequence[] to String[]
+                        String[] mTitlesString = new String[mMenuTitleArray.length];
+                        int i=0;
+                        for(CharSequence ch: mMenuTitleArray){
+                            mTitlesString[i++] = ch.toString();
+                        }
+                        //Send the titleArray via Bundle
+                        MenuFragment menu_fragment = new MenuFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putStringArray("titles", mTitlesString);
+                        menu_fragment.setArguments(bundle);
+                        Utils.addFragmentToBackstack(menu_fragment, (HomeActivity)getActivity(), true);
                     } else if ((pagerCurrentPos) == pos) {
                         mFrontViewPager.setCurrentItem(mFrontViewPager.getCurrentItem() - 1, true);
                     } else if ((pagerCurrentPos) < pos || (pagerCurrentPos) > pos) {

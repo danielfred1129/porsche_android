@@ -21,13 +21,14 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-//    compile project(':imageLoaderLibrary')
+    //    compile project(':imageLoaderLibrary')
     compile files('libs/android-async-http-1.4.6.jar')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    testCompile 'junit:junit:4.12'
 }

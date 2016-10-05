@@ -192,16 +192,31 @@
     </string-array>
 
     <!--Local Info Strings-->
-    <string name="local_info_titles">
+    <string-array name="local_info_titles">
         <item>Weather</item>
         <item>View Weather</item>
         <item>View Beach</item>
-    </string>
+    </string-array>
 
     <!--Concierge Strings-->
     <string-array name="concierge_titles">
         <item>Request HouseKeeping</item>
         <item>Request Transportation</item>
         <item>Dry Cleaning</item>
+    </string-array>
+
+    <!--Titles Array-->
+    <string-array name="menutitles_array">
+        <item>@array/car_elevator_titles</item>
+        <item>@array/in_unit_titles</item>
+        <item>@array/car_concierge_titles</item>
+        <item>@array/pool_beach_titles</item>
+        <item>@array/wellness_titles</item>
+        <item>@array/activities_titles</item>
+        <item>@array/dining_titles</item>
+        <item>@array/documents_titles</item>
+        <item>@array/info_board_titles</item>
+        <item>@array/local_info_titles</item>
+        <item>@array/concierge_titles</item>
     </string-array>
 </resources>

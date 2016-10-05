@@ -19,6 +19,7 @@ import com.unlimitec.porschetower.Fragments.HomeFragment;
 import com.unlimitec.porschetower.Fragments.SettingsFragment;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.utils.UserUtils;
+import com.unlimitec.porschetower.utils.Utils;
 
 import org.w3c.dom.Text;
 
@@ -35,10 +36,6 @@ public class HomeActivity extends BaseActivity {
         btnSubCategory.setVisibility(View.GONE);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
-        txt_main_title = (TextView) findViewById(R.id.txt_main_title);
-        txt_main_title.setTypeface(font);
-        txt_sub_title = (TextView) findViewById(R.id.txt_sub_title);
-        txt_sub_title.setTypeface(font);
 
         String[] mPorschoDesginStringArray = getResources().getStringArray(R.array.title_string_array);
 
@@ -56,7 +53,7 @@ public class HomeActivity extends BaseActivity {
     public void addFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
-        ft.replace(R.id.home_fragment, fragment);
+        ft.add(R.id.home_fragment, fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -71,14 +68,14 @@ public class HomeActivity extends BaseActivity {
     {
         Log.d("onHome", "Home button clicked");
         HomeFragment fragment = new HomeFragment();
-        addFragment(fragment);
+        Utils.addFragmentToBackstack(fragment,this, true);
     }
 
     public void onSettings(View v)
     {
         Log.d("onSettings", "Settings button clicked");
         SettingsFragment fragment = new SettingsFragment();
-        addFragment(fragment);
+        Utils.addFragmentToBackstack(fragment,this, true);
     }
 
     public void onSubCategory(View v)
