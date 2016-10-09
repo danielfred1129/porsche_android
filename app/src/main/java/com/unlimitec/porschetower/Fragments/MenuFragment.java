@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.unlimitec.porschetower.HomeActivity;
 import com.unlimitec.porschetower.R;
 import com.unlimitec.porschetower.adapters.PorscheListAdapter;
+import com.unlimitec.porschetower.utils.Utils;
 
 public class MenuFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -67,10 +70,17 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        ImageView img_memuback = (ImageView) rootView.findViewById(R.id.img_memuback);
+        String mMenuType = getArguments().getString("menu_type");
+        if (mMenuType.equals("MainMenu"))
+            img_memuback.setAlpha(0.85f);
+        else if (mMenuType.equals("SubMenu"))
+            img_memuback.setAlpha(1.0f);
+
         final ListView listView ;
         listView = (ListView) rootView.findViewById(R.id.menu_list_view);
 
-        //  Get Titles from Arguments - HomeFragment
+        //  Get Titles Arguments from PickerFragment
         mTitlesArray = getArguments().getStringArray("titles");
         PorscheListAdapter adapter = new PorscheListAdapter(mTitlesArray);
 
@@ -91,12 +101,50 @@ public class MenuFragment extends Fragment {
                 String  itemValue    = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show();
 
+
+//                ShowroomFragment showFragment = new ShowroomFragment();
+//                Utils.addFragmentToBackstack(showFragment, (HomeActivity)getActivity(), true);
+                String mType = getArguments().getString("type");
+                int type = Integer.parseInt(mType);
+
+                Fragment fragment;
+                Bundle mTypeBundle;
+
+                if (type  == 1)
+                {
+                    switch(position){
+                        case 0:
+                            Toast.makeText(getActivity().getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG).show();
+                            fragment = new ShowroomFragment();
+                            mTypeBundle = new Bundle();
+                            mTypeBundle.putString("elevator_request_type", "request");
+                            fragment.setArguments(mTypeBundle);
+                            break;
+                        case 1:
+                            fragment = new ShowroomFragment();
+                            mTypeBundle = new Bundle();
+                            mTypeBundle.putString("elevator_request_type", "schedule");
+                            fragment.setArguments(mTypeBundle);
+                            break;
+                        case 2:
+                            fragment = new ShowroomFragment();
+                            break;
+                        default:
+                            fragment = new ShowroomFragment();
+                            break;
+                    }
+                }
+                else {
+                    fragment = new MenuFragment();
+                    String[] mTitlesString = {"abc", "def", "wer"};
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArray("titles", mTitlesString);
+                    bundle.putString("menu_type", "SubMenu");
+                    fragment.setArguments(bundle);
+                }
+                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
             }
-
         });
 
         return rootView;

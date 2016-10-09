@@ -25,4 +25,10 @@
     <dimen name="settingbutton_textsize">24sp</dimen>
     <dimen name="maintitle_textsize">44dp</dimen>
     <dimen name="subtitle_textsize">36dp</dimen>
+
+    <!--MenuFragment-->
+    <dimen name="menutitle_textsize">30dp</dimen>
+
+    <!--Showroom Fragment-->
+    <dimen name="showroomitem_margin">80dp</dimen>
 </resources>

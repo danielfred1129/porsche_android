@@ -92,12 +92,15 @@
             android:layout_height="fill_parent"
             android:layout_weight="1" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/main_bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_bar_height"
+        android:background="@color/colorNavBar"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorNavBar" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -106,8 +109,10 @@
             android:layout_marginRight="30dp">
 
             <RelativeLayout
+                android:id="@+id/bottom_buttons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center">
 
                 <ImageButton
                     android:id="@+id/activity_home_home_button"
@@ -120,11 +125,6 @@
                     android:onClick="onHome"
                     android:scaleType="fitXY"
                     android:src="@drawable/btn_home" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <ImageButton
                     android:id="@+id/activity_home_plus_button"

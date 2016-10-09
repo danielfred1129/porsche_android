@@ -5,10 +5,12 @@
     android:gravity="center">
 
     <ImageView
+        android:id="@+id/img_memuback"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBlack"
         android:alpha="0.85"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

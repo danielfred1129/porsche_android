@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.unlimitec.porschetower.Fragments.PickerFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.unlimitec.porschetower.customview.PickerView
+        android:id="@+id/menu_pickerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.unlimitec.porschetower.customview.PickerView>
+
+</FrameLayout>

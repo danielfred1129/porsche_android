@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,8 @@ public class HomeFragment extends Fragment {
     private String mParam2;
     private View rootView;
 
+//    SubCategory Button on top left
+    ImageButton btnSubCategory;
     /**
      * this text will show title for given desgin
      */
@@ -132,12 +135,21 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Set SubCategory Button with Car Elevator Image
+        btnSubCategory = (ImageButton) getActivity().findViewById(R.id.activity_home_sub);
+        btnSubCategory.setImageResource(frontviewarry[1]);
 
         mFrontViewPager = (CustomPager) rootView.findViewById(R.id.front_vp);
         mBackViewPager = (CustomPager) rootView.findViewById(R.id.backgroup_vp);
         mPorschoDesginStringArray = (String[]) getActivity().getResources().getStringArray(R.array.title_string_array);
         mMenuTitleTypedArray = getActivity().getResources().obtainTypedArray(R.array.menutitles_array);
         return rootView;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
     }
 
 
@@ -273,10 +285,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 int pos = position % mFrontList.size();
+                int tempPos = (pos + 1) % 11;
                 pagerCurrentPos = pos;
                 PorscheTextView txt_sub_title = (PorscheTextView) getActivity().findViewById(R.id.txt_sub_title);
                 txt_sub_title.setText(mPorschoDesginStringArray[pos]);
 
+                //Change SubCategory button on HomeActivity
+                btnSubCategory.setVisibility(View.VISIBLE);
+                btnSubCategory.setImageResource(frontviewarry[tempPos]);
             }
 
             @Override
@@ -317,7 +333,12 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
 
                         //Get TitleArray as a CharSequence
-                        CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(pos);
+                        int tempPos = 0;
+                        if (pos == 0)
+                            tempPos = 10;
+                        else
+                            tempPos = pos - 1;
+                        CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
                         // Convert CharSequence[] to String[]
                         String[] mTitlesString = new String[mMenuTitleArray.length];
                         int i=0;
@@ -325,11 +346,14 @@ public class HomeFragment extends Fragment {
                             mTitlesString[i++] = ch.toString();
                         }
                         //Send the titleArray via Bundle
-                        MenuFragment menu_fragment = new MenuFragment();
+//                        PickerFragment picker_fragment = new PickerFragment();
+                        MenuFragment picker_fragment = new MenuFragment();
                         Bundle bundle = new Bundle();
                         bundle.putStringArray("titles", mTitlesString);
-                        menu_fragment.setArguments(bundle);
-                        Utils.addFragmentToBackstack(menu_fragment, (HomeActivity)getActivity(), true);
+                        bundle.putString("menu_type", "MainMenu");
+                        bundle.putString("type", String.valueOf(pos));
+                        picker_fragment.setArguments(bundle);
+                        Utils.addFragmentToBackstack(picker_fragment, (HomeActivity)getActivity(), true);
                     } else if ((pagerCurrentPos) == pos) {
                         mFrontViewPager.setCurrentItem(mFrontViewPager.getCurrentItem() - 1, true);
                     } else if ((pagerCurrentPos) < pos || (pagerCurrentPos) > pos) {

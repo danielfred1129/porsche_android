@@ -40,10 +40,10 @@ public class Utils {
 	
 	public static String GYM_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyDR-3g9gQvYcZM7uVJiUPazVjNIIBq8RZE&types=gym&query=gyms+in+";
     //public static String GYM_NEAR_ME = "https://maps.googleapis.com/maps/api/place/search/json?radius=50000&types=gym&sensor=false&key=AIzaSyDR-3g9gQvYcZM7uVJiUPazVjNIIBq8RZE&location=";
-	public static String BASE_URL = "http://192.168.0.87/porsche/index.php/mobile/Mobile/";
-//	public static String BASE_URL = "http://fitcline.org/index.php/mobile/";
-	public static String LOGIN_BASE_URL = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=";
-//	public static String LOGIN_BASE_URL = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=";
+//	public static String BASE_URL = "http://192.168.0.87/porsche/index.php/mobile/Mobile/";
+	public static String BASE_URL = "http://pdtowerapp.com/index.php/mobile/Mobile/";
+//	public static String LOGIN_BASE_URL = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=";
+	public static String LOGIN_BASE_URL = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=";
 
     public static String[] categories = new String[]{"ALL", "WEIGHT", "BENCH", "SQUAT",
                                                 "DEADLIFT", "PULLUPS", "PUSHUPS", "MILERUN"};
@@ -82,6 +82,8 @@ public class Utils {
 		mFragmentTransaction.commit();
 
 	}
+
+
 	
 	public static void showAlert(Context context, String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
