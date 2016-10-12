@@ -25,6 +25,7 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.unlimitec.porschetower.Fragments.HomeFragment;
 import com.unlimitec.porschetower.Fragments.SettingsFragment;
+import com.unlimitec.porschetower.customview.PorscheTextView;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
@@ -37,6 +38,7 @@ public class HomeActivity extends BaseActivity {
 
     public ImageButton btnSubCategory, btnPlus;
     public TextView txt_main_title, txt_sub_title;
+    public PorscheTextView txt_current_time;
     LinearLayout bottom_buttons_layout;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -51,6 +53,8 @@ public class HomeActivity extends BaseActivity {
 
         btnSubCategory = (ImageButton) findViewById(R.id.activity_home_sub);
 //        btnSubCategory.setVisibility(View.GONE);
+
+        txt_current_time = (PorscheTextView) findViewById(R.id.txt_current_time);
 
 //        bottom_buttons_layout = (LinearLayout) findViewById(R.id.bottom_buttons_layout);
 

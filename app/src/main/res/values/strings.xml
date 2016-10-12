@@ -219,4 +219,28 @@
         <item>@array/local_info_titles</item>
         <item>@array/concierge_titles</item>
     </string-array>
+
+    <!--Alerts-->
+    <string name="title_car_unavailable">Car Unavailable</string>
+    <string name="msg_unavailable_contact_valet">is currently unavailable. Please contact the Valet for futher information.</string>
+    <string name="title_car_in_gargage">Car in Garage</string>
+    <string name="msg_parked_gargage_contact_valet">is parked in the Garage. Please contact the Valet to have your Car delivered curbside.</string>
+
+    <!--Request Car elevator-->
+    <string-array name="menu_request_car_elevator">
+        <item>Ride Down</item>
+        <item>Valet</item>
+    </string-array>
+
+    <!--Elevator Control Fragment Strings-->
+    <string name="txt_count_down">Count Down</string>
+    <string name="txt_ridedown_description">PLEASE BE IN YOUR CAR WITH THE DOORS CLOSED AT LEAST 15 SECONDS BEFORE ELEVATOR ARRIVES</string>
+    <string name="txt_valet_description">YOUR CAR WILL BE PICKED UP AND DELIVERED CURBSIDE BY THE VALET</string>
+    <string name="title_elevator_activated">Car Elevator Activated</string>
+    <string name="msg_sure_to_cancel_elevator">Are you sure that you want to Cancel the this Elevator?</string>
+    <string name="title_car_ready_pickup">Car Ready For Pick-Up</string>
+    <string name="msg_car_delivered_ready_to_pickup">Your Car has been delivered Curbside and is ready to be pick-up.</string>
+
+    <!--Description Fragment-->
+    <string name="txt_btn_select">Select</string>
 </resources>

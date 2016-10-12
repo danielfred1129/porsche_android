@@ -178,7 +178,7 @@ public class SettingsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
 
-    public void onLogout(View v)
+    private void onLogout(View v)
     {
         Log.d("onLogout", "Logout button clicked");
         UserUtils.storeSession(getActivity(), null);
@@ -186,11 +186,11 @@ public class SettingsFragment extends Fragment {
         getActivity().startActivity(intent);
         getActivity().finish();
     }
-    public void onResetPassword(View v)
+    private void onResetPassword(View v)
     {
         Log.d("onResetPassword", "ResetPassword button clicked");
     }
-    public void onEnglish(View v)
+    private void onEnglish(View v)
     {
         Log.d("onEnglish", "English button clicked");
         UserObject user = UserUtils.getSession(getContext());
@@ -200,7 +200,7 @@ public class SettingsFragment extends Fragment {
         setAppLocale(locale);
         updateSetting();
     }
-    public void onGerman(View v)
+    private void onGerman(View v)
     {
         Log.d("onGerman", "German button clicked");
         UserObject user = UserUtils.getSession(getContext());
@@ -210,7 +210,7 @@ public class SettingsFragment extends Fragment {
         setAppLocale(locale);
         updateSetting();
     }
-    public void onItalian(View v)
+    private void onItalian(View v)
     {
         Log.d("onItalian", "Italian button clicked");
         UserObject user = UserUtils.getSession(getContext());
@@ -220,7 +220,7 @@ public class SettingsFragment extends Fragment {
         setAppLocale(locale);
         updateSetting();
     }
-    public void onSpanish(View v)
+    private void onSpanish(View v)
     {
         Log.d("onSpanish", "Spanish button clicked");
         UserObject user = UserUtils.getSession(getContext());
@@ -230,35 +230,35 @@ public class SettingsFragment extends Fragment {
         setAppLocale(locale);
         updateSetting();
     }
-    public void on1Min(View v)
+    private void on1Min(View v)
     {
         UserObject user = UserUtils.getSession(getContext());
         user.setLogoutTime(1);
         UserUtils.storeSession(getActivity().getBaseContext(), user);
         updateSetting();
     }
-    public void on2Min(View v)
+    private void on2Min(View v)
     {
         UserObject user = UserUtils.getSession(getContext());
         user.setLogoutTime(2);
         UserUtils.storeSession(getActivity().getBaseContext(), user);
         updateSetting();
     }
-    public void on3Min(View v)
+    private void on3Min(View v)
     {
         UserObject user = UserUtils.getSession(getContext());
         user.setLogoutTime(3);
         UserUtils.storeSession(getActivity().getBaseContext(), user);
         updateSetting();
     }
-    public void on4Min(View v)
+    private void on4Min(View v)
     {
         UserObject user = UserUtils.getSession(getContext());
         user.setLogoutTime(4);
         UserUtils.storeSession(getActivity().getBaseContext(), user);
         updateSetting();
     }
-    public void setAppLocale(Locale locale)
+    private void setAppLocale(Locale locale)
     {
         Resources res = getActivity().getBaseContext().getResources();
         // Change locale settings in the app.

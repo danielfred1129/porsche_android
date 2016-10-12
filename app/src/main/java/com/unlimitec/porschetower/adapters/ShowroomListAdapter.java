@@ -48,7 +48,10 @@ public class ShowroomListAdapter  extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return null;
+        if (listdata != null)
+            return listdata.get(position);
+        else
+            return null;
     }
 
     @Override

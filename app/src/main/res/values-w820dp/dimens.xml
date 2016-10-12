@@ -31,4 +31,14 @@
 
     <!--Showroom Fragment-->
     <dimen name="showroomitem_margin">80dp</dimen>
+
+    <!--Elevatorcontrol Fragment-->
+    <dimen name="txt_countdowntime_size">32sp</dimen>
+    <dimen name="txt_countdown_size">13sp</dimen>
+    <dimen name="txt_arrivaltime_size">19sp</dimen>
+    <dimen name="txt_status_description_size">19sp</dimen>
+
+    <!--DescriptionFragment-->
+    <dimen name="description_textsize">17sp</dimen>
+    <dimen name="btn_select_height">46dp</dimen>
 </resources>

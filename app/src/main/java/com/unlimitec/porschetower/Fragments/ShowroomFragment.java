@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -57,8 +60,9 @@ public class ShowroomFragment extends Fragment {
     private HorizontalListView mCarListView;
 
     private OnFragmentInteractionListener mListener;
-    private JSONArray car_info_array;
+    private JSONArray car_info_array, menu_info_array;
     private ShowroomListAdapter adapter;
+    private String fragmentType;
 
     public ShowroomFragment() {
         // Required empty public constructor
@@ -96,6 +100,9 @@ public class ShowroomFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_showroom, container, false);
+        if (getArguments() != null && getArguments().containsKey("car_request_type"))
+            fragmentType = getArguments().getString("car_request_type");
+
         initializeControl();
         return rootView;
     }
@@ -120,7 +127,6 @@ public class ShowroomFragment extends Fragment {
 
                                 ShowroomItem item = new ShowroomItem();
                                 JSONObject object = car_info_array.getJSONObject(i);
-
                                 String space = object.getString("space");
                                 String car_status = object.getString("status");
                                 int btn_color = Color.argb(1, 11, 65, 8);
@@ -151,7 +157,7 @@ public class ShowroomFragment extends Fragment {
                                 String status_description;
 
                                 status_description = space + " - " + car_status;
-
+                                item.car_status = car_status;
                                 item.img_url = object.getString("image");
                                 item.car_name = object.getString("name");
                                 item.btn_color = btn_color;
@@ -174,6 +180,91 @@ public class ShowroomFragment extends Fragment {
         mCarListView = (HorizontalListView) rootView.findViewById(R.id.car_listview);
         adapter = new ShowroomListAdapter(new ArrayList<ShowroomItem>());
         mCarListView.setAdapter(adapter);
+        mCarListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ShowroomItem item = (ShowroomItem) adapter.getItem(position);
+                if (fragmentType.equals("request")){
+                    if (item.car_status.equals("OUT"))
+                    {
+                        Utils.showAlertWithTitleNoCancel(getActivity(), getString(R.string.title_car_unavailable), getString(R.string.msg_unavailable_contact_valet));
+                    }
+                    else if (item.car_status.equals("GARAGE")){
+                        Utils.showAlertWithTitleNoCancel(getActivity(), getString(R.string.title_car_in_gargage), getString(R.string.msg_parked_gargage_contact_valet));
+                    }
+                    else
+                    {
+                        Fragment fragment;
+                        Bundle bd = new Bundle();
+                        String[] titles = (String[]) getResources().getStringArray(R.array.menu_request_car_elevator);
+                        bd.putStringArray("titles", titles);
+                        bd.putString("menu_type", "SubMenu");
+                        bd.putString("type", "101");
+                        JSONObject object = null;
+                        try {
+                            object = car_info_array.getJSONObject(position);
+                            bd.putString("SelectedCar", object.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if (item.car_status.equals("ACTIVE")){
+                            fragment = new ElevatorControlFragment();
+                        }
+                        else
+                        {
+                            fragment = new MenuFragment();
+                        }
+                        fragment.setArguments(bd);
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    }
+                }
+                else if (fragmentType.equals("schedule")){
+
+                }
+                else if (fragmentType.equals("detailing") || fragmentType.equals("service_car") || fragmentType.equals("storage")){
+                    RequestParams params = new RequestParams();
+                    UserObject user = UserUtils.getSession(getActivity());
+                    params.put("owner", user);
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    String functName = "get_" + fragmentType;
+
+                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            super.onSuccess(statusCode, headers, response);
+
+                            if (response != null) {
+                                try {
+                                    menu_info_array = response.getJSONArray(fragmentType + "_list");
+                                    String[] titles_array = new String[menu_info_array.length()];
+                                    if (menu_info_array.length() > 0) {
+                                        for (int i = 0; i < menu_info_array.length(); i++) {
+                                            JSONObject object = menu_info_array.getJSONObject(i);
+                                            titles_array[i] = object.getString("service");
+                                        }
+                                    }
+                                    MenuFragment fragment = new MenuFragment();
+                                    Bundle bd = new Bundle();
+                                    bd.putString("menu_type", "SubMenu");
+                                    bd.putStringArray("titles", titles_array);
+                                    if (fragmentType.equals("detailing"))
+                                        bd.putString("type", "301");
+                                    else if (fragmentType.equals("service_car"))
+                                        bd.putString("type", "302");
+                                    else
+                                        bd.putString("type", "303");
+                                    fragment.setArguments(bd);
+                                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                } catch (JSONException e) {
+                                }
+                            }
+                        }
+
+                    });
+                }
+            }
+        });
         getCarInformation();
     }
 

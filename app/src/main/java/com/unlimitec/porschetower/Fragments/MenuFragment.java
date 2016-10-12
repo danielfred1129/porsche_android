@@ -70,22 +70,28 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        ImageView img_memuback = (ImageView) rootView.findViewById(R.id.img_memuback);
-        String mMenuType = getArguments().getString("menu_type");
-        if (mMenuType.equals("MainMenu"))
-            img_memuback.setAlpha(0.85f);
-        else if (mMenuType.equals("SubMenu"))
-            img_memuback.setAlpha(1.0f);
-
         final ListView listView ;
         listView = (ListView) rootView.findViewById(R.id.menu_list_view);
 
-        //  Get Titles Arguments from PickerFragment
-        mTitlesArray = getArguments().getStringArray("titles");
-        PorscheListAdapter adapter = new PorscheListAdapter(mTitlesArray);
+        ImageView img_memuback = (ImageView) rootView.findViewById(R.id.img_memuback);
 
-        // Assign adapter to ListView
-        listView.setAdapter(adapter);
+        if (getArguments() != null) {
+            if (getArguments().containsKey("menu_type")) {
+                String mMenuType = getArguments().getString("menu_type");
+                if (mMenuType.equals("MainMenu"))
+                    img_memuback.setAlpha(0.85f);
+                else if (mMenuType.equals("SubMenu"))
+                    img_memuback.setAlpha(1.0f);
+            }
+
+            //  Get Titles Arguments from PickerFragment
+            if (getArguments().containsKey("titles")) {
+                mTitlesArray = getArguments().getStringArray("titles");
+                PorscheListAdapter adapter = new PorscheListAdapter(mTitlesArray);
+                // Assign adapter to ListView
+                listView.setAdapter(adapter);
+            }
+        }
 
         // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -99,40 +105,80 @@ public class MenuFragment extends Fragment {
 
                 // ListView Clicked item value
                 String  itemValue    = (String) listView.getItemAtPosition(position);
-
-                // Show Alert
-
-
-//                ShowroomFragment showFragment = new ShowroomFragment();
-//                Utils.addFragmentToBackstack(showFragment, (HomeActivity)getActivity(), true);
                 String mType = getArguments().getString("type");
                 int type = Integer.parseInt(mType);
 
                 Fragment fragment;
                 Bundle mTypeBundle;
 
-                if (type  == 1)
+//                Toast.makeText(getActivity().getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG).show();
+
+                if (type == 101) // Car Elevator - Request Car Elevator
+                {
+                    fragment = new ElevatorControlFragment();
+                    if (getArguments().containsKey("SelectedCar"))
+                    {
+                        String selectedCar=getArguments().getString("SelectedCar");
+                        fragment = new ElevatorControlFragment();
+                        Bundle bd = new Bundle();
+                        bd.putString("SelectedCar", selectedCar);
+                        if (position == 0)
+                            bd.putString("valet", "ridedown");
+                        else
+                            bd.putString("valet", "valet");
+                        fragment.setArguments(bd);
+                    }
+                }
+                else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage
+                {
+                    fragment = new DescriptionFragment();
+                }
+                else if (type  == 1) // Car Elevator
                 {
                     switch(position){
                         case 0:
-                            Toast.makeText(getActivity().getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG).show();
                             fragment = new ShowroomFragment();
                             mTypeBundle = new Bundle();
-                            mTypeBundle.putString("elevator_request_type", "request");
+                            mTypeBundle.putString("car_request_type", "request");
                             fragment.setArguments(mTypeBundle);
                             break;
                         case 1:
                             fragment = new ShowroomFragment();
                             mTypeBundle = new Bundle();
-                            mTypeBundle.putString("elevator_request_type", "schedule");
+                            mTypeBundle.putString("car_request_type", "schedule");
                             fragment.setArguments(mTypeBundle);
                             break;
                         case 2:
                             fragment = new ShowroomFragment();
                             break;
                         default:
-                            fragment = new ShowroomFragment();
+                            fragment = new Fragment();
                             break;
+                    }
+                }
+                else if (type == 3)
+                {
+                    switch (position){
+                        case 0:
+                            fragment = new ShowroomFragment();
+                            mTypeBundle = new Bundle();
+                            mTypeBundle.putString("car_request_type", "detailing");
+                            fragment.setArguments(mTypeBundle);
+                            break;
+                        case 1:
+                            fragment = new ShowroomFragment();
+                            mTypeBundle = new Bundle();
+                            mTypeBundle.putString("car_request_type", "service_car");
+                            fragment.setArguments(mTypeBundle);
+                            break;
+                        case 2:
+                            fragment = new ShowroomFragment();
+                            mTypeBundle = new Bundle();
+                            mTypeBundle.putString("car_request_type", "storage");
+                            fragment.setArguments(mTypeBundle);
+                            break;
+                        default:
+                            fragment = new Fragment();
                     }
                 }
                 else {

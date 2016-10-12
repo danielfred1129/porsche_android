@@ -330,8 +330,7 @@ public class HomeFragment extends Fragment {
 
                     int posss = pagerCurrentPos >= 10 ? -1 : pagerCurrentPos;
                     if ((posss + 1) == pos) {
-                        Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
-
+//                        Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
                         //Get TitleArray as a CharSequence
                         int tempPos = 0;
                         if (pos == 0)
