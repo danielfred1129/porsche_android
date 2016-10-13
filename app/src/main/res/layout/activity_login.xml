@@ -36,6 +36,7 @@
                 android:textColor="@color/title_color"
                 android:textSize="@dimen/title_text_size1"
                 android:textStyle="bold" />
+
             <com.unlimitec.porschetower.customview.PorscheTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +45,8 @@
                 android:layout_gravity="left"
                 android:textColor="@color/title_login_color"
                 android:textSize="@dimen/title_text_size2"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/porscheTextView" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -82,7 +84,8 @@
                     android:layout_gravity="left"
                     android:textColor="@color/title_color"
                     android:textSize="@dimen/title_text_size1"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:id="@+id/porscheTextView2" />
 
                 <EditText
                     android:id="@+id/activity_login_email"

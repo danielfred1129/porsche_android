@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
@@ -55,6 +56,7 @@ public class HomeActivity extends BaseActivity {
 //        btnSubCategory.setVisibility(View.GONE);
 
         txt_current_time = (PorscheTextView) findViewById(R.id.txt_current_time);
+        txt_current_time.setVisibility(View.GONE);
 
 //        bottom_buttons_layout = (LinearLayout) findViewById(R.id.bottom_buttons_layout);
 
@@ -74,6 +76,16 @@ public class HomeActivity extends BaseActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // do something
+            PorscheTextView txt_currenttime = (PorscheTextView) findViewById(R.id.txt_current_time);
+            txt_currenttime.setVisibility(View.GONE);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     public void addFragment(Fragment fragment) {
@@ -121,6 +133,9 @@ public class HomeActivity extends BaseActivity {
     public void onHome(View v) {
         Log.d("onHome", "Home button clicked");
         HomeFragment fragment = new HomeFragment();
+        PorscheTextView txt_currenttime = (PorscheTextView) findViewById(R.id.txt_current_time);
+        txt_currenttime.setVisibility(View.GONE);
+
         Utils.addFragmentToBackstack(fragment, this, true);
     }
 

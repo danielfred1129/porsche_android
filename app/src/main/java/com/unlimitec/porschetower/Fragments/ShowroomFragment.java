@@ -219,7 +219,21 @@ public class ShowroomFragment extends Fragment {
                     }
                 }
                 else if (fragmentType.equals("schedule")){
-
+                    Fragment fragment;
+                    Bundle bd = new Bundle();
+                    String[] titles = (String[]) getResources().getStringArray(R.array.menu_request_car_elevator);
+                    bd.putStringArray("titles", titles);
+                    bd.putString("menu_type", "SubMenu");
+                    bd.putString("type", "102");
+                    JSONObject object = null;
+                    try {
+                        object = car_info_array.getJSONObject(position);
+                        bd.putString("SelectedCar", object.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    fragment = new MenuFragment();
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
                 }
                 else if (fragmentType.equals("detailing") || fragmentType.equals("service_car") || fragmentType.equals("storage")){
                     RequestParams params = new RequestParams();

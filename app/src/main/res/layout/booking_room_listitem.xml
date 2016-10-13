@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/showroomitem_margin"
+        android:textSize="@dimen/booking_item_button_textsize"
         android:textColor="#FFF"
         android:text="Click Me"/>
 </LinearLayout>

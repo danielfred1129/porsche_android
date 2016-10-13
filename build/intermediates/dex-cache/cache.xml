@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="b434ef9712aa523e1ed73458629c93cfd6ba5cf9">
+        sha1="b58c6732ab9232f825178120c8f4456f1bd992f2">
         <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7f71b4e3ea51ace7d45f9b76914495ef992c7d20.jar" />
     </item>
     <item
@@ -178,7 +178,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="60109f380717178a463be9c9073114b3c748497e">
+        sha1="8f2d4c7f5be220a8ea8f8d33750aabf6ed8f648e">
         <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run_709cb0e43506164299b729c4115d5c096cefe327.jar" />
     </item>
 

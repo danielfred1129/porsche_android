@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class ElevatorControlFragment extends Fragment {
     UserObject owner;
     String pickup, sendTime;
     Timer timer;
-    CountDownTimer newtimer;
+    CountDownTimer newtimer, currentTimer;
     // View Variables
     private View rootView;
     private ImageButton btn_start_queue;
@@ -75,7 +76,6 @@ public class ElevatorControlFragment extends Fragment {
         ElevatorControlFragment fragment = new ElevatorControlFragment();
         Bundle args = new Bundle();
         args.putString(SELECTED_CAR, selectedCar);
-        args.putString(VALET, valet);
         fragment.setArguments(args);
         return fragment;
     }
@@ -134,6 +134,8 @@ public class ElevatorControlFragment extends Fragment {
         txt_current_time = (PorscheTextView) getActivity().findViewById(R.id.txt_current_time);
 
         showCurrentTime();
+        resetArrivalTime(0, 0);
+        resetCountdown(0, 0);
 
 
         if (getArguments().containsKey(VALET))
@@ -145,6 +147,7 @@ public class ElevatorControlFragment extends Fragment {
         }
         if (strCarStatus.equals("active"))
         {
+            activeStatus();
             RequestParams params = new RequestParams();
             params.put("car", strCarIndex);
             AsyncHttpClient client = new AsyncHttpClient();
@@ -228,19 +231,31 @@ public class ElevatorControlFragment extends Fragment {
     private void deactiveStatus() {
         state = false;
         btn_start_queue.setImageResource(R.drawable.elevator_control_start_btn_normal);
-
-
+        if(newtimer != null) {
+            newtimer.cancel();
+            newtimer = null;
+        }
+        if(currentTimer != null) {
+            currentTimer.cancel();
+            currentTimer = null;
+        }
+        txt_current_time.setVisibility(View.GONE);
+        HomeFragment fragment = new HomeFragment();
+        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), false);
     }
     private void showCurrentTime() {
+        txt_current_time.setVisibility(View.VISIBLE);
         refreshCurrentTime();
     }
     private void refreshCurrentTime() {
-        newtimer = new CountDownTimer(1000000000, 1000) {
+        currentTimer = new CountDownTimer(1000000000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Calendar c = Calendar.getInstance();
+                int ampm = c.get(Calendar.AM_PM);
+
                 String ap;
-                if (c.get(Calendar.HOUR) >= 12)
+                if (ampm == 1)
                     ap = "PM";
                 else
                     ap = "AM";
@@ -249,9 +264,7 @@ public class ElevatorControlFragment extends Fragment {
                     strZero = "0";
                 else
                     strZero = "";
-
-                txt_current_time.setText((c.get(Calendar.HOUR) % 12)+":"+ strZero + c.get(Calendar.MINUTE)+" "+ ap);
-                txt_current_time.setVisibility(View.VISIBLE);
+                txt_current_time.setText("\n" + (c.get(Calendar.HOUR) % 12)+":"+ strZero + c.get(Calendar.MINUTE)+" "+ ap);
             }
 
             @Override
@@ -259,7 +272,7 @@ public class ElevatorControlFragment extends Fragment {
 
             }
         };
-        newtimer.start();
+        currentTimer.start();
     }
     private void resetArrivalTime(int minutes, int seconds) {
         Calendar c = Calendar.getInstance();
@@ -273,7 +286,10 @@ public class ElevatorControlFragment extends Fragment {
             arrivalHour = arrivalHour + arrivalMinute / 60;
             arrivalMinute = arrivalMinute % 60;
         }
-        arrivalHour = (arrivalHour == 12) ? 12 : arrivalHour % 12;
+        if (arrivalHour == 12)
+            arrivalHour = 12;
+        else
+            arrivalHour = arrivalHour % 12;
         String strZeroMinute;
         if (c.get(Calendar.MINUTE) < 10)
             strZeroMinute = "0";
@@ -284,7 +300,7 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "0";
         else
             strZeroSecond = "";
-        txt_arrival_time.setText(String.valueOf(arrivalHour) + ":" + strZeroMinute + String.valueOf(arrivalMinute) + ":" + strZeroSecond + String.valueOf(arrivalSecond));
+        txt_arrival_time.setText(String.valueOf(arrivalHour) + ":" + strZeroMinute + String.valueOf(arrivalMinute) + "\n");
     }
     private void resetCountdown(int minutes, int seconds){
         String strZeroSecond;
@@ -292,11 +308,46 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "0";
         else
             strZeroSecond = "";
-        txt_countdowntime.setText(String.valueOf(minutes) + ":" + ":" + strZeroSecond + String.valueOf(seconds));
+        txt_countdowntime.setText(String.valueOf(minutes) + ":" + strZeroSecond + String.valueOf(seconds));
     }
     private void startCountdown(int minutes, int seconds) {
         currentMinute = minutes;
         currentSecond = seconds;
+        updateCountdown();
+        newtimer = new CountDownTimer(1000000000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+               if ((currentMinute > 0 || currentMinute >= 0) && currentMinute >=0) {
+                   if (currentSecond == 0) {
+                       currentMinute -= 1;
+                       currentSecond = 59;
+                   } else if (currentSecond > 0) {
+                       currentSecond -= 1;
+                   }
+                   if (currentMinute > -1) {
+                       String strZeroSecond;
+                       if (currentSecond < 10)
+                           strZeroSecond = "0";
+                       else
+                            strZeroSecond = "";
+                       txt_countdowntime.setText(String.valueOf(currentMinute) + ":" + strZeroSecond + String.valueOf(currentSecond));
+                   }
+               }
+                else {
+                   if (newtimer != null) {
+                       Utils.showAlertWithTitleNoCancel(getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
+                       deactiveStatus();
+                       successElevator();
+                   }
+               }
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        newtimer.start();
     }
     private void updateCountdown() {
         RequestParams params = new RequestParams();

@@ -112,6 +112,7 @@ public class MenuFragment extends Fragment {
                 Bundle mTypeBundle;
 
 //                Toast.makeText(getActivity().getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG).show();
+                boolean addToBackStack = true;
 
                 if (type == 101) // Car Elevator - Request Car Elevator
                 {
@@ -128,7 +129,10 @@ public class MenuFragment extends Fragment {
                             bd.putString("valet", "valet");
                         fragment.setArguments(bd);
                     }
+                    // This is on review
+//                    addToBackStack = false;
                 }
+
                 else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage
                 {
                     fragment = new DescriptionFragment();
@@ -183,13 +187,13 @@ public class MenuFragment extends Fragment {
                 }
                 else {
                     fragment = new MenuFragment();
-                    String[] mTitlesString = {"abc", "def", "wer"};
-                    Bundle bundle = new Bundle();
-                    bundle.putStringArray("titles", mTitlesString);
-                    bundle.putString("menu_type", "SubMenu");
-                    fragment.setArguments(bundle);
+//                    String[] mTitlesString = {"abc", "def", "wer"};
+//                    Bundle bundle = new Bundle();
+//                    bundle.putStringArray("titles", mTitlesString);
+//                    bundle.putString("menu_type", "SubMenu");
+//                    fragment.setArguments(bundle);
                 }
-                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
             }
         });
 
