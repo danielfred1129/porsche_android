@@ -37,6 +37,7 @@
                     android:text="abcd"
                     android:textColor="#fff"/>
                 <Button
+                    android:id="@+id/btn_description_select"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/btn_select_height"
                     android:layout_marginRight="20dp"

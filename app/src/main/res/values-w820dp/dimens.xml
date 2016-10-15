@@ -44,4 +44,11 @@
     <!--DescriptionFragment-->
     <dimen name="description_textsize">17sp</dimen>
     <dimen name="btn_select_height">46dp</dimen>
+
+    <!--SelectTimeFragment-->
+    <dimen name="timefragment_btn_margin">50dp</dimen>
+    <dimen name="txt_date_timefragment">23sp</dimen>
+
+    <!--BeachRequestFragment-->
+    <dimen name="count_text_size">35sp</dimen>
 </resources>

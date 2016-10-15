@@ -10,6 +10,9 @@ import com.unlimitec.porschetower.datamodel.UserObject;
 public class UserUtils {
 
 	private static final String SESSION_KEY = "session";
+	private static final String SELECTED_CAR = "selected_car";
+	private static final String VALET = "valet";
+	private static final String SCHEDULE_DATA = "scheduleData";
 	private static final String APP = "com.unlimitec.porschetower";
 
 	public static void storeSession(Context context, UserObject session) {
@@ -72,5 +75,47 @@ public class UserUtils {
 			return user;
 		}
 		return user;
+	}
+	public static void storeValet(Context context, String valet) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(VALET, valet).commit();
+	}
+	public static String getValet(Context context) {
+		String valet = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(VALET, null);
+		return valet;
+	}
+	public static void storeScheduleDataArray(Context context, String scheduleString) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).commit();
+	}
+	public static String getScheduleDataArray(Context context) {
+		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SCHEDULE_DATA, null);
+		return scheduleString;
+	}
+	public static void storeScheduleData(Context context, String scheduleString) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).commit();
+	}
+	public static String getScheduleData(Context context) {
+		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SCHEDULE_DATA, null);
+		return scheduleString;
+	}
+	public static void storeSelectedCar(Context context, JSONObject selectedCar) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CAR, selectedCar.toString()).commit();
+	}
+	public static JSONObject getSelectedCar(Context context) {
+		String jsString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
+		JSONObject jsonObject = null;
+		try {
+			if (jsString != null) {
+				jsonObject = new JSONObject(jsString);
+			}
+			else
+			{
+				return null;
+			}
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return jsonObject;
+		}
+		return jsonObject;
 	}
 }

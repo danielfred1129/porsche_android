@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.unlimitec.porschetower.Fragments.SelectTimeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#000">
+        <Button
+            android:id="@+id/btn_time_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_alignParentLeft="true"
+            android:background="#000"
+            android:textColor="#f00"
+            android:text="@string/txt_btn_cancel"
+            android:textSize="@dimen/button_text_size"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+            <com.unlimitec.porschetower.customview.PorscheTextView
+                android:id="@+id/txt_date_selecttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016 - 1 - 12"
+                android:textSize="@dimen/button_text_size"
+                />
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_time_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_alignParentRight="true"
+            android:background="#000"
+            android:textColor="#f00"
+            android:text="@string/txt_btn_save"
+            android:textSize="@dimen/button_text_size"/>
+    </RelativeLayout>
+
+</FrameLayout>

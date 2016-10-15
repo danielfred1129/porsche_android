@@ -205,6 +205,12 @@
         <item>Dry Cleaning</item>
     </string-array>
 
+    <!--Repeat Schedule String-->
+    <string-array name="repeat_schedule_titles">
+        <item>One Time</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+    </string-array>
     <!--Titles Array-->
     <string-array name="menutitles_array">
         <item>@array/car_elevator_titles</item>
@@ -225,6 +231,13 @@
     <string name="msg_unavailable_contact_valet">is currently unavailable. Please contact the Valet for futher information.</string>
     <string name="title_car_in_gargage">Car in Garage</string>
     <string name="msg_parked_gargage_contact_valet">is parked in the Garage. Please contact the Valet to have your Car delivered curbside.</string>
+    <string name="msg_has_been_pickup">Your Car Has Been Scheduled For Pick-up</string>
+    <string name="msg_request_sent">Your Request has been sent.</string>
+    <string name="msg_front_desk_req_confirmed">Front Desk Request Confirmed</string>
+    <string name="msg_req_sent_front_desk">Your request was sent. The Front Desk will call you shortly.</string>
+    <string name="msg_security_req_confirmed">Security Request Confirmed</string>
+    <string name="msg_req_sent_security">Your request was sent. Security will be contacting you immediately.</string>
+    <string name="msg_car_scheduled_for_storage">Your car has been scheduled for storage, an attendant will contact you if necessary.</string>
 
     <!--Request Car elevator-->
     <string-array name="menu_request_car_elevator">
@@ -243,4 +256,12 @@
 
     <!--Description Fragment-->
     <string name="txt_btn_select">Select</string>
+
+    <!--CalendarFragment-->
+    <string name="title_error">Error</string>
+    <string name="msg_cant_select_date">You can not select this date</string>
+    <string name="msg_cant_select_time">You can not select this time</string>
+    <!--SelectTimeFragment-->
+    <string name="txt_btn_cancel">Cancel</string>
+    <string name="txt_btn_save">Save</string>
 </resources>

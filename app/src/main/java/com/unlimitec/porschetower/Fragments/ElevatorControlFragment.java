@@ -47,6 +47,7 @@ public class ElevatorControlFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String SELECTED_CAR = "SelectedCar";
     private static final String VALET = "valet";
+    private static final String DELAYTIME = "delayTime";
 
     // Variables to manage arguments
     private String selectedCar,strCarIndex, strCarStatus, strFlightTime, strOwnerElevator, valet;
@@ -72,10 +73,12 @@ public class ElevatorControlFragment extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static ElevatorControlFragment newInstance(String selectedCar, String valet) {
+    public static ElevatorControlFragment newInstance(String selectedCar, String valet, int delayTime) {
         ElevatorControlFragment fragment = new ElevatorControlFragment();
         Bundle args = new Bundle();
         args.putString(SELECTED_CAR, selectedCar);
+        args.putString(VALET, valet);
+        args.putInt(DELAYTIME, delayTime);
         fragment.setArguments(args);
         return fragment;
     }
@@ -93,6 +96,9 @@ public class ElevatorControlFragment extends Fragment {
             }
             if (getArguments().containsKey(SELECTED_CAR)) {
                 selectedCar = getArguments().getString(SELECTED_CAR);
+            }
+            if (getArguments().containsKey(DELAYTIME)) {
+                delayTime = getArguments().getInt(DELAYTIME);
             }
             if (getArguments().containsKey(VALET))
                 valet = getArguments().getString(VALET);

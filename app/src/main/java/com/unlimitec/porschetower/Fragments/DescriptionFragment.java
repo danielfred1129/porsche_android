@@ -7,8 +7,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.unlimitec.porschetower.HomeActivity;
 import com.unlimitec.porschetower.R;
+import com.unlimitec.porschetower.utils.UserUtils;
+import com.unlimitec.porschetower.utils.Utils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,33 +33,30 @@ import com.unlimitec.porschetower.R;
 public class DescriptionFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TYPE = "type";
+    private static final String INDEX = "index";
+    private static final String HAS_CALL = "hasCall";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mType;
+    private int mIndex;
+    private boolean mHasCall;
 
-    private OnFragmentInteractionListener mListener;
+    private View rootView;
+    private TextView txt_description;
+    private Button btn_select;
 
     public DescriptionFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DescriptionFragment.
-     */
     // TODO: Rename and change types and number of parameters
-    public static DescriptionFragment newInstance(String param1, String param2) {
+    public static DescriptionFragment newInstance(String type, int index, boolean hasCall) {
         DescriptionFragment fragment = new DescriptionFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(TYPE, type);
+        args.putInt(INDEX, index);
+        args.putBoolean(HAS_CALL, hasCall);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +65,9 @@ public class DescriptionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mType = getArguments().getString(TYPE);
+            mIndex = getArguments().getInt(INDEX);
+            mHasCall = getArguments().getBoolean(HAS_CALL);
         }
     }
 
@@ -65,7 +75,45 @@ public class DescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_description, container, false);
+        rootView =inflater.inflate(R.layout.fragment_description, container, false);
+        initializeControl();
+        return rootView;
+    }
+
+    private void initializeControl()
+    {
+        btn_select = (Button) rootView.findViewById(R.id.btn_description_select);
+        txt_description = (TextView) rootView.findViewById(R.id.txt_description);
+        String descriptionStr = UserUtils.getScheduleDataArray(getActivity());
+        try {
+            JSONArray scheduleArray = new JSONArray(descriptionStr);
+            JSONObject object = scheduleArray.getJSONObject(mIndex);
+            txt_description.setText(object.getString("description"));
+        }
+        catch (JSONException e)
+        {
+        }
+
+        btn_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject object = null;
+                try {
+                    String descriptionStr = UserUtils.getScheduleDataArray(getActivity());
+                    JSONArray scheduleArray = new JSONArray(descriptionStr);
+                    object = scheduleArray.getJSONObject(mIndex);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                UserUtils.storeScheduleData(getActivity(), object.toString());
+                CalendarFragment fragment = new CalendarFragment();
+                Bundle bd = new Bundle();
+                bd.putString(TYPE, mType);
+                fragment.setArguments(bd);
+                Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+
+            }
+        });
     }
 
 

@@ -21,6 +21,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\buddy\.gradle\caches\modules-2\files-2.1\com.darwinsys\hirondelle-date4j\1.5.1\7b52de513f87ae4d9ff5d17518def0a1e9bc3df0\hirondelle-date4j-1.5.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\hirondelle-date4j-1.5.1_6a65c47012fd85aad1c4abf67127c96d7b7acca6.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\org.lucasr.twowayview\core\1.0.0-SNAPSHOT\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -61,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="b58c6732ab9232f825178120c8f4456f1bd992f2">
+        sha1="0517240ac4cabb59484d69d64ebf43b1168d29e5">
         <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7f71b4e3ea51ace7d45f9b76914495ef992c7d20.jar" />
     </item>
     <item
@@ -72,6 +81,15 @@
         revision="23.0.1"
         sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
         <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.4.0_9cd004eea37c1bf94d646b0cc610823d94fd70b8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\com.roomorama\caldroid\3.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fea01abd91186a7148aaaf8c517b823eedaac79a">
+        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\com.roomorama-caldroid-3.0.1_50c52efdca29d4649b7f54cfd003e05f979065e3.jar" />
     </item>
     <item
         is-multidex="false"
@@ -178,7 +196,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="8f2d4c7f5be220a8ea8f8d33750aabf6ed8f648e">
+        sha1="6c8be0e31bd424597dd4b285bc4bd72a5fab3d3f">
         <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\debug\instant-run_709cb0e43506164299b729c4115d5c096cefe327.jar" />
     </item>
 

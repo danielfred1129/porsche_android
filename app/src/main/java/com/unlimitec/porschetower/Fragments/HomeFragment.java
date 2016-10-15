@@ -135,6 +135,12 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        initializaControl();
+        return rootView;
+    }
+
+    private void initializaControl()
+    {
         // Set SubCategory Button with Car Elevator Image
         btnSubCategory = (ImageButton) getActivity().findViewById(R.id.activity_home_sub);
         btnSubCategory.setImageResource(frontviewarry[1]);
@@ -143,7 +149,8 @@ public class HomeFragment extends Fragment {
         mBackViewPager = (CustomPager) rootView.findViewById(R.id.backgroup_vp);
         mPorschoDesginStringArray = (String[]) getActivity().getResources().getStringArray(R.array.title_string_array);
         mMenuTitleTypedArray = getActivity().getResources().obtainTypedArray(R.array.menutitles_array);
-        return rootView;
+        PorscheTextView txt_sub_title = (PorscheTextView) getActivity().findViewById(R.id.txt_sub_title);
+        txt_sub_title.setText(mPorschoDesginStringArray[0]);
     }
 
     @Override

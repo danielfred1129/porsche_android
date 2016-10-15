@@ -204,6 +204,7 @@ public class ShowroomFragment extends Fragment {
                         try {
                             object = car_info_array.getJSONObject(position);
                             bd.putString("SelectedCar", object.toString());
+                            UserUtils.storeSelectedCar(getActivity(), object);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -229,10 +230,12 @@ public class ShowroomFragment extends Fragment {
                     try {
                         object = car_info_array.getJSONObject(position);
                         bd.putString("SelectedCar", object.toString());
+                        UserUtils.storeSelectedCar(getActivity(), object);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     fragment = new MenuFragment();
+                    fragment.setArguments(bd);
                     Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
                 }
                 else if (fragmentType.equals("detailing") || fragmentType.equals("service_car") || fragmentType.equals("storage")){
@@ -251,10 +254,12 @@ public class ShowroomFragment extends Fragment {
                             if (response != null) {
                                 try {
                                     menu_info_array = response.getJSONArray(fragmentType + "_list");
+                                    UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
                                     String[] titles_array = new String[menu_info_array.length()];
                                     if (menu_info_array.length() > 0) {
                                         for (int i = 0; i < menu_info_array.length(); i++) {
                                             JSONObject object = menu_info_array.getJSONObject(i);
+//                                            UserUtils.storeScheduleData(getActivity(), object.toString());
                                             titles_array[i] = object.getString("service");
                                         }
                                     }
