@@ -341,9 +341,9 @@ public class ElevatorControlFragment extends Fragment {
                }
                 else {
                    if (newtimer != null) {
-                       Utils.showAlertWithTitleNoCancel(getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
                        deactiveStatus();
                        successElevator();
+                       Utils.showAlertWithTitleNoCancel((HomeActivity)getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
                    }
                }
             }

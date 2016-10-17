@@ -264,4 +264,8 @@
     <!--SelectTimeFragment-->
     <string name="txt_btn_cancel">Cancel</string>
     <string name="txt_btn_save">Save</string>
+
+    <!--BeachRequestFragment-->
+    <string name="text_send_request">Send Request</string>
+    <string name="text_chairs">CHAIRS</string>
 </resources>

@@ -63,10 +63,11 @@ public class UserUtils {
 				user.setUserPass(json.getString("password"));
 				user.setPhone(json.getString("phone"));
 				user.setUnit(json.getJSONObject("unit"));
-				user.setId(json.getString("id"));
+				String idStr = json.getString("id");
+				user.setId(idStr);
 				user.setLanguage(json.getString("language"));
 				user.setLocale(json.getString("locale"));
-				user.setIndex(json.getInt("cat_id"));
+				user.setCatID(json.getInt("cat_id"));
 				user.setLogoutTime(json.getInt("logoutTime"));
 			} else {
 				return null;

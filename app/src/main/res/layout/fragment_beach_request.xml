@@ -24,18 +24,29 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.7"
+                android:layout_weight="0.6"
                 android:gravity="center"
                 android:weightSum="100">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
-                        android:layout_weight="0.1"
-                        android:background="@drawable/beach_chairs_title"/>
+                        android:layout_weight="0.15"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/chair_img"/>
+                        <com.unlimitec.porschetower.customview.PorscheTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/text_chairs"
+                            android:textColor="#fff"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -43,6 +54,7 @@
                         android:background="@drawable/beach_chairs"
                         android:gravity="center">
                         <TextView
+                            android:id="@+id/txt_chair_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000"
@@ -69,15 +81,22 @@
                             android:background="@drawable/count_plus_btn"/>
                     </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/btn_send_request"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.2"
-                        android:background="@drawable/send_beach_request_btn"/>
                 </LinearLayout>
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15">
+                <Button
+                    android:id="@+id/btn_send_request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/timefragment_btn_margin"
+                    android:text="@string/text_send_request"
+                    android:textSize="@dimen/settingbutton_textsize"
+                    android:background="@drawable/btn_logout"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>

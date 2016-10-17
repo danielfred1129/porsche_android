@@ -24,8 +24,8 @@ public class UserObject implements Serializable {
 		return index;
 	}
 
-	public void setIndex(int id) {
-		this.index = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public String getEmail() {

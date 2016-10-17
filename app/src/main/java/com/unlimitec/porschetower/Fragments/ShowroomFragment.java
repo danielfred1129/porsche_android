@@ -180,6 +180,7 @@ public class ShowroomFragment extends Fragment {
         mCarListView = (HorizontalListView) rootView.findViewById(R.id.car_listview);
         adapter = new ShowroomListAdapter(new ArrayList<ShowroomItem>());
         mCarListView.setAdapter(adapter);
+        getCarInformation();
         mCarListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -284,7 +285,6 @@ public class ShowroomFragment extends Fragment {
                 }
             }
         });
-        getCarInformation();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

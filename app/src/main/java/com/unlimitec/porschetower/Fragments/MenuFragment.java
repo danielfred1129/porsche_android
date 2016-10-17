@@ -139,7 +139,7 @@ public class MenuFragment extends Fragment {
                         }
                         fragment.setArguments(bd);
                     }
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), false);
                     // This is on review
 //                    addToBackStack = false;
                 }
