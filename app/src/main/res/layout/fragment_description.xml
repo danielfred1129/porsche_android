@@ -16,6 +16,7 @@
             android:layout_weight="70"
             android:gravity="center"
             android:background="#f00">
+
             <RelativeLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -33,7 +34,8 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
                     android:textSize="@dimen/description_textsize"
-                    android:maxLines="20"
+                    android:maxLines="8"
+                    android:scrollbars = "vertical"
                     android:text="abcd"
                     android:textColor="#fff"/>
                 <Button

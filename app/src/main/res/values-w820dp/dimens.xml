@@ -51,4 +51,27 @@
 
     <!--BeachRequestFragment-->
     <dimen name="count_text_size">35sp</dimen>
+    <dimen name="button_text_size_beachrequest">15sp</dimen>
+
+    <!--WeatherFragment-->
+    <dimen name="txt_titlesize_weather">25sp</dimen>
+    <dimen name="txt_temperature_weather">65sp</dimen>
+    <dimen name="txt_subtitletitlesize_weather">22sp</dimen>
+    <dimen name="txt_infosize_weather">22sp</dimen>
+    <dimen name="weather_margin">8dp</dimen>
+
+    <!--DiningFragment-->
+    <dimen name="dining_margin">17dp</dimen>
+    <dimen name="button_text_size_dining">12sp</dimen>
+
+    <!--DiningMenuFragment-->
+
+    <!--InformationFragment-->
+    <dimen name="txt_titlesize_from">20sp</dimen>
+    <dimen name="information_margin">17dp</dimen>
+    <dimen name="information_textsize">18sp</dimen>
+
+    <!--InformationDetailFragment-->
+    <dimen name="textsize_infodetail">14sp</dimen>
+    <dimen name="infodetail_margin">17dp</dimen>
 </resources>

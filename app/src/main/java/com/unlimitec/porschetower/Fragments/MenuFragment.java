@@ -1,7 +1,7 @@
 package com.unlimitec.porschetower.Fragments;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,15 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
-import com.roomorama.caldroid.CaldroidFragment;
-import com.roomorama.caldroid.CaldroidListener;
 import com.unlimitec.porschetower.HomeActivity;
 import com.unlimitec.porschetower.R;
 import com.unlimitec.porschetower.adapters.PorscheListAdapter;
@@ -32,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class MenuFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -47,7 +42,7 @@ public class MenuFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mMenuType;
     private String[] mTitlesArray;
-
+    private String tempReqType;
 
     private View rootView;
 
@@ -107,7 +102,7 @@ public class MenuFragment extends Fragment {
                                     int position, long id) {
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                final int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) listView.getItemAtPosition(position);
@@ -139,7 +134,7 @@ public class MenuFragment extends Fragment {
                         }
                         fragment.setArguments(bd);
                     }
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), false);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                     // This is on review
 //                    addToBackStack = false;
                 }
@@ -258,9 +253,9 @@ public class MenuFragment extends Fragment {
                     }
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
-                else if (type == 2)
+                else if (type == 2) // In-Unit
                 {
-                    switch (position) {
+                    switch (position) { //Request Maintenance
                         case 0:
                             Calendar c = Calendar.getInstance();
                             int ampm = c.get(Calendar.AM_PM);
@@ -295,7 +290,9 @@ public class MenuFragment extends Fragment {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                     super.onSuccess(statusCode, headers, response);
-                                    Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+                                    if (response != null) {
+                                        Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+                                    }
                                 }
                             });
                             break;
@@ -338,11 +335,11 @@ public class MenuFragment extends Fragment {
                     }
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
-                else if (type ==4)
+                else if (type ==4) //Pool-Beach Requests
                 {
                     Bundle bd = new Bundle();
                     bd.putString(SCHEDULEDATA, "pool_beach");
-                    if (position == 0)
+                    if (itemPosition == 0)
                     {
                         bd.putString("Location", "Pool");
                     }
@@ -354,13 +351,462 @@ public class MenuFragment extends Fragment {
                     Calendar c = Calendar.getInstance();
                     int currentYear = c.get(Calendar.YEAR);
                     int currentMonth = c.get(Calendar.MONTH) + 1;
-                    int currentDay = c.get(Calendar.DAY_OF_MONTH) + 1;
+                    int currentDay = c.get(Calendar.DAY_OF_MONTH);
                     bd.putInt(YEAR, currentYear);
                     bd.putInt(MONTH, currentMonth);
                     bd.putInt(DAYOFMONTH, currentDay);
 
                     select_timefragment.setArguments(bd);
                     Utils.addFragmentToBackstack(select_timefragment, (HomeActivity)getActivity(), true);
+                }
+                else if (type == 5) //Wellness
+                {
+                    Bundle bd = new Bundle();
+                    String[] menuTitles;
+
+                    if (itemPosition == 1)
+                    {
+                        menuTitles = getResources().getStringArray(R.array.gym_titles);
+                        bd.putString(MENU_TYPE, "SubMenu");
+                        bd.putStringArray(TITLES, menuTitles);
+                        bd.putString("type", "502");
+                        fragment = new MenuFragment();
+                        fragment.setArguments(bd);
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    }
+                    else if (itemPosition == 0)
+                    {
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        String functName = "get_spa";
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray("spa_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                menuTitles[i] = object.getString("service");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "501");
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                }
+                else if (type == 501 || type == 502) // Wellness -> Salon Spa || Fitness
+                {
+                    if (type == 502){
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        if (itemPosition == 0)
+                            tempReqType = "gym_trainers";
+                        else if (itemPosition == 1)
+                            tempReqType = "gym_classes";
+
+                        String functName = "get_" + tempReqType;
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray(tempReqType + "_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                if (itemPosition == 0)
+                                                    menuTitles[i] = object.getString("staff_name");
+                                                else //itemposition == 1
+                                                    menuTitles[i] = object.getString("gym_class_name");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "502" + String.valueOf(itemPosition + 1));
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                    else if (type == 501)
+                    {
+                        Bundle bd = new Bundle();
+                        bd.putString("type", "spa");
+                        bd.putInt("index", itemPosition);
+                        bd.putBoolean("hasCall", false);
+                        openDescriptionFragment(bd);
+                    }
+                }
+                else if (type == 5021 || type == 5022)
+                {
+                    Bundle bd = new Bundle();
+                    if (type == 5021){ // Personal Trainers
+                        bd.putString("type", "gym_trainers");
+                    }
+                    else if (type == 5022) // Classes
+                    {
+                        bd.putString("type", "gym_trainers");
+                    }
+                    bd.putInt("index", itemPosition);
+                    fragment = new GymserviceFragment();
+                    fragment.setArguments(bd);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                }
+                else if (type == 6) { //Activities
+                    fragment = new MenuFragment();
+                    Bundle bd = new Bundle();
+                    bd.putString("menu_type", "SubMenu");
+                    bd.putString("type", "60" + String.valueOf(itemPosition + 1));
+
+                    if (itemPosition == 2)
+                    {
+                        String[] menuTitles = getResources().getStringArray(R.array.theatre_titles);
+                        bd.putStringArray("titles", menuTitles);
+                        fragment.setArguments(bd);
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                    }
+                    else {
+
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        final String strType;
+                        if (itemPosition == 0)
+                            strType = "golf_sim";
+                        else if (itemPosition == 1)
+                            strType = "racing_sim";
+                        else
+                            strType = "community_room";
+
+                        String functName = "get_" + strType;
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                menuTitles[i] = object.getString("service");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "60" + String.valueOf(itemPosition + 1));
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                }
+                else if (type == 603) { //theatre
+
+                }
+                else if (type == 601 || type == 602 || type == 604){ // Golfsim / racingsim / community room
+                    Bundle bd = new Bundle();
+                    String strType;
+                    if (type == 601)
+                        strType = "golf_sim";
+                    else if (type == 602)
+                        strType = "racing_sim";
+                    else
+                        strType = "community_room";
+                    bd.putString("type", strType);
+                    bd.putInt("index", itemPosition);
+                    bd.putBoolean("hasCall", false);
+                    openDescriptionFragment(bd);
+                }
+                else if (type == 7) { //Dining
+                    if (itemPosition == 0) { // In House Dining
+                        fragment = new MenuFragment();
+                        Bundle bd = new Bundle();
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        final String strType = "restaurants_in_house";
+
+                        String functName = "get_" + strType;
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                menuTitles[i] = object.getString("name");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "701");
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                    else if (itemPosition == 1){ // Request a call
+                        Utils.showAlertWithTitle(getActivity(), getResources().getString(R.string.msg_order_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
+                        return;
+                    }
+                }
+                else if (type == 701) { // In House Dining
+                    Bundle bd = new Bundle();
+                    bd.putString("type", "restaurants_in_house");
+                    bd.putInt("index", itemPosition);
+                    fragment = new DiningFragment();
+                    fragment.setArguments(bd);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    return;
+                }
+                else if (type == 8) { //Documents
+                    if (itemPosition == 0) //Documents
+                    {
+                        fragment = new MenuFragment();
+                        Bundle bd = new Bundle();
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        final String strType = "document";
+
+                        String functName = "get_" + strType;
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                menuTitles[i] = object.getString("name");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "801");
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                    else if (itemPosition == 1)//Documents -> Unit Manual
+                    {
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user.getIndex());
+
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        String functName = "get_unit_manual";
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try{
+                                        JSONArray menu_info_array = response.getJSONArray("unit_manual");
+                                        JSONObject objectDocument = menu_info_array.getJSONObject(0);
+                                        String docURL = objectDocument.getString("doc_url");
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(docURL));
+                                        startActivity(browserIntent);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+                else if (type == 801) { ////Documents -> Documents ->select Item
+                    String scheduleString = UserUtils.getScheduleData(getActivity());
+                    try {
+                        JSONArray scheduleArray = new JSONArray(scheduleString);
+                        JSONObject object = scheduleArray.getJSONObject(itemPosition);
+                        String strFileURL = object.getString("file");
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strFileURL));
+                        startActivity(browserIntent);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                else if (type == 9) { // Information Board
+                    String infoType = "";
+                    if (itemPosition == 1)
+                    {
+                        infoType = "personal_notifications";
+                    }
+                    else if (itemPosition == 2)
+                    {
+                        infoType = "building_maintenance";
+                    }
+                    else if (itemPosition == 3)
+                    {
+                        infoType = "event_notifications";
+                    }
+                    Bundle bd = new Bundle();
+                    bd.putString("type", infoType);
+                    fragment = new InformationFragment();
+                    fragment.setArguments(bd);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    return;
+                }
+
+                else if (type == 10) // Local Info
+                {
+                    if (itemPosition == 0) //Local Info -> Weather
+                    {
+                        fragment = new WeatherFragment();
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    }
+                    else if (itemPosition == 1) // Local Info -> View Weather
+                    {
+                        String weatherURL = "https://www.wunderground.com/webcams/zafer/7/show.html";
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(weatherURL));
+                        startActivity(browserIntent);
+                    }
+                }
+                else if (type == 0) { //Concierge
+                    if (itemPosition == 0) //Request HouseKeeping
+                    {
+                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
+                                getResources().getString(R.string.msg_housekeeping_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
+                        return;
+                    }
+                    else if (itemPosition == 1) //Request Transporation
+                    {
+                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
+                                getResources().getString(R.string.msg_transportation_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
+                        return;
+                    }
+                    else if (itemPosition == 2)// Dry Cleaning
+                    {
+                        fragment = new MenuFragment();
+                        Bundle bd = new Bundle();
+                        RequestParams params = new RequestParams();
+                        UserObject user = UserUtils.getSession(getActivity());
+                        params.put("owner", user);
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        final String strType = "dry_cleaning";
+
+                        String functName = "get_" + strType;
+
+                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+
+                                if (response != null) {
+                                    try {
+                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+                                        String[] menuTitles = new String[menu_info_array.length()];
+                                        if (menu_info_array.length() > 0) {
+                                            for (int i = 0; i < menu_info_array.length(); i++) {
+                                                JSONObject object = menu_info_array.getJSONObject(i);
+                                                menuTitles[i] = object.getString("name");
+                                            }
+                                        }
+                                        MenuFragment fragment = new MenuFragment();
+                                        Bundle bd = new Bundle();
+                                        bd.putString("menu_type", "SubMenu");
+                                        bd.putStringArray("titles", menuTitles);
+                                        bd.putString("type", "1003");
+                                        fragment.setArguments(bd);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
+
+                        });
+                    }
+                }
+                else if (type ==  1003) //Concierge -> Dry Cleaning
+                {
+                    Bundle bd = new Bundle();
+                    bd.putString("type", "dry_cleaning");
+                    bd.putInt("index", itemPosition);
+                    bd.putBoolean("hasCall", false);
+                    openDescriptionFragment(bd);
                 }
                 else {
                     fragment = new MenuFragment();

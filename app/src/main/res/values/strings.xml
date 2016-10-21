@@ -205,11 +205,23 @@
         <item>Dry Cleaning</item>
     </string-array>
 
+    <!--Wellness Strings-->
+    <string-array name="gym_titles">
+        <item>Personal Trainers</item>
+        <item>Classes</item>
+    </string-array>
+
     <!--Repeat Schedule String-->
     <string-array name="repeat_schedule_titles">
         <item>One Time</item>
         <item>Daily</item>
         <item>Weekly</item>
+    </string-array>
+
+    <!--Theater String-->
+    <string-array name="theatre_titles">
+        <item>Schedule for Private Use</item>
+        <item>Movie Schedule</item>
     </string-array>
     <!--Titles Array-->
     <string-array name="menutitles_array">
@@ -238,6 +250,11 @@
     <string name="msg_security_req_confirmed">Security Request Confirmed</string>
     <string name="msg_req_sent_security">Your request was sent. Security will be contacting you immediately.</string>
     <string name="msg_car_scheduled_for_storage">Your car has been scheduled for storage, an attendant will contact you if necessary.</string>
+    <string name="msg_housekeeping_req_confirmed">HouseKeeping Request Confirmed</string>
+    <string name="msg_req_sent_staff_member">Your request was sent. A staff member will call you shortly.</string>
+    <string name="msg_transportation_req_confirmed">Transportation Request Confirmed</string>
+    <string name="msg_order_req_confirmed">Order Request Confirmed</string>
+
 
     <!--Request Car elevator-->
     <string-array name="menu_request_car_elevator">
@@ -268,4 +285,30 @@
     <!--BeachRequestFragment-->
     <string name="text_send_request">Send Request</string>
     <string name="text_chairs">CHAIRS</string>
+
+    <!--GymServiceFragment-->
+    <string name="msg_call_not_available">Call is not available</string>
+    <string name="msg_dev_not_configured">Device not configured to send mail...!</string>
+
+    <!--WeatherFragment-->
+    <string name="txt_currently">Currently</string>
+    <string name="txt_sunny">Sunny Isles</string>
+    <string name="txt_wind">Wind</string>
+    <string name="txt_humidity">Humidity</string>
+    <string name="txt_uvindex">UV Index</string>
+    <string name="txt_visibility">Visibility</string>
+    <string name="txt_nexthourprecip">Next Hour Precip.</string>
+    <string name="txt_feels_like">Feels Like:</string>
+
+    <!--DiningFragment-->
+    <string name="txt_make_an_order">Make an Order</string>
+    <string name="txt_view_menu">View Menu</string>
+    <string name="txt_make_reservation">Make Reservation</string>
+
+    <!--InformationFragment-->
+    <string name="txt_from">From</string>
+    <string name="txt_message">Message</string>
+    <string name="txt_event">Event</string>
+    <string name="txt_maintenance">Maintenance</string>
+
 </resources>
