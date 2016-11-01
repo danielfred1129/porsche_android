@@ -78,7 +78,7 @@ public class CalendarFragment extends Fragment {
                     bd.putInt("dayOfMonth", dayOfMonth);
                     bd.putString("scheduleData", type);
                     selectTimeFragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(selectTimeFragment, (HomeActivity)getActivity(), true);
+                    Utils.replaceFragmentToBackStack(selectTimeFragment, (HomeActivity)getActivity(), true);
                 }
                 else
                 {

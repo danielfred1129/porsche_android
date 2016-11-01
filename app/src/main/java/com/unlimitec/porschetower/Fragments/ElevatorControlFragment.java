@@ -235,7 +235,6 @@ public class ElevatorControlFragment extends Fragment {
         btn_start_queue.setImageResource(R.drawable.elevator_control_start_btn_active);
     }
     private void deactiveStatus() {
-        state = false;
         btn_start_queue.setImageResource(R.drawable.elevator_control_start_btn_normal);
         if(newtimer != null) {
             newtimer.cancel();
@@ -246,8 +245,11 @@ public class ElevatorControlFragment extends Fragment {
             currentTimer = null;
         }
         txt_current_time.setVisibility(View.GONE);
-        HomeFragment fragment = new HomeFragment();
-        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), false);
+        if (getActivity() != null && state == true) {
+            HomeFragment fragment = new HomeFragment();
+            Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+        }
+        state = false;
     }
     private void showCurrentTime() {
         txt_current_time.setVisibility(View.VISIBLE);
@@ -340,10 +342,11 @@ public class ElevatorControlFragment extends Fragment {
                    }
                }
                 else {
-                   if (newtimer != null) {
-                       deactiveStatus();
-                       successElevator();
-                       Utils.showAlertWithTitleNoCancel((HomeActivity)getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
+                   if (newtimer != null && state == true) {
+                       if (getActivity() != null) {
+                           Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
+                           successElevator();
+                       }
                    }
                }
             }
@@ -425,9 +428,7 @@ public class ElevatorControlFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-
-                if (response != null) {
-                }
+                deactiveStatus();
             }
         });
     }
@@ -437,14 +438,12 @@ public class ElevatorControlFragment extends Fragment {
 
         AsyncHttpClient client = new AsyncHttpClient();
         String functName = "success_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler((HomeActivity)getActivity()) {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-
-                if (response != null) {
-                }
+                deactiveStatus();
             }
         });
     }
@@ -462,7 +461,7 @@ public class ElevatorControlFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     cancelRequest();
-                    deactiveStatus();
+//                    deactiveStatus();
                 }
             });
             builder.show();

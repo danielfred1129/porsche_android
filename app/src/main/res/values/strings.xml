@@ -5,6 +5,7 @@
     <string name="password">Password</string>
     <string name="title_login">SIGN-IN</string>
     <string name="font_porsche">PorscheFont</string>
+    <string name="pls_fill_fields">Please fill fields</string>
 
     <string name="title_activity_home">HomeActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -109,6 +110,7 @@
     <string name="german">German</string>
     <string name="italian">Italian</string>
     <string name="spanish">Spanish</string>
+    <string name="txt_minute">Minute</string>
     <string name="language_setting">Language Setting</string>
     <string name="automatic_car_elevator_log_out_time">Automatic Car Elevator Log-out Time</string>
     <string name="main_title">PORSCHE DESIGN</string>
@@ -264,8 +266,8 @@
 
     <!--Elevator Control Fragment Strings-->
     <string name="txt_count_down">Count Down</string>
-    <string name="txt_ridedown_description">PLEASE BE IN YOUR CAR WITH THE DOORS CLOSED AT LEAST 15 SECONDS BEFORE ELEVATOR ARRIVES</string>
-    <string name="txt_valet_description">YOUR CAR WILL BE PICKED UP AND DELIVERED CURBSIDE BY THE VALET</string>
+    <string name="txt_ridedown_description">Please be in your car with the doors closed at least 15 seconds before elevator arrives</string>
+    <string name="txt_valet_description">Your car will be picked up and delivered curbside by the valet</string>
     <string name="title_elevator_activated">Car Elevator Activated</string>
     <string name="msg_sure_to_cancel_elevator">Are you sure that you want to Cancel the this Elevator?</string>
     <string name="title_car_ready_pickup">Car Ready For Pick-Up</string>
@@ -310,5 +312,11 @@
     <string name="txt_message">Message</string>
     <string name="txt_event">Event</string>
     <string name="txt_maintenance">Maintenance</string>
+    
+    <!--ScheduledPickupsFragment-->
+    <string name="txt_car">CAR</string>
+    <string name="txt_date">DATE</string>
+    <string name="txt_time">TIME</string>
+    <string name="txt_cancel">CANCEL</string>
 
 </resources>

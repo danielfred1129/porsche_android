@@ -19,6 +19,7 @@ import com.unlimitec.porschetower.R;
 import com.unlimitec.porschetower.adapters.PorscheListAdapter;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
+import com.unlimitec.porschetower.utils.FitFragment;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
@@ -29,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends FitFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String MENU_TYPE = "menu_type";
@@ -117,7 +118,6 @@ public class MenuFragment extends Fragment {
 
                 if (type == 101) // Car Elevator - Request Car Elevator
                 {
-                    fragment = new ElevatorControlFragment();
                     if (getArguments().containsKey("SelectedCar"))
                     {
                         String selectedCar=getArguments().getString("SelectedCar");
@@ -133,10 +133,12 @@ public class MenuFragment extends Fragment {
                             bd.putInt("delayTime", 95);
                         }
                         fragment.setArguments(bd);
+                        // This is on review
+                        addToBackStack = true;
+//                        ((FitFragment)getParentFragment()).addFragment(fragment, R.id.home_fragment, 0);
+                        Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
                     }
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                    // This is on review
-//                    addToBackStack = false;
+
                 }
                 else if (type == 102) // Car Elevator - Schedule
                 {
@@ -211,7 +213,7 @@ public class MenuFragment extends Fragment {
                         }
                     });
                     fragment = new HomeFragment();
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
+                    Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
                 else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage
                 {
@@ -245,7 +247,7 @@ public class MenuFragment extends Fragment {
                             fragment.setArguments(mTypeBundle);
                             break;
                         case 2:
-                            fragment = new ShowroomFragment();
+                            fragment = new SchedulePickupsFragment();
                             break;
                         default:
                             fragment = new Fragment();

@@ -1,28 +1,17 @@
 package com.unlimitec.porschetower;
 
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.unlimitec.porschetower.Fragments.HomeFragment;
 import com.unlimitec.porschetower.Fragments.SettingsFragment;
@@ -31,9 +20,8 @@ import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
-import org.w3c.dom.Text;
-
-import static com.unlimitec.porschetower.R.dimen.settings_button_width;
+//import com.google.android.gms.appindexing.Action;
+//import com.google.android.gms.appindexing.Thing;
 
 public class HomeActivity extends BaseActivity {
 
@@ -75,7 +63,7 @@ public class HomeActivity extends BaseActivity {
         transaction.commit();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+//        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -136,13 +124,13 @@ public class HomeActivity extends BaseActivity {
         PorscheTextView txt_currenttime = (PorscheTextView) findViewById(R.id.txt_current_time);
         txt_currenttime.setVisibility(View.GONE);
 
-        Utils.addFragmentToBackstack(fragment, this, true);
+        Utils.replaceFragmentToBackStack(fragment, this, false);
     }
 
     public void onSettings(View v) {
         Log.d("onSettings", "Settings button clicked");
         SettingsFragment fragment = new SettingsFragment();
-        Utils.addFragmentToBackstack(fragment, this, true);
+        Utils.replaceFragmentToBackStack(fragment, this, true);
     }
 
     public void onSubCategory(View v) {
@@ -153,17 +141,17 @@ public class HomeActivity extends BaseActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Home Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
+//    public Action getIndexApiAction() {
+//        Thing object = new Thing.Builder()
+//                .setName("Home Page") // TODO: Define a title for the content shown.
+//                // TODO: Make sure this auto-generated URL is correct.
+//                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+//                .build();
+//        return new Action.Builder(Action.TYPE_VIEW)
+//                .setObject(object)
+//                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+//                .build();
+//    }
 
     @Override
     public void onStart() {
@@ -171,8 +159,8 @@ public class HomeActivity extends BaseActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+//        client.connect();
+//        AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
 
     @Override
@@ -181,7 +169,7 @@ public class HomeActivity extends BaseActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
+//        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+//        client.disconnect();
     }
 }

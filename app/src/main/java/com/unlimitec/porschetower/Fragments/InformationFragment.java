@@ -44,8 +44,6 @@ public class InformationFragment extends Fragment {
 
     private JSONArray information_array, menu_info_array;
 
-
-
     public InformationFragment() {
         // Required empty public constructor
     }

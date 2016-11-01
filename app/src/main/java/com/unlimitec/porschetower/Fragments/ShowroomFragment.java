@@ -26,6 +26,7 @@ import com.unlimitec.porschetower.customview.HorizontalListView;
 import com.unlimitec.porschetower.datamodel.ShowroomItem;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
+import com.unlimitec.porschetower.utils.FitFragment;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
@@ -208,7 +209,8 @@ public class ShowroomFragment extends Fragment {
                             fragment = new MenuFragment();
                         }
                         fragment.setArguments(bd);
-                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+
+                        Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
                     }
                 }
                 else if (fragmentType.equals("schedule")){
@@ -228,7 +230,7 @@ public class ShowroomFragment extends Fragment {
                     }
                     fragment = new MenuFragment();
                     fragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
                 }
                 else if (fragmentType.equals("detailing") || fragmentType.equals("service_car") || fragmentType.equals("storage")){
                     RequestParams params = new RequestParams();
@@ -266,7 +268,7 @@ public class ShowroomFragment extends Fragment {
                                     else
                                         bd.putString("type", "303");
                                     fragment.setArguments(bd);
-                                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                    Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
                                 } catch (JSONException e) {
                                 }
                             }

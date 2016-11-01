@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PorscheTower</string>
+    <string name="email">E-mail</string>
+    <string name="password">Contraseña</string>
+    <string name="title_login">REGISTRARSE</string>
+    <string name="font_porsche">PorscheFont</string>
+    <string name="pls_fill_fields">Por favor, rellene los campos</string>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="action_settings">Ajustes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="reset_password">Restablecer la contraseña</string>
+    <string name="touch_id">Touch ID</string>
+    <string name="english">Inglés</string>
+    <string name="german">Alemán</string>
+    <string name="italian">Italiano</string>
+    <string name="spanish">Español</string>
+    <string name="txt_minute">Minuto</string>
+    <string name="language_setting">Configuración de idioma</string>
+    <string name="automatic_car_elevator_log_out_time">Automático de coches Ascensor Registro de Salida Tiempo</string>
+    <string name="main_title">PORSCHE DESIGN</string>
+
+    <!--Subtitles-->
+    <string-array name="title_string_array">
+        <item>Ascensor de coche</item>
+        <item>Dentro de la Unidad</item>
+        <item>Conserje de coches</item>
+        <item>La piscina y playa</item>
+        <item>Bienestar</item>
+        <item>Ocupaciones</item>
+        <item>Comida</item>
+        <item>Documentos</item>
+        <item>Tarjeta de la información</item>
+        <item>Información local</item>
+        <item>Conserje</item>
+    </string-array>
+
+    <!--Car Elevator Strings-->
+    <string-array name="car_elevator_titles">
+        <item>Solicitud de coches Ascensor</item>
+        <item>Ascensor Horario de coches</item>
+        <item>recogidas programadas</item>
+    </string-array>
+
+    <!--In Unit Strings-->
+    <string-array name="in_unit_titles">
+        <item>Solicitud de mantenimiento</item>
+        <item>Solicitar Recepción llamen de vuelta</item>
+        <item>Vista de la cámara de recepción</item>
+        <item>Solicitud de Seguridad</item>
+    </string-array>
+
+    <!--Car Concierge Strings-->
+    <string-array name="car_concierge_titles">
+        <item>Detallado</item>
+        <item>Servicio</item>
+        <item>Almacenamiento</item>
+    </string-array>
+
+    <!--Pool Beach Strings-->
+    <string-array name="pool_beach_titles">
+        <item>Piscina</item>
+        <item>Playa</item>
+    </string-array>
+
+    <!--Wellness Strings-->
+    <string-array name="wellness_titles">
+        <item>Salon Spa</item>
+        <item>Aptitud</item>
+        <item>Solicitud de habitaciones</item>
+    </string-array>
+
+    <!--Activities Strings-->
+    <string-array name="activities_titles">
+        <item>Campo de Sim</item>
+        <item>Simulador de carreras</item>
+        <item>Teatro</item>
+        <item>Sala de la Comunidad</item>
+    </string-array>
+
+    <!--Dining Strings-->
+    <string-array name="dining_titles">
+        <item>Restaurante propio</item>
+        <item>Solicitar una llamada</item>
+    </string-array>
+
+    <!--Documents Strings-->
+    <string-array name="documents_titles">
+        <item>Documentos</item>
+        <item>Manual de unidad</item>
+    </string-array>
+
+    <!--Information Board Strings-->
+    <string-array name="info_board_titles">
+        <item>Directorio</item>
+        <item>Notificaciones personales</item>
+        <item>Mantenimiento del edificio</item>
+        <item>Creación de eventos</item>
+    </string-array>
+
+    <!--Local Info Strings-->
+    <string-array name="local_info_titles">
+        <item>Clima</item>
+        <item>Ver el clima</item>
+        <item>Vista de la playa</item>
+    </string-array>
+
+    <!--Concierge Strings-->
+    <string-array name="concierge_titles">
+        <item>Solicitud de mantenimiento</item>
+        <item>Solicitud de Transporte</item>
+        <item>Limpieza en seco</item>
+    </string-array>
+
+    <!--Wellness Strings-->
+    <string-array name="gym_titles">
+        <item>Entrenadores personales</item>
+        <item>Clases</item>
+    </string-array>
+
+    <!--Repeat Schedule String-->
+    <string-array name="repeat_schedule_titles">
+        <item>Una vez</item>
+        <item>Diariamente</item>
+        <item>Semanal</item>
+    </string-array>
+
+    <!--Theater String-->
+    <string-array name="theatre_titles">
+        <item>Calendario para uso privado</item>
+        <item>Lista de películas</item>
+    </string-array>
+    <!--Titles Array-->
+    <string-array name="menutitles_array">
+        <item>@array/car_elevator_titles</item>
+        <item>@array/in_unit_titles</item>
+        <item>@array/car_concierge_titles</item>
+        <item>@array/pool_beach_titles</item>
+        <item>@array/wellness_titles</item>
+        <item>@array/activities_titles</item>
+        <item>@array/dining_titles</item>
+        <item>@array/documents_titles</item>
+        <item>@array/info_board_titles</item>
+        <item>@array/local_info_titles</item>
+        <item>@array/concierge_titles</item>
+    </string-array>
+
+    <!--Alerts-->
+    <string name="title_car_unavailable">No Disponible coche</string>
+    <string name="msg_unavailable_contact_valet">No se encuentra disponible. Por favor, póngase en contacto con el Valet de información adicional de entrega.</string>
+    <string name="title_car_in_gargage">Coche en el garaje</string>
+    <string name="msg_parked_gargage_contact_valet">Está aparcado en el garaje. Por favor, póngase en contacto con el Valet de tener la acera entregado su coche.</string>
+    <string name="msg_has_been_pickup">Su coche ha sido programada para ser recogidos</string>
+    <string name="msg_request_sent">Tu solicitud ha sido enviada.</string>
+    <string name="msg_front_desk_req_confirmed">Frente Solicitud turística Confirmado.</string>
+    <string name="msg_req_sent_front_desk">Tu solicitud fue enviada. El personal de recepción le llamará en breve.</string>
+    <string name="msg_security_req_confirmed">Solicitud de Seguridad Confirmado.</string>
+    <string name="msg_req_sent_security">Tu solicitud fue enviada. Seguridad se pondrá en contacto con usted inmediatamente.</string>
+    <string name="msg_car_scheduled_for_storage">Tu coche ha sido programada para el almacenamiento, una operadora pondrá en contacto con usted si es necesario.</string>
+    <string name="msg_housekeeping_req_confirmed">Solicitud HouseKeeping Confirmado.</string>
+    <string name="msg_req_sent_staff_member">Tu solicitud fue enviada. Un miembro del personal le llamará en breve.</string>
+    <string name="msg_transportation_req_confirmed">Solicitud de Transporte Confirmado.</string>
+    <string name="msg_order_req_confirmed">Solicitud de Orden Confirmada</string>
+
+
+    <!--Request Car elevator-->
+    <string-array name="menu_request_car_elevator">
+        <item>Montar abajo</item>
+        <item>Ayudante de cámara</item>
+    </string-array>
+
+    <!--Elevator Control Fragment Strings-->
+    <string name="txt_count_down">Cuenta Regresiva</string>
+    <string name="txt_ridedown_description">Favor de estar en su coche con las puertas cerradas al menos 15 segundos ANTES DE ASCENSOR LLEGA</string>
+    <string name="txt_valet_description">Su coche será recogido y entregado en la acera por el ayuda de cámara</string>
+    <string name="title_elevator_activated">Cabina de elevador activado.</string>
+    <string name="msg_sure_to_cancel_elevator">¿Estás seguro de que desea cancelar la presente Ascensor?</string>
+    <string name="title_car_ready_pickup">Listo coche para Pick-up</string>
+    <string name="msg_car_delivered_ready_to_pickup">Tu coche ha sido entregado en la acera y está lista para ser recogida.</string>
+
+    <!--Description Fragment-->
+    <string name="txt_btn_select">Seleccionar</string>
+
+    <!--CalendarFragment-->
+    <string name="title_error">Error</string>
+    <string name="msg_cant_select_date">No se puede seleccionar esta fecha</string>
+    <string name="msg_cant_select_time">No se puede seleccionar este momento</string>
+    <!--SelectTimeFragment-->
+    <string name="txt_btn_cancel">Cancelar</string>
+    <string name="txt_btn_save">Salvar</string>
+
+    <!--BeachRequestFragment-->
+    <string name="text_send_request">Enviar petición</string>
+    <string name="text_chairs">SILLAS</string>
+
+    <!--GymServiceFragment-->
+    <string name="msg_call_not_available">La llamada no está disponible</string>
+    <string name="msg_dev_not_configured">El dispositivo no configurado para enviar correo ...!</string>
+
+    <!--WeatherFragment-->
+    <string name="txt_currently">Actualmente</string>
+    <string name="txt_sunny">Sunny Isles</string>
+    <string name="txt_wind">Viento</string>
+    <string name="txt_humidity">Humedad</string>
+    <string name="txt_uvindex">Índice UV</string>
+    <string name="txt_visibility">Visibilidad</string>
+    <string name="txt_nexthourprecip">A continuación horas precip.</string>
+    <string name="txt_feels_like">Se siente como:</string>
+
+    <!--DiningFragment-->
+    <string name="txt_make_an_order">Hacer un pedido</string>
+    <string name="txt_view_menu">vista menús</string>
+    <string name="txt_make_reservation">Hacer reservacion</string>
+
+    <!--InformationFragment-->
+    <string name="txt_from">De</string>
+    <string name="txt_message">Mensaje</string>
+    <string name="txt_event">Evento</string>
+    <string name="txt_maintenance">Mantenimiento</string>
+
+    <!--ScheduledPickupsFragment-->
+    <string name="txt_car">COCHE</string>
+    <string name="txt_date">FECHA</string>
+    <string name="txt_time">HORA</string>
+    <string name="txt_cancel">CANCELAR</string>
+
+</resources>

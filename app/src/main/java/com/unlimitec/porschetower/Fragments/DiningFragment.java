@@ -136,7 +136,7 @@ public class DiningFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                UserUtils.storeScheduleData(getActivity(), object.toString());
+                UserUtils.storeScheduleData((HomeActivity)getActivity(), object.toString());
                 CalendarFragment fragment = new CalendarFragment();
                 Bundle bd = new Bundle();
                 bd.putString(TYPE, mType);

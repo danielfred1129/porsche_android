@@ -95,6 +95,18 @@ public class Utils {
 
 	}
 
+	public static void replaceFragmentToBackStack(Fragment fragment, AppCompatActivity appCompatActivity, boolean addToBackStack) {
+
+		FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+		FragmentTransaction mFragmentTransaction = fragmentManager.beginTransaction();
+		if (addToBackStack) {
+			mFragmentTransaction.addToBackStack(fragment.getClass().getName());
+		}
+		mFragmentTransaction.replace(R.id.home_fragment, fragment);
+		mFragmentTransaction.commit();
+
+	}
+
 	
 	public static void showAlert(Context context, String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);

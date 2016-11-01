@@ -83,4 +83,7 @@
     <!--InformationDetailFragment-->
     <dimen name="textsize_infodetail">14sp</dimen>
     <dimen name="infodetail_margin">12dp</dimen>
+
+    <!--SchedulePickupsFragment-->
+    <dimen name="pickups_textsize">15sp</dimen>
 </resources>

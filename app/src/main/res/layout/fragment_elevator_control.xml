@@ -143,6 +143,7 @@
                 android:layout_height="match_parent"
                 android:textColor="#FFF"
                 android:textSize="@dimen/txt_status_description_size"
+                android:textAllCaps="true"
                 android:text="@string/txt_ridedown_description"
                 android:textAlignment="center"
                 android:gravity="center"

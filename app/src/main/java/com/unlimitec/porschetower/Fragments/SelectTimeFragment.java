@@ -169,7 +169,7 @@ public class SelectTimeFragment extends Fragment {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                             }
                             HomeFragment fragment = new HomeFragment();
-                            Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), false);
+                            Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
                         }
                     });
                 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    >
+    <TextView
+        android:id="@+id/txt_car_name"
+        android:layout_marginLeft="@dimen/information_margin"
+        android:layout_width="0dp"
+        android:layout_weight="35"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/pickups_textsize"/>
+    <TextView
+        android:id="@+id/txt_pickup_date"
+        android:layout_width="0dp"
+        android:layout_weight="25"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/pickups_textsize"/>
+    <TextView
+        android:id="@+id/txt_pickup_time"
+        android:layout_width="0dp"
+        android:layout_weight="25"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/pickups_textsize"/>
+    <Button
+        android:id="@+id/btn_pickup_cancel"
+        android:layout_width="0dp"
+        android:layout_weight="15"
+        android:text="X"
+        android:background="@color/caldroid_transparent"
+        android:textSize="@dimen/pickups_textsize"
+        android:textColor="#fff"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -112,7 +112,7 @@ public class DescriptionFragment extends Fragment {
                 Bundle bd = new Bundle();
                 bd.putString(TYPE, mType);
                 fragment.setArguments(bd);
-                Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
 
             }
         });
