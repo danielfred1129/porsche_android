@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "838805772031",
+    "firebase_url": "https://porsche-tower-application.firebaseio.com",
+    "project_id": "porsche-tower-application",
+    "storage_bucket": "porsche-tower-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838805772031:android:405dc57174411472",
+        "android_client_info": {
+          "package_name": "com.unlimitec.porschetower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838805772031-ghpl03mjaqii1ok6djdsihle0saqpdkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV7dP9cW8nWI-fbNDIUzd1ZLxB5PrVfF4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -265,7 +265,7 @@ public class MenuFragment extends FitFragment {
                             int year, month, day, hour, minute,second;
 
                             year = c.get(Calendar.YEAR);
-                            month = c.get(Calendar.MONTH);
+                            month = c.get(Calendar.MONTH) + 1;
                             day = c.get(Calendar.DAY_OF_MONTH);
                             hour = c.get(Calendar.HOUR);
                             minute = c.get(Calendar.MINUTE);

@@ -3,8 +3,8 @@ package com.unlimitec.porschetower;
 /**
  * Created by buddy on 9/5/2016.
  */
+
 import android.app.Application;
-import android.content.Context;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -16,6 +16,7 @@ public class PorscheTowerApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+//        initImageLoader(getApplicationContext());
         initImageLoader();
     }
 
