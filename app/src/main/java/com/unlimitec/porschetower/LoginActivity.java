@@ -1,20 +1,15 @@
 package com.unlimitec.porschetower;
 
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.net.Uri;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -26,6 +21,11 @@ import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Locale;
 
@@ -65,8 +65,9 @@ public class LoginActivity extends AppCompatActivity {
             nNew = 0;
             onLogin(null);
         }
-
-        initImageLoader();
+//          This was on PorscheTowerApplication.java before
+//        initImageLoader();
+        initImageLoader(getApplicationContext());
     }
 
     public void initImageLoader() {
@@ -78,6 +79,12 @@ public class LoginActivity extends AppCompatActivity {
         config.tasksProcessingOrder(QueueProcessingType.LIFO);
         config.writeDebugLogs(); // Remove for release app
         ImageLoader.getInstance().init(config.build());
+    }
+
+    public static void initImageLoader(Context context) {
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
+        ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().clearDiskCache();
     }
 
     public void onLogin(View v) {
@@ -93,7 +100,8 @@ public class LoginActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
         params.put("email", edtEmail.getText().toString());
         params.put("password", edtPassword.getText().toString());
-        params.put("device_token", "d212d100f8e5706e257088151fe90fff669040e92c1eef5c5a12d3d4580b5837");
+        params.put("device_token", "1324325435346346456546");
+        params.put("os_type", "android");
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(Utils.BASE_URL + "login", params, new PorscheTowerResponseHandler(this) {

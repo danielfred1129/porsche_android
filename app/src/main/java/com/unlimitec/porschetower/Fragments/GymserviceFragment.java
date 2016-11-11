@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -80,19 +81,24 @@ public class GymserviceFragment extends Fragment {
 
         txt_description_gym = (TextView) rootView.findViewById(R.id.txt_description_gym);
         btn_phone_gymservice = (ImageButton) rootView.findViewById(R.id.btn_phone_gymservice);
+        // add PhoneStateListener
+        PhoneCallListener phoneListener = new PhoneCallListener();
+        TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+
         btn_phone_gymservice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Utils.isCallActive(getActivity())){
+//                if (Utils.isCallActive(getActivity())){
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     intent.setData(Uri.parse("tel:" + phoneNumber));
                     startActivity(intent);
-                }
-                else
-                {
-                    Utils.showAlert(getActivity(), getResources().getString(R.string.msg_call_not_available));
-                    return;
-                }
+//                }
+//                else
+//                {
+//                    Utils.showAlert(getActivity(), getResources().getString(R.string.msg_call_not_available));
+//                    return;
+//                }
             }
         });
         btn_email_gymservice = (ImageButton) rootView.findViewById(R.id.btn_email_gymservice);
@@ -114,6 +120,51 @@ public class GymserviceFragment extends Fragment {
         }
         catch (JSONException e)
         {
+        }
+    }
+
+    //monitor phone call activities
+    private class PhoneCallListener extends PhoneStateListener {
+
+        private boolean isPhoneCalling = false;
+
+        String LOG_TAG = "LOGGING 123";
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+
+            if (TelephonyManager.CALL_STATE_RINGING == state) {
+                // phone ringing
+                Log.i(LOG_TAG, "RINGING, number: " + incomingNumber);
+            }
+
+            if (TelephonyManager.CALL_STATE_OFFHOOK == state) {
+                // active
+                Log.i(LOG_TAG, "OFFHOOK");
+
+                isPhoneCalling = true;
+            }
+
+            if (TelephonyManager.CALL_STATE_IDLE == state) {
+                // run when class initial and phone call ended,
+                // need detect flag from CALL_STATE_OFFHOOK
+                Log.i(LOG_TAG, "IDLE");
+
+                if (isPhoneCalling) {
+
+                    Log.i(LOG_TAG, "restart app");
+
+                    // restart app
+//                    Intent i = getActivity().getBaseContext().getPackageManager()
+//                            .getLaunchIntentForPackage(
+//                                    getActivity().getBaseContext().getPackageName());
+//                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(i);
+
+                    isPhoneCalling = false;
+                }
+
+            }
         }
     }
 

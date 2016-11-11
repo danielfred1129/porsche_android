@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -25,6 +24,7 @@ import com.unlimitec.porschetower.customview.CustomPager;
 import com.unlimitec.porschetower.customview.PorscheTextView;
 import com.unlimitec.porschetower.pagertransformations.BackPageTransformer;
 import com.unlimitec.porschetower.pagertransformations.FrontPageTransformer;
+import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
 import java.util.ArrayList;
@@ -34,11 +34,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_POS = "position";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String mPosition;
     private String mParam2;
     private View rootView;
 
@@ -111,19 +111,11 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance(String position, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_POS, position);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -141,6 +133,8 @@ public class HomeFragment extends Fragment {
 
     private void initializaControl()
     {
+        UserUtils.storeSelectedCategory(getActivity(), "100");
+
         // Set SubCategory Button with Car Elevator Image
         btnSubCategory = (ImageButton) getActivity().findViewById(R.id.activity_home_sub);
         btnSubCategory.setImageResource(frontviewarry[1]);
@@ -164,7 +158,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mPosition = getArguments().getString(ARG_POS);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -358,6 +352,7 @@ public class HomeFragment extends Fragment {
                         bundle.putStringArray("titles", mTitlesString);
                         bundle.putString("menu_type", "MainMenu");
                         bundle.putString("type", String.valueOf(pos));
+                        UserUtils.storeSelectedCategory(getActivity(), String.valueOf(pos));
                         picker_fragment.setArguments(bundle);
                         Utils.addFragmentToBackstack(picker_fragment, (HomeActivity)getActivity(), true);
                     } else if ((pagerCurrentPos) == pos) {

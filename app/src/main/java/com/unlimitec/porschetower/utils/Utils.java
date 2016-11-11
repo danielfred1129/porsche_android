@@ -49,7 +49,6 @@ public class Utils {
     public static String[] categories = new String[]{"ALL", "WEIGHT", "BENCH", "SQUAT",
                                                 "DEADLIFT", "PULLUPS", "PUSHUPS", "MILERUN"};
     public static String[] units = new String[]{"kg", "lbs", "sec"};
-
 	/**
 	 * get screen width for all resolutions
 	 *

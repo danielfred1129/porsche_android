@@ -17,7 +17,8 @@
     <dimen name="text_margin">16dp</dimen>
 
     <!--Home Activity-->
-    <dimen name="settings_button_width">40dp</dimen>
+    <dimen name="settings_button_width">35dp</dimen>
+    <dimen name="bottom_button_margin">5dp</dimen>
     <dimen name="txt_currenttime_size">11sp</dimen>
     <dimen name="back_views_margin">100dp</dimen>
 

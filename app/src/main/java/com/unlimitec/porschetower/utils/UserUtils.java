@@ -1,11 +1,11 @@
 package com.unlimitec.porschetower.utils;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 
 import com.unlimitec.porschetower.datamodel.UserObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserUtils {
 
@@ -13,6 +13,7 @@ public class UserUtils {
 	private static final String SELECTED_CAR = "selected_car";
 	private static final String VALET = "valet";
 	private static final String SCHEDULE_DATA = "scheduleData";
+	private static final String SELECTED_CATEGORY = "selected_category";
 	private static final String APP = "com.unlimitec.porschetower";
 
 	public static void storeSession(Context context, UserObject session) {
@@ -95,12 +96,20 @@ public class UserUtils {
 		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).commit();
 	}
 	public static String getScheduleData(Context context) {
-		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SCHEDULE_DATA, null);
+		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
 		return scheduleString;
 	}
 	public static void storeSelectedCar(Context context, JSONObject selectedCar) {
 		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CAR, selectedCar.toString()).commit();
 	}
+	public static String getSelectedCategory(Context context) {
+		String categoryString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CATEGORY, null);
+		return categoryString;
+	}
+	public static void storeSelectedCategory(Context context, String selectedCategory) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CATEGORY, selectedCategory).commit();
+	}
+
 	public static JSONObject getSelectedCar(Context context) {
 		String jsString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
 		JSONObject jsonObject = null;

@@ -32,25 +32,34 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp">
-
-            <RelativeLayout
-                android:id="@+id/bottom_buttons_layout"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_button_width">
 
-                <ImageButton
-                    android:id="@+id/activity_home_home_button"
-                    android:layout_width="@dimen/settings_button_width"
-                    android:layout_height="@dimen/settings_button_width"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/app_name"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:onClick="onHome"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/btn_home" />
-
+                    <ImageButton
+                        android:id="@+id/activity_home_home_button"
+                        android:layout_width="@dimen/settings_button_width"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/app_name"
+                        android:onClick="onHome"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/btn_home" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/settings_button_width"
+                        android:id="@+id/bottom_buttons_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/settings_button_width"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <ImageButton
                     android:id="@+id/activity_home_plus_button"
                     android:layout_width="@dimen/settings_button_width"
@@ -62,7 +71,6 @@
                     android:onClick="onPlus"
                     android:scaleType="fitXY"
                     android:src="@drawable/btn_plus" />
-
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
