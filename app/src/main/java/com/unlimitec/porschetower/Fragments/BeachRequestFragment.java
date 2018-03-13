@@ -118,6 +118,8 @@ public class BeachRequestFragment extends Fragment {
                         super.onSuccess(statusCode, headers, response);
 
                         Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+                        UserUtils.storeSelectedCategory(getActivity(), "100");
+
                         HomeFragment fragment = new HomeFragment();
                         Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
                     }

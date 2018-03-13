@@ -16,15 +16,18 @@
 
     <!--Home Activity-->
     <dimen name="settings_button_width">70dp</dimen>
+    <dimen name="back_view_height">300dp</dimen>
     <dimen name="bottom_button_margin">10dp</dimen>
     <dimen name="txt_currenttime_size">18sp</dimen>
-    <dimen name="back_views_margin">155dp</dimen>
+    <dimen name="back_views_margin">190dp</dimen>
+    <dimen name="menu_item_textsize">20sp</dimen>
+    <dimen name="front_view_item_width">170dp</dimen>
 
     <!--Settings fragment-->
     <dimen name="logout_button_width">100dp</dimen>
     <dimen name="logout_button_height">40dp</dimen>
     <dimen name="settingpanel_margin">160dp</dimen>
-    <dimen name="settingpanel_textsize">20sp</dimen>
+    <dimen name="settingpanel_textsize">28sp</dimen>
     <dimen name="settingbutton_textsize">20sp</dimen>
     <dimen name="maintitle_textsize">30dp</dimen>
     <dimen name="subtitle_textsize">24dp</dimen>
@@ -34,7 +37,7 @@
 
     <!--Showroom Fragment-->
     <dimen name="showroomitem_margin">80dp</dimen>
-    <dimen name="booking_item_button_textsize">14sp</dimen>
+    <dimen name="booking_item_button_textsize">24sp</dimen>
 
     <!--Elevatorcontrol Fragment-->
     <dimen name="txt_countdowntime_size">32sp</dimen>

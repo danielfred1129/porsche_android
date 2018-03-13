@@ -3,11 +3,9 @@ package com.unlimitec.porschetower.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -247,6 +244,7 @@ public class ElevatorControlFragment extends Fragment {
         txt_current_time.setVisibility(View.GONE);
         if (getActivity() != null && state == true) {
             HomeFragment fragment = new HomeFragment();
+            UserUtils.storeSelectedCategory(getActivity(), "100");
             Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
         }
         state = false;

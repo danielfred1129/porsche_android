@@ -1,7 +1,6 @@
 package com.unlimitec.porschetower.Fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -168,6 +167,7 @@ public class SelectTimeFragment extends Fragment {
                             {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                             }
+                            UserUtils.storeSelectedCategory(getActivity(), "100");
                             HomeFragment fragment = new HomeFragment();
                             Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
                         }

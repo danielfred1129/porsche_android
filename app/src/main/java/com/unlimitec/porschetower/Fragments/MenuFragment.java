@@ -213,6 +213,7 @@ public class MenuFragment extends FitFragment {
                         }
                     });
                     fragment = new HomeFragment();
+                    UserUtils.storeSelectedCategory(getActivity(), "100");
                     Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
                 else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage

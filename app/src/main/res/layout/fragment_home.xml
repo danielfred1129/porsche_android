@@ -8,13 +8,13 @@
     <com.unlimitec.porschetower.customview.CustomPager
         android:id="@+id/backgroup_vp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/back_view_height"
         android:layout_centerInParent="true" />
 
     <com.unlimitec.porschetower.customview.CustomPager
         android:id="@+id/front_vp"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="@dimen/back_view_height"
         android:layout_centerInParent="true"
         android:background="@android:color/transparent" />
 </RelativeLayout>

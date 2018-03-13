@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/front_iamge"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/front_view_item_width"
+            android:layout_height="@dimen/front_view_item_width"
             android:layout_centerInParent="true"
             android:src="@drawable/apartament" />
     </RelativeLayout>

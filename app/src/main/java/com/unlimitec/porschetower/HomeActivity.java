@@ -89,13 +89,47 @@ public class HomeActivity extends BaseActivity {
 
         registerReceiver();
 
-        if (checkPlayServices()) {
-            // Start IntentService to register this application with GCM.
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
+//        if (checkPlayServices()) {
+//            // Start IntentService to register this application with GCM.
+//            Intent intent = new Intent(this, RegistrationIntentService.class);
+//            startService(intent);
+//        }
 
         btnSubCategory = (ImageButton) findViewById(R.id.activity_home_sub);
+        btnSubCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")){
+                    return;
+                }
+                int pos = Integer.valueOf(UserUtils.getSelectedCategory(HomeActivity.this));
+                int tempPos = 0;
+                if (pos == 0)
+                    tempPos = 10;
+                else
+                    tempPos = pos - 1;
+                CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
+                // Convert CharSequence[] to String[]
+                String[] mTitlesString = new String[mMenuTitleArray.length];
+                int i=0;
+                for(CharSequence ch: mMenuTitleArray){
+                    mTitlesString[i++] = ch.toString();
+                }
+                MenuFragment picker_fragment = new MenuFragment();
+                Bundle bundle = new Bundle();
+                bundle.putStringArray("titles", mTitlesString);
+                bundle.putString("menu_type", "MainMenu");
+                bundle.putString("type", String.valueOf(pos));
+                picker_fragment.setArguments(bundle);
+
+                HomeFragment home_fragment = new HomeFragment();
+                String strStatus = UserUtils.getSelectedCategory(HomeActivity.this);
+                UserUtils.storeSelectedCategory(HomeActivity.this, String.valueOf(pos));
+
+                Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
+                Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
+            }
+        });
 //        btnSubCategory.setVisibility(View.GONE);
 
         txt_current_time = (PorscheTextView) findViewById(R.id.txt_current_time);

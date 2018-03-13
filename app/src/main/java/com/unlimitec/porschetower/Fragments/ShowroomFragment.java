@@ -1,32 +1,23 @@
 package com.unlimitec.porschetower.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.unlimitec.porschetower.HomeActivity;
-import com.unlimitec.porschetower.LoginActivity;
 import com.unlimitec.porschetower.R;
 import com.unlimitec.porschetower.adapters.ShowroomListAdapter;
 import com.unlimitec.porschetower.customview.HorizontalListView;
 import com.unlimitec.porschetower.datamodel.ShowroomItem;
 import com.unlimitec.porschetower.datamodel.UserObject;
 import com.unlimitec.porschetower.network.PorscheTowerResponseHandler;
-import com.unlimitec.porschetower.utils.FitFragment;
 import com.unlimitec.porschetower.utils.UserUtils;
 import com.unlimitec.porschetower.utils.Utils;
 
@@ -35,9 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class ShowroomFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -52,7 +41,7 @@ public class ShowroomFragment extends Fragment {
     private View rootView;
     private HorizontalListView mCarListView;
 
-    private JSONArray car_info_array, menu_info_array;
+        private JSONArray car_info_array, menu_info_array;
     private ShowroomListAdapter adapter;
     private String fragmentType;
 
@@ -170,6 +159,7 @@ public class ShowroomFragment extends Fragment {
     private void initializeControl()
     {
         mCarListView = (HorizontalListView) rootView.findViewById(R.id.car_listview);
+
         adapter = new ShowroomListAdapter(new ArrayList<ShowroomItem>());
         mCarListView.setAdapter(adapter);
         getCarInformation();
