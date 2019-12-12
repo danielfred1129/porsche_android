@@ -3,219 +3,129 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/exploded-aar/org.lucasr.twowayview/layouts/1.0.0-SNAPSHOT/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
-        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\support-annotations-24.0.0_49dfca91762f16c93a234342f5ecc25128e41848.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\org.lucasr.twowayview\layouts\1.0.0-SNAPSHOT\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
+        revision="25.0.3"
         sha1="c7302991df225438b9a48dfb6627cc6b6f26c567">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\org.lucasr.twowayview-layouts-1.0.0-SNAPSHOT_4ca58cc3f6c4746e6905a9d46cd2f508abc173e0.jar" />
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/org.lucasr.twowayview-layouts-1.0.0-SNAPSHOT_d4eb1a9e1be01f269983d5c88607299164f1c900.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\541e86470970713df97da8f5043ec1248d85a70c\output\jars\classes.jar"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/libs/devsmartlib.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
-        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_e5ee1aa0fc422addee21316d7b474a75b476bbed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\5d48f811bba9006f69c8a4bbf8fff0a29b0c2c48\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_ea3df085c17ee6425f30d3c57c78be000b6f8d37.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\e4980c67970aa3b8591ebcb8cccdc6b443cdb55d\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ad7706f8bb4a985656a8d2142f74021c8b0e03d8">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_e47fe357d783a7c8e0dbc0b227e61cc48e5e586f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\exploded-aar\org.lucasr.twowayview\core\1.0.0-SNAPSHOT\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0e4aeef9346f143a3595ccfd591290f5d4bca18a">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\org.lucasr.twowayview-core-1.0.0-SNAPSHOT_02a145a2bdd8755704d95eb7c5f2b7773505a594.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\e7eaf233ca03063ff3ac99d63a98b2254fe3e482\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_344f71d5f8e5f0c4be3ccefe327fa93a21341cf8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\e317b7cb50eaa35a8b175714ca75b6f440ee2d3c\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_49a4c150c67d3185ae959a6286be349f40c7bbd7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\760c15090a23bd6eba888299e7a790f7cf05e44e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_f772ccf0d9100d49e487e22f39f5091905e67e17.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\libs\devsmartlib.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
+        revision="25.0.3"
         sha1="8874ca4c8cc30152d52f3c81d404661bc715be16">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\devsmartlib_35836558511aabbd37e883d7e4fa9742369e7291.jar" />
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/devsmartlib_d14d6132247e70a1f66ade39138b6829bc3a1eff.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\8b45e491c029542eb3746d71d8e215a01db8bbd0\output\jars\classes.jar"
+        jar="/Users/admin/.android/build-cache/66c2f1e03017f5a2514ec13ef3c66a547238d8bb/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
+        revision="25.0.3"
         sha1="fea01abd91186a7148aaaf8c517b823eedaac79a">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_de69624e7229d1f5c5243eae122a08054f6cc71f.jar" />
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/classes_78b6937ecb4cf09ca5f5f39d731cd3059b43ff6a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\a7a610441ab059b084451a0e04513bc8568f885f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="af7582c6b327449c6d32518e6a10307860b7b5d6">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_3ae5b47f43f32170cf9ad955219a412f4c51f6b2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.5\442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375\universal-image-loader-1.9.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\universal-image-loader-1.9.5_ceffa2aad2da7e699fcfe6f93ebe78aad322cc1f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\b190244ff5d056ef75bd1de48ba33a92c2cfdba4\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_932ce774f7a989bc2c53b8343538d056e3213511.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\7164e7aa89945682b4e2d489660caf16dd576263\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_73df29d35b960c761cc99f7160fc8967b1e42b7b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\1162e41ea8252d77db0d36f9acda1bb971ca3a15\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0dfc12e4aacf514346ea866560c99807d032bc48">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_30dc601fea6a3663549538df34289cf9957ac582.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\buddy\.gradle\caches\modules-2\files-2.1\com.darwinsys\hirondelle-date4j\1.5.1\7b52de513f87ae4d9ff5d17518def0a1e9bc3df0\hirondelle-date4j-1.5.1.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\hirondelle-date4j-1.5.1_6a65c47012fd85aad1c4abf67127c96d7b7acca6.jar" />
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1_3f11c2419e359c5edd2047b8d87549a019a44a5a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\d2fdf82296e16d462bcfad8ef9718da384a76df8\output\jars\classes.jar"
+        jar="/Users/admin/.android/build-cache/66c2f1e03017f5a2514ec13ef3c66a547238d8bb/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_aa8aa2c8aa71fb8076febaf57e7147f88089b812.jar" />
+        sha1="fea01abd91186a7148aaaf8c517b823eedaac79a">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/classes_78b6937ecb4cf09ca5f5f39d731cd3059b43ff6a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\36f8c7da6313846549c790d52ee3383694dc93d4\output\jars\classes.jar"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/exploded-aar/org.lucasr.twowayview/layouts/1.0.0-SNAPSHOT/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_e0f1c0d96801c9f67c2d68dbe2036cb82eb3c39d.jar" />
+        sha1="c7302991df225438b9a48dfb6627cc6b6f26c567">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/org.lucasr.twowayview-layouts-1.0.0-SNAPSHOT_d4eb1a9e1be01f269983d5c88607299164f1c900.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\libs\android-async-http-1.4.6.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1_3f11c2419e359c5edd2047b8d87549a019a44a5a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/libs/android-async-http-1.4.6.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\android-async-http-1.4.6_d1edd2b26ddf6875aaacccb091105d6f29038ab6.jar" />
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6_4c663ef7035cd2b822c17f8ff35cf2faf3f4b600.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\0852394b61a6b4ef42a1ae66278c75b97db26357\output\jars\classes.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.5/442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375/universal-image-loader-1.9.5.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_e5432c102c8c8ce22ad8482335136a32d9383599.jar" />
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.5_807146578e6793cf9cee699454e9183b1d3f3d1e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\1e37cb51bdf9f64cf4b046dd50c6a316e47c6aad\output\jars\classes.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.5/442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375/universal-image-loader-1.9.5.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_dbf5d4353f3354bbca41ab54a8496d488b9135f4.jar" />
+        revision="25.0.3"
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.5_807146578e6793cf9cee699454e9183b1d3f3d1e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\1e37cb51bdf9f64cf4b046dd50c6a316e47c6aad\output\jars\libs\internal_impl-24.0.0.jar"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/libs/devsmartlib.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\internal_impl-24.0.0_c3d3a46151c2391a131e36c5bbadc098065f535d.jar" />
+        sha1="8874ca4c8cc30152d52f3c81d404661bc715be16">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/devsmartlib_d14d6132247e70a1f66ade39138b6829bc3a1eff.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\buddy\.android\build-cache\ddb4799d1b5ed74a4cbfc9c311f7ac5c610b8938\output\jars\classes.jar"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/libs/android-async-http-1.4.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6_4c663ef7035cd2b822c17f8ff35cf2faf3f4b600.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/exploded-aar/org.lucasr.twowayview/core/1.0.0-SNAPSHOT/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="4a36600281a648769411ef642c331851732bf29e">
-        <dex dex="F:\My Work\Dany Lou\Ben Haas\porsche_android\app\build\intermediates\pre-dexed\release\classes_7f53817ac0ada5f83062476cc16bd73e916f91b7.jar" />
+        sha1="0e4aeef9346f143a3595ccfd591290f5d4bca18a">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/org.lucasr.twowayview-core-1.0.0-SNAPSHOT_2fd17d4b7753c8dd585cf5e61b11881bfcddd784.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/exploded-aar/org.lucasr.twowayview/core/1.0.0-SNAPSHOT/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0e4aeef9346f143a3595ccfd591290f5d4bca18a">
+        <dex dex="/Volumes/WORK/Native/Porsche/porsche_android/porsche_android/app/build/intermediates/pre-dexed/debug/org.lucasr.twowayview-core-1.0.0-SNAPSHOT_2fd17d4b7753c8dd585cf5e61b11881bfcddd784.jar" />
     </item>
 
 </items>
