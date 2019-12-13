@@ -5,7 +5,7 @@
     android:weightSum="100"
     android:gravity="center"
     android:background="#000"
-    tools:context="com.unlimitec.porschetower.Fragments.GymserviceFragment">
+    tools:context="com.pos.porschetower.Fragments.GymserviceFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

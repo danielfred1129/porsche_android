@@ -2,15 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.unlimitec.porschetower.Fragments.PickerFragment">
+    tools:context="com.pos.porschetower.Fragments.PickerFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <com.unlimitec.porschetower.customview.PickerView
+    <com.pos.porschetower.customview.PickerView
         android:id="@+id/menu_pickerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.unlimitec.porschetower.customview.PickerView>
+    </com.pos.porschetower.customview.PickerView>
 
 </FrameLayout>

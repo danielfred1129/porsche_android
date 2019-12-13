@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.unlimitec.porschetower.Fragments.BeachRequestFragment">
+    tools:context="com.pos.porschetower.Fragments.BeachRequestFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -40,7 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/chair_img"/>
-                        <com.unlimitec.porschetower.customview.PorscheTextView
+                        <com.pos.porschetower.customview.PorscheTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"

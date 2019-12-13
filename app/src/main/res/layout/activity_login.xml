@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.unlimitec.porschetower.LoginActivity">
+    tools:context="com.pos.porschetower.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/main_top_layout"
@@ -17,7 +17,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.unlimitec.porschetower.customview.PorscheTextView
+            <com.pos.porschetower.customview.PorscheTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PORSCHE DESIGN"
@@ -27,7 +27,7 @@
                 android:textSize="@dimen/title_text_size1"
                 android:textStyle="bold" />
 
-            <com.unlimitec.porschetower.customview.PorscheTextView
+            <com.pos.porschetower.customview.PorscheTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TOWER MIAMI"
@@ -37,7 +37,7 @@
                 android:textSize="@dimen/title_text_size1"
                 android:textStyle="bold" />
 
-            <com.unlimitec.porschetower.customview.PorscheTextView
+            <com.pos.porschetower.customview.PorscheTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="P'0001"
@@ -77,7 +77,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
 
-                <com.unlimitec.porschetower.customview.PorscheTextView
+                <com.pos.porschetower.customview.PorscheTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LOGIN"

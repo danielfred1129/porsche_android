@@ -5,7 +5,7 @@
     android:weightSum="100"
     android:background="#000"
     android:gravity="center"
-    tools:context="com.unlimitec.porschetower.Fragments.DiningMenuFragment">
+    tools:context="com.pos.porschetower.Fragments.DiningMenuFragment">
 
     <LinearLayout
         android:layout_width="0dp"
