@@ -5,7 +5,7 @@
     android:weightSum="100"
     android:gravity="center"
     android:background="@drawable/background_alpha"
-    tools:context="com.unlimitec.porschetower.Fragments.InformationDetailFragment">
+    tools:context="com.pos.porschetower.Fragments.InformationDetailFragment">
 
     <LinearLayout
         android:layout_width="0dp"

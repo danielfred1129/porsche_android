@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     tools:context=".HomeActivity">
-    <com.unlimitec.porschetower.customview.CustomPager
+    <com.pos.porschetower.customview.CustomPager
         android:id="@+id/backgroup_vp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/back_view_height"
         android:layout_centerInParent="true" />
 
-    <com.unlimitec.porschetower.customview.CustomPager
+    <com.pos.porschetower.customview.CustomPager
         android:id="@+id/front_vp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/back_view_height"

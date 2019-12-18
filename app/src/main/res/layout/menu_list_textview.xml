@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.unlimitec.porschetower.customview.PorscheTextView
+    <com.pos.porschetower.customview.PorscheTextView
         android:id="@+id/item_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="@dimen/menu_item_textsize">
 
-    </com.unlimitec.porschetower.customview.PorscheTextView>
+    </com.pos.porschetower.customview.PorscheTextView>
 </LinearLayout>
 

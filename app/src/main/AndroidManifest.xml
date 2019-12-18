@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.unlimitec.porschetower"
+    package="com.pos.porschetower"
     android:versionCode="3"
     android:versionName="1.2">
 
@@ -24,10 +24,10 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
-        android:name="com.unlimitec.porschetower.permission.C2D_MESSAGE"
+        android:name="com.pos.porschetower.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.unlimitec.porschetower.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.pos.porschetower.permission.C2D_MESSAGE" />
 
     <!--<android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
@@ -75,14 +75,14 @@
             </intent-filter>
         </receiver>
         <service
-            android:name="com.unlimitec.porschetower.MyGcmListenerService"
+            android:name="com.pos.porschetower.MyGcmListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
         <service
-            android:name="com.unlimitec.porschetower.MyInstanceIDListenerService"
+            android:name="com.pos.porschetower.MyInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />

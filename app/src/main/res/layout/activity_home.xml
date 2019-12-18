@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="com.unlimitec.porschetower.HomeActivity">
+    tools:context="com.pos.porschetower.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
-                <com.unlimitec.porschetower.customview.PorscheTextView
+                <com.pos.porschetower.customview.PorscheTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_title"
@@ -121,7 +121,7 @@
                     android:textColor="@color/title_color"
                     android:textSize="@dimen/maintitle_textsize"
                     android:textStyle="bold" />
-                <com.unlimitec.porschetower.customview.PorscheTextView
+                <com.pos.porschetower.customview.PorscheTextView
                     android:id="@+id/txt_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                     android:onClick="onSettings"
                     android:scaleType="fitXY"
                     android:src="@drawable/btn_settings" />
-                <com.unlimitec.porschetower.customview.PorscheTextView
+                <com.pos.porschetower.customview.PorscheTextView
                     android:id="@+id/txt_current_time"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/settings_button_width"

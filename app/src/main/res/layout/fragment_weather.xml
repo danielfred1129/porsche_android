@@ -5,7 +5,7 @@
     android:background="@drawable/elevator_control_bg"
     android:weightSum="100"
     android:gravity="center"
-    tools:context="com.unlimitec.porschetower.Fragments.WeatherFragment">
+    tools:context="com.pos.porschetower.Fragments.WeatherFragment">
 
     <LinearLayout
         android:orientation="vertical"
