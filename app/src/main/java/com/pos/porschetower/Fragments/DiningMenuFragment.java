@@ -16,21 +16,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class DiningMenuFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -84,9 +88,7 @@ public class DiningMenuFragment extends Fragment {
             JSONArray scheduleArray = new JSONArray(descriptionStr);
             JSONObject object = scheduleArray.getJSONObject(mIndex);
             phoneNumber = object.getString("phone");
-        }
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
         }
 
         txt_dining_menu_description = (TextView) rootView.findViewById(R.id.txt_dining_menu_description);
@@ -100,9 +102,9 @@ public class DiningMenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                if (Utils.isCallActive(getActivity())){
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + phoneNumber));
-                    startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + phoneNumber));
+                startActivity(intent);
 //                }
 //                else
 //                {
@@ -120,11 +122,12 @@ public class DiningMenuFragment extends Fragment {
                 UserObject owner = UserUtils.getSession(getActivity());
 
                 String scheduleString = UserUtils.getScheduleData(getActivity());
-                RequestParams params = new RequestParams();
+//                RequestParams params = new RequestParams();
+                Map<String, String> requestParam = new HashMap<>();
                 Calendar c = Calendar.getInstance();
                 int currentHour = c.get(Calendar.HOUR);
                 int currentMinute = c.get(Calendar.MINUTE);
-                int currentAMPM= c.get(Calendar.AM_PM);
+                int currentAMPM = c.get(Calendar.AM_PM);
                 if (currentAMPM > 0)
                     currentHour = currentHour + 12;
                 int currentYear = c.get(Calendar.YEAR);
@@ -134,29 +137,38 @@ public class DiningMenuFragment extends Fragment {
                 try {
                     JSONArray scheduleArray = new JSONArray(scheduleString);
                     JSONObject object = scheduleArray.getJSONObject(mIndex);
-                    params.put("type", "order");
-                    params.put("restaurant", object.getString("index"));
-                    params.put("owner", owner.getIndex());
-                    params.put("date_time",currentYear + "-" + currentMonth + "-" + currentDayOfMonth + " " + currentHour + ":" + currentMinute + ":" + "00");
+                    requestParam.put("type", "order");
+                    requestParam.put("restaurant", object.getString("index"));
+                    requestParam.put("owner", owner.getIndex() + "");
+                    requestParam.put("date_time", currentYear + "-" + currentMonth + "-" + currentDayOfMonth + " " + currentHour + ":" + currentMinute + ":" + "00");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-                AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_restaurant_request";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                APIClient.get().send_restaurant_request(requestParam).enqueue(new CustomCall<ResponseBody>(DiningMenuFragment.this.getActivity()) {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        Utils.showAlertWithTitleNoCancel((HomeActivity)getActivity(),
+                    public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                        Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(),
                                 getResources().getString(R.string.msg_order_req_confirmed),
                                 getResources().getString(R.string.msg_req_sent_staff_member));
-                        return;
                     }
                 });
+
+//                AsyncHttpClient client = new AsyncHttpClient();
+//                String functName = "send_restaurant_request";
+//                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        super.onSuccess(statusCode, headers, response);
+//                        Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(),
+//                                getResources().getString(R.string.msg_order_req_confirmed),
+//                                getResources().getString(R.string.msg_req_sent_staff_member));
+//                        return;
+//                    }
+//                });
             }
         });
         getRestaurantMenu();
@@ -209,31 +221,29 @@ public class DiningMenuFragment extends Fragment {
 
     private void getRestaurantMenu() {
         String scheduleString = UserUtils.getScheduleData(getActivity());
-        RequestParams params = new RequestParams();
+        Map<String, String> requestParam = new HashMap<>();
+//        RequestParams params = new RequestParams();
         try {
             JSONArray scheduleArray = new JSONArray(scheduleString);
             JSONObject object = scheduleArray.getJSONObject(mIndex);
-            params.put("restaurant", object.getString("index"));
+            requestParam.put("restaurant", object.getString("index") + "");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "get_restaurant_menu";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
 
+        APIClient.get().get_restaurant_menu(requestParam).enqueue(new CustomCall<ResponseBody>(getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                if (response != null)
-                {
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+
+                JSONObject response = convertResponseToJson(responsebody);
+                if (response != null) {
                     try {
                         String strResponse = response.getString("restaurant_menu");
                         String menuString = "";
                         if (response != null) {
                             JSONArray menus = new JSONArray(strResponse);
-                            for (int i = 0; i < menus.length(); i++)
-                            {
+                            for (int i = 0; i < menus.length(); i++) {
                                 JSONObject menu = menus.getJSONObject(i);
                                 menuString = menuString + menu.getString("name") + "\n" + menu.getString("description") + "\n\n";
                             }
@@ -244,8 +254,36 @@ public class DiningMenuFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+
             }
         });
+
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String functName = "get_restaurant_menu";
+//        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//                if (response != null) {
+//                    try {
+//                        String strResponse = response.getString("restaurant_menu");
+//                        String menuString = "";
+//                        if (response != null) {
+//                            JSONArray menus = new JSONArray(strResponse);
+//                            for (int i = 0; i < menus.length(); i++) {
+//                                JSONObject menu = menus.getJSONObject(i);
+//                                menuString = menuString + menu.getString("name") + "\n" + menu.getString("description") + "\n\n";
+//                            }
+//                        }
+//                        txt_dining_menu_description.setText(menuString);
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        });
     }
 
 

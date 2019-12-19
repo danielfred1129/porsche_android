@@ -9,23 +9,27 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.adapters.InformationListAdapter;
 import com.pos.porschetower.datamodel.InformationItem;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 
 public class InformationFragment extends Fragment {
@@ -98,17 +102,18 @@ public class InformationFragment extends Fragment {
     }
 
     private void getInformation() {
-        RequestParams params = new RequestParams();
+//        RequestParams params = new RequestParams();
+        Map<String,String> requestparam = new HashMap<>();
+
         UserObject user = UserUtils.getSession(getActivity());
-        params.put("owner", user.getIndex());
+        requestparam .put("owner", user.getIndex()+"");
         String funcName = "get_" + mType;
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
+        APIClient.get().dynamicPathApi(funcName,requestparam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                JSONObject response = convertResponseToJson(responsebody);
                 if (response != null) {
                     try {
                         information_array = response.getJSONArray(mType);
@@ -139,9 +144,51 @@ public class InformationFragment extends Fragment {
                     } catch (JSONException e) {
                     }
                 }
-            }
 
+
+            }
         });
+
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//
+//                if (response != null) {
+//                    try {
+//                        information_array = response.getJSONArray(mType);
+//                        adapter.clearData();
+//                        if (information_array.length() > 0) {
+//                            for (int i=0; i<information_array.length(); i++) {
+//
+//                                InformationItem item = new InformationItem();
+//                                JSONObject object = information_array.getJSONObject(i);
+//                                String from = "", message = "";
+//                                if (mType == "personal_notifications") {
+//                                    from = object.getString("from");
+//                                    message = object.getString("subject") + " - " + object.getString("message");
+//                                }
+//                                else if (mType == "building_maintenance") {
+//                                    from = object.getString("from");
+//                                    message = object.getString("title") + " - " + object.getString("description");
+//                                }
+//                                else if (mType == "event_notifications") {
+//                                    from = object.getString("from");
+//                                    message = object.getString("brief_description") + " - " + object.getString("detailed_description");
+//                                }
+//                                item.from = from;
+//                                item.message = message;
+//                                adapter.addData(item);
+//                            }
+//                        }
+//                    } catch (JSONException e) {
+//                    }
+//                }
+//            }
+//
+//        });
     }
 
 

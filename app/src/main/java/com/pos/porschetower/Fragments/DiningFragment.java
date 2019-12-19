@@ -16,21 +16,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 
 public class DiningFragment extends Fragment {
@@ -76,7 +80,7 @@ public class DiningFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView =inflater.inflate(R.layout.fragment_dining, container, false);
+        rootView = inflater.inflate(R.layout.fragment_dining, container, false);
         initializeControl();
         return rootView;
     }
@@ -91,11 +95,13 @@ public class DiningFragment extends Fragment {
                 UserObject owner = UserUtils.getSession(getActivity());
 
                 String scheduleString = UserUtils.getScheduleData(getActivity());
-                RequestParams params = new RequestParams();
+//                RequestParams params = new RequestParams();
+                Map<String, String> requestParam = new HashMap<>();
+
                 Calendar c = Calendar.getInstance();
                 int currentHour = c.get(Calendar.HOUR);
                 int currentMinute = c.get(Calendar.MINUTE);
-                int currentAMPM= c.get(Calendar.AM_PM);
+                int currentAMPM = c.get(Calendar.AM_PM);
                 if (currentAMPM > 0)
                     currentHour = currentHour + 12;
                 int currentYear = c.get(Calendar.YEAR);
@@ -105,26 +111,32 @@ public class DiningFragment extends Fragment {
                 try {
                     JSONArray scheduleArray = new JSONArray(scheduleString);
                     JSONObject object = scheduleArray.getJSONObject(mIndex);
-                    params.put("type", "restaurants_in_house");
-                    params.put("index", object.getString("index"));
-                    params.put("owner", owner.getIndex());
-                    params.put("date_time",currentYear + "-" + currentMonth + "-" + currentDayOfMonth + " " + currentHour + ":" + currentMinute + ":" + "00");
+                    requestParam.put("type", "restaurants_in_house");
+                    requestParam.put("index", object.getString("index"));
+                    requestParam.put("owner", owner.getIndex() + "");
+                    requestParam.put("date_time", currentYear + "-" + currentMonth + "-" + currentDayOfMonth + " " + currentHour + ":" + currentMinute + ":" + "00");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-                AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_schedule_request";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                APIClient.get().send_schedule_request(requestParam).enqueue(new CustomCall<ResponseBody>(DiningFragment.this.getActivity()) {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
+                    public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
                         Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                     }
                 });
+
+
+//                AsyncHttpClient client = new AsyncHttpClient();
+//                String functName = "send_schedule_request";
+//                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        super.onSuccess(statusCode, headers, response);
+//                        Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+//                    }
+//                });
             }
         });
         btn_makeReservation = (Button) rootView.findViewById(R.id.btn_makeReservation);
@@ -139,12 +151,12 @@ public class DiningFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                UserUtils.storeScheduleData((HomeActivity)getActivity(), object.toString());
+                UserUtils.storeScheduleData((HomeActivity) getActivity(), object.toString());
                 CalendarFragment fragment = new CalendarFragment();
                 Bundle bd = new Bundle();
                 bd.putString(TYPE, mType);
                 fragment.setArguments(bd);
-                Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
 
             }
         });
@@ -156,7 +168,7 @@ public class DiningFragment extends Fragment {
                 bd.putInt(INDEX, mIndex);
                 DiningMenuFragment fragment = new DiningMenuFragment();
                 fragment.setArguments(bd);
-                Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
             }
         });
 
@@ -169,9 +181,9 @@ public class DiningFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                if (Utils.isCallActive(getActivity())){
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + phoneNumber));
-                    startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + phoneNumber));
+                startActivity(intent);
 //                }
 //                else
 //                {
@@ -187,9 +199,7 @@ public class DiningFragment extends Fragment {
             JSONObject object = scheduleArray.getJSONObject(mIndex);
             phoneNumber = object.getString("phone");
             txt_dining_restaurant_description.setText(object.getString("description"));
-        }
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
         }
     }
 

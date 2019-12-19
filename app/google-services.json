@@ -1,39 +1,45 @@
 {
   "project_info": {
-    "project_number": "838805772031",
-    "firebase_url": "https://porsche-tower-application.firebaseio.com",
-    "project_id": "porsche-tower-application",
-    "storage_bucket": "porsche-tower-application.appspot.com"
+    "project_number": "1045120965709",
+    "firebase_url": "https://porschelive-e18d7.firebaseio.com",
+    "project_id": "porschelive-e18d7",
+    "storage_bucket": "porschelive-e18d7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:838805772031:android:405dc57174411472",
+        "mobilesdk_app_id": "1:1045120965709:android:14618ea777a704803f5004",
         "android_client_info": {
           "package_name": "com.pos.porschetower"
         }
       },
       "oauth_client": [
         {
-          "client_id": "838805772031-ghpl03mjaqii1ok6djdsihle0saqpdkp.apps.googleusercontent.com",
+          "client_id": "1045120965709-rvhealqsomfpsce7jl7i8olptejoedks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pos.porschetower",
+            "certificate_hash": "c0b0836ca16160e4dad2bd26211a843661e3924c"
+          }
+        },
+        {
+          "client_id": "1045120965709-m0ll7q29op2i8b925p083ga1bbrjv932.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAV7dP9cW8nWI-fbNDIUzd1ZLxB5PrVfF4"
+          "current_key": "AIzaSyCtnCZDjrVk6KRsPqdfd5IdGa-9_qi0Lww"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045120965709-m0ll7q29op2i8b925p083ga1bbrjv932.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

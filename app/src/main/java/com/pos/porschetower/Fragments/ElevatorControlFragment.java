@@ -12,17 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.customview.PorscheTextView;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +28,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,7 +51,7 @@ public class ElevatorControlFragment extends Fragment {
     private static final String DELAYTIME = "delayTime";
 
     // Variables to manage arguments
-    private String selectedCar,strCarIndex, strCarStatus, strFlightTime, strOwnerElevator, valet;
+    private String selectedCar, strCarIndex, strCarStatus, strFlightTime, strOwnerElevator, valet;
     private JSONObject object_selectedCar;
     private String indexSelectedCar;
 
@@ -62,7 +66,7 @@ public class ElevatorControlFragment extends Fragment {
     // View Variables
     private View rootView;
     private ImageButton btn_start_queue;
-    private PorscheTextView txt_arrival_time,txt_countdowntime, txt_cars_in_queue, txt_current_time;
+    private PorscheTextView txt_arrival_time, txt_countdowntime, txt_cars_in_queue, txt_current_time;
     private TextView txt_elevator_description;
 
     public ElevatorControlFragment() {
@@ -120,8 +124,7 @@ public class ElevatorControlFragment extends Fragment {
         return rootView;
     }
 
-    private void initializeControl()
-    {
+    private void initializeControl() {
         btn_start_queue = (ImageButton) rootView.findViewById(R.id.btn_start_queue);
 
         btn_start_queue.setOnClickListener(new View.OnClickListener() {
@@ -141,26 +144,21 @@ public class ElevatorControlFragment extends Fragment {
         resetCountdown(0, 0);
 
 
-        if (getArguments().containsKey(VALET))
-        {
+        if (getArguments().containsKey(VALET)) {
             if (valet.equals("ridedown"))
                 txt_elevator_description.setText(R.string.txt_ridedown_description);
             else if (valet.equals("valet"))
                 txt_elevator_description.setText(R.string.txt_valet_description);
         }
-        if (strCarStatus.equals("active"))
-        {
+        if (strCarStatus.equals("active")) {
             activeStatus();
-            RequestParams params = new RequestParams();
-            params.put("car", strCarIndex);
-            AsyncHttpClient client = new AsyncHttpClient();
-            String functName = "get_pickup";
-            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
 
+            Map<String, String> requestParam = new HashMap<>();
+            requestParam.put("car", strCarIndex);
+            APIClient.get().get_pickup(requestParam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
                 @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
-
+                public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                    JSONObject response = convertResponseToJson(responsebody);
                     if (response != null) {
                         try {
                             pickup = response.getString("index");
@@ -177,21 +175,47 @@ public class ElevatorControlFragment extends Fragment {
                         } catch (JSONException e) {
                         }
                     }
+
                 }
             });
-        }
-        else
-        {
-            RequestParams params = new RequestParams();
-            params.put("elevator", strOwnerElevator);
-            AsyncHttpClient client = new AsyncHttpClient();
-            String functName = "get_elevator_queue_size";
-            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
 
+
+//            RequestParams params = new RequestParams();
+//            params.put("car", strCarIndex);
+//            AsyncHttpClient client = new AsyncHttpClient();
+//            String functName = "get_pickup";
+//            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                @Override
+//                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                    super.onSuccess(statusCode, headers, response);
+//
+//                    if (response != null) {
+//                        try {
+//                            pickup = response.getString("index");
+//                            delayTime = response.getInt("delay");
+//                            sendTime = response.getString("send_time");
+//                            int queueSize = response.getInt("queue_size");
+//                            txt_cars_in_queue.setText(String.valueOf(queueSize) + "\n");
+//
+//                            int countdown = response.getInt("countdown");
+//
+//                            resetArrivalTime(countdown / 60, countdown % 60);
+//                            resetCountdown(countdown / 60, countdown % 60);
+//                            startCountdown(countdown / 60, countdown % 60);
+//                        } catch (JSONException e) {
+//                        }
+//                    }
+//                }
+//            });
+        } else {
+            Map<String, String> requestParam = new HashMap<>();
+            requestParam.put("elevator", strOwnerElevator);
+
+            APIClient.get().get_elevator_queue_size(requestParam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
                 @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
-
+                public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                    JSONObject response = convertResponseToJson(responsebody);
                     if (response != null) {
                         try {
                             int queueSize = response.getInt("queue_size");
@@ -207,12 +231,43 @@ public class ElevatorControlFragment extends Fragment {
                         } catch (JSONException e) {
                         }
                     }
+
+
                 }
             });
+
+
+//            RequestParams params = new RequestParams();
+//            params.put("elevator", strOwnerElevator);
+//            AsyncHttpClient client = new AsyncHttpClient();
+//            String functName = "get_elevator_queue_size";
+//            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                @Override
+//                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                    super.onSuccess(statusCode, headers, response);
+//
+//                    if (response != null) {
+//                        try {
+//                            int queueSize = response.getInt("queue_size");
+//                            int queueTime = response.getInt("queue_time");
+//                            txt_cars_in_queue.setText(String.valueOf(queueSize) + "\n");
+//
+//                            int totalDelay = calculateTotalDelayBySecond(queueTime);
+//                            totalMinute = totalDelay / 60;
+//                            totalSecond = totalDelay % 60;
+//
+//                            resetArrivalTime(totalMinute, totalSecond);
+//                            resetCountdown(totalMinute, totalSecond);
+//                        } catch (JSONException e) {
+//                        }
+//                    }
+//                }
+//            });
         }
     }
 
-    private int calculateTotalDelayBySecond(int queueTime){
+    private int calculateTotalDelayBySecond(int queueTime) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
         Date convertedDate = new Date();
         try {
@@ -227,17 +282,19 @@ public class ElevatorControlFragment extends Fragment {
         int delaySeconds = minutes * 60 + seconds + queueTime + delayTime;
         return delaySeconds;
     }
+
     private void activeStatus() {
         state = true;
         btn_start_queue.setImageResource(R.drawable.elevator_control_start_btn_active);
     }
+
     private void deactiveStatus() {
         btn_start_queue.setImageResource(R.drawable.elevator_control_start_btn_normal);
-        if(newtimer != null) {
+        if (newtimer != null) {
             newtimer.cancel();
             newtimer = null;
         }
-        if(currentTimer != null) {
+        if (currentTimer != null) {
             currentTimer.cancel();
             currentTimer = null;
         }
@@ -245,14 +302,16 @@ public class ElevatorControlFragment extends Fragment {
         if (getActivity() != null && state == true) {
             HomeFragment fragment = new HomeFragment();
             UserUtils.storeSelectedCategory(getActivity(), "100");
-            Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+            Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), false);
         }
         state = false;
     }
+
     private void showCurrentTime() {
         txt_current_time.setVisibility(View.VISIBLE);
         refreshCurrentTime();
     }
+
     private void refreshCurrentTime() {
         currentTimer = new CountDownTimer(1000000000, 1000) {
             @Override
@@ -270,7 +329,7 @@ public class ElevatorControlFragment extends Fragment {
                     strZero = "0";
                 else
                     strZero = "";
-                txt_current_time.setText("\n" + (c.get(Calendar.HOUR) % 12)+":"+ strZero + c.get(Calendar.MINUTE)+" "+ ap);
+                txt_current_time.setText("\n" + (c.get(Calendar.HOUR) % 12) + ":" + strZero + c.get(Calendar.MINUTE) + " " + ap);
             }
 
             @Override
@@ -280,6 +339,7 @@ public class ElevatorControlFragment extends Fragment {
         };
         currentTimer.start();
     }
+
     private void resetArrivalTime(int minutes, int seconds) {
         Calendar c = Calendar.getInstance();
         int arrivalHour = c.get(Calendar.HOUR);
@@ -308,7 +368,8 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "";
         txt_arrival_time.setText(String.valueOf(arrivalHour) + ":" + strZeroMinute + String.valueOf(arrivalMinute) + "\n");
     }
-    private void resetCountdown(int minutes, int seconds){
+
+    private void resetCountdown(int minutes, int seconds) {
         String strZeroSecond;
         if (seconds < 10)
             strZeroSecond = "0";
@@ -316,6 +377,7 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "";
         txt_countdowntime.setText(String.valueOf(minutes) + ":" + strZeroSecond + String.valueOf(seconds));
     }
+
     private void startCountdown(int minutes, int seconds) {
         currentMinute = minutes;
         currentSecond = seconds;
@@ -323,30 +385,29 @@ public class ElevatorControlFragment extends Fragment {
         newtimer = new CountDownTimer(1000000000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-               if ((currentMinute > 0 || currentMinute >= 0) && currentMinute >=0) {
-                   if (currentSecond == 0) {
-                       currentMinute -= 1;
-                       currentSecond = 59;
-                   } else if (currentSecond > 0) {
-                       currentSecond -= 1;
-                   }
-                   if (currentMinute > -1) {
-                       String strZeroSecond;
-                       if (currentSecond < 10)
-                           strZeroSecond = "0";
-                       else
+                if ((currentMinute > 0 || currentMinute >= 0) && currentMinute >= 0) {
+                    if (currentSecond == 0) {
+                        currentMinute -= 1;
+                        currentSecond = 59;
+                    } else if (currentSecond > 0) {
+                        currentSecond -= 1;
+                    }
+                    if (currentMinute > -1) {
+                        String strZeroSecond;
+                        if (currentSecond < 10)
+                            strZeroSecond = "0";
+                        else
                             strZeroSecond = "";
-                       txt_countdowntime.setText(String.valueOf(currentMinute) + ":" + strZeroSecond + String.valueOf(currentSecond));
-                   }
-               }
-                else {
-                   if (newtimer != null && state == true) {
-                       if (getActivity() != null) {
-                           Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
-                           successElevator();
-                       }
-                   }
-               }
+                        txt_countdowntime.setText(String.valueOf(currentMinute) + ":" + strZeroSecond + String.valueOf(currentSecond));
+                    }
+                } else {
+                    if (newtimer != null && state == true) {
+                        if (getActivity() != null) {
+                            Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
+                            successElevator();
+                        }
+                    }
+                }
             }
 
             @Override
@@ -356,18 +417,15 @@ public class ElevatorControlFragment extends Fragment {
         };
         newtimer.start();
     }
+
     private void updateCountdown() {
-        RequestParams params = new RequestParams();
-        params.put("pickup", pickup);
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "get_time_increase";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+        Map<String, String> requestParam = new HashMap<>();
+        requestParam.put("pickup", pickup);
+        APIClient.get().get_time_increase(requestParam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                JSONObject response = convertResponseToJson(responsebody);
                 if (response != null) {
                     try {
                         int timeIncrease = Integer.parseInt(response.getString("time_increase"));
@@ -387,22 +445,53 @@ public class ElevatorControlFragment extends Fragment {
                 }
             }
         });
+
+
+//        RequestParams params = new RequestParams();
+//        params.put("pickup", pickup);
+//
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String functName = "get_time_increase";
+//        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//
+//                if (response != null) {
+//                    try {
+//                        int timeIncrease = Integer.parseInt(response.getString("time_increase"));
+//                        String send_time = response.getString("send_time");
+//                        if (timeIncrease > 0 && !send_time.equals(sendTime) && state == true) {
+//                            sendTime = send_time;
+//                            int countdown = currentMinute * 60 + currentSecond + timeIncrease;
+//                            currentMinute = countdown / 60;
+//                            currentSecond = countdown % 60;
+//
+//                            resetArrivalTime(totalMinute + (totalSecond + timeIncrease) / 60, (totalSecond + timeIncrease) % 60);
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }
+//        });
     }
+
     private void sendRequest() {
-        RequestParams params = new RequestParams();
-        params.put("car", indexSelectedCar);
-        params.put("valet", valet);
-        params.put("elevator", strOwnerElevator);
-        params.put("delay", delayTime);
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "request_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+        Map<String, String> requestParam = new HashMap<>();
+        requestParam.put("car", indexSelectedCar);
+        requestParam.put("valet", valet);
+        requestParam.put("elevator", strOwnerElevator);
+        requestParam.put("delay", delayTime + "");
 
+
+        APIClient.get().request_car_elevator(requestParam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                JSONObject response = convertResponseToJson(responsebody);
                 if (response != null) {
                     try {
                         pickup = response.getString("pickup");
@@ -414,44 +503,85 @@ public class ElevatorControlFragment extends Fragment {
                 }
             }
         });
+
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String functName = "request_car_elevator";
+//        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//
+//                if (response != null) {
+//                    try {
+//                        pickup = response.getString("pickup");
+//                        resetArrivalTime(totalMinute, totalSecond);
+//                        resetCountdown(totalMinute, totalSecond);
+//                        startCountdown(totalMinute, totalSecond);
+//                    } catch (JSONException e) {
+//                    }
+//                }
+//            }
+//        });
     }
-    private void cancelRequest(){
-        RequestParams params = new RequestParams();
-        params.put("pickup", pickup);
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "cancel_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+    private void cancelRequest() {
 
+        Map<String, String> requestParam = new HashMap<>();
+        requestParam.put("pickup", pickup);
+
+        APIClient.get().cancel_car_elevator(requestParam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
                 deactiveStatus();
             }
         });
+
+
+//        RequestParams params = new RequestParams();
+//        params.put("pickup", pickup);
+//
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String functName = "cancel_car_elevator";
+//        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//                deactiveStatus();
+//            }
+//        });
     }
+
     private void successElevator() {
-        RequestParams params = new RequestParams();
-        params.put("pickup", pickup);
+        Map<String, String> requestparam = new HashMap<>();
+//        RequestParams params = new RequestParams();
+        requestparam.put("pickup", pickup);
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "success_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler((HomeActivity)getActivity()) {
-
+        APIClient.get().success_car_elevator(requestparam).enqueue(new CustomCall<ResponseBody>(this.getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
                 deactiveStatus();
             }
         });
+
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String functName = "success_car_elevator";
+//        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler((HomeActivity) getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//                deactiveStatus();
+//            }
+//        });
     }
+
     private void onBtnStart() {
         if (state == false) {
             activeStatus();
             sendRequest();
-        }
-        else
-        {
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle(getString(R.string.title_elevator_activated));
             builder.setMessage(getString(R.string.msg_sure_to_cancel_elevator));

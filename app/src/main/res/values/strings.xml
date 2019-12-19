@@ -318,5 +318,6 @@
     <string name="txt_date">DATE</string>
     <string name="txt_time">TIME</string>
     <string name="txt_cancel">CANCEL</string>
+    <string name="api_error">Error in api.</string>
 
 </resources>

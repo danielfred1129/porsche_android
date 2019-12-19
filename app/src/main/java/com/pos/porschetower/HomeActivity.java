@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.pos.porschetower.BaseActivity;
 import com.pos.porschetower.Fragments.HomeFragment;
 import com.pos.porschetower.Fragments.MenuFragment;
 import com.pos.porschetower.Fragments.SettingsFragment;
@@ -58,7 +59,6 @@ public class HomeActivity extends BaseActivity {
     private boolean isReceiverRegistered;
 
     int[] button_images = {
-            R.drawable._concierge_,
             R.drawable.elevator,
             R.drawable.apartament,
             R.drawable.garage,
@@ -99,7 +99,7 @@ public class HomeActivity extends BaseActivity {
         btnSubCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")){
+                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")) {
                     return;
                 }
                 int pos = Integer.valueOf(UserUtils.getSelectedCategory(HomeActivity.this));
@@ -111,8 +111,8 @@ public class HomeActivity extends BaseActivity {
                 CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
                 // Convert CharSequence[] to String[]
                 String[] mTitlesString = new String[mMenuTitleArray.length];
-                int i=0;
-                for(CharSequence ch: mMenuTitleArray){
+                int i = 0;
+                for (CharSequence ch : mMenuTitleArray) {
                     mTitlesString[i++] = ch.toString();
                 }
                 MenuFragment picker_fragment = new MenuFragment();
@@ -166,13 +166,14 @@ public class HomeActivity extends BaseActivity {
         super.onPause();
     }
 
-    private void registerReceiver(){
-        if(!isReceiverRegistered) {
+    private void registerReceiver() {
+        if (!isReceiverRegistered) {
             LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
                     new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
             isReceiverRegistered = true;
         }
     }
+
     /**
      * Check the device to make sure it has the Google Play Services APK. If
      * it doesn't, display a dialog that allows users to download the APK from
@@ -211,18 +212,18 @@ public class HomeActivity extends BaseActivity {
         ft.addToBackStack(null);
         ft.commit();
     }
+
     public void onPlus(View v) {
         Log.d("onPlus", "Plus button clicked");
         addBottomButton();
     }
+
     private void addBottomButton() {
         int status = Integer.valueOf(UserUtils.getSelectedCategory(HomeActivity.this));
         if (status == 100)
             return;
-        if (bottom_buttons.size() < 11)
-        {
-            for (int i = 0; i < bottom_buttons.size(); i++)
-            {
+        if (bottom_buttons.size() < 11) {
+            for (int i = 0; i < bottom_buttons.size(); i++) {
                 if (bottom_buttons.get(i) == status)
                     return;
             }
@@ -230,19 +231,20 @@ public class HomeActivity extends BaseActivity {
             addItemToBottomArray(status);
         }
     }
-    private void updateBottomBar()
-    {
+
+    private void updateBottomBar() {
         if (bottom_buttons_layout.getChildCount() > 0)
             bottom_buttons_layout.removeAllViews();
         for (int status = 0; status < bottom_buttons.size(); status++) {
             addItemToBottomArray(status);
         }
     }
+
     private void addItemToBottomArray(int status) {
         ImageButton btnNewBottom = new ImageButton(this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams((int)getResources().getDimension(R.dimen.settings_button_width),
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen.settings_button_width),
                 LinearLayout.LayoutParams.MATCH_PARENT);
-        lp.setMargins((int)getResources().getDimension(R.dimen.bottom_button_margin),0,0,0);
+        lp.setMargins((int) getResources().getDimension(R.dimen.bottom_button_margin), 0, 0, 0);
         btnNewBottom.setClickable(true);
 
         btnNewBottom.setBackgroundResource(button_images[status]);
@@ -268,8 +270,8 @@ public class HomeActivity extends BaseActivity {
                 CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
                 // Convert CharSequence[] to String[]
                 String[] mTitlesString = new String[mMenuTitleArray.length];
-                int i=0;
-                for(CharSequence ch: mMenuTitleArray){
+                int i = 0;
+                for (CharSequence ch : mMenuTitleArray) {
                     mTitlesString[i++] = ch.toString();
                 }
                 //Send the titleArray via Bundle
@@ -286,8 +288,7 @@ public class HomeActivity extends BaseActivity {
                 if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")) {
                     Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
                     Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
-                }
-                else {
+                } else {
                     Utils.replaceFragmentToBackStack(picker_fragment, HomeActivity.this, true);
                 }
                 UserUtils.storeSelectedCategory(HomeActivity.this, String.valueOf(pos));
@@ -295,6 +296,7 @@ public class HomeActivity extends BaseActivity {
         });
         bottom_buttons_layout.addView(btnNewBottom);
     }
+
     private void showAlertForRemoveBottomButton(final int status) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
         builder.setTitle("Are you sure to remove this button?");
@@ -302,8 +304,7 @@ public class HomeActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int id) {
                 //TODO
                 dialog.dismiss();
-                for (int i = 0; i < bottom_buttons.size(); i++)
-                {
+                for (int i = 0; i < bottom_buttons.size(); i++) {
                     if (bottom_buttons.get(i) == status) {
                         bottom_buttons.remove(i);
                         updateBottomBar();
@@ -321,6 +322,7 @@ public class HomeActivity extends BaseActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     public void onHome(View v) {
         Log.d("onHome", "Home button clicked");
         HomeFragment fragment = new HomeFragment();

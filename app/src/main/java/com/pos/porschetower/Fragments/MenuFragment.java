@@ -12,23 +12,27 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.adapters.PorscheListAdapter;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.FitFragment;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class MenuFragment extends FitFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -83,7 +87,7 @@ public class MenuFragment extends FitFragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        final ListView listView ;
+        final ListView listView;
         listView = (ListView) rootView.findViewById(R.id.menu_list_view);
 
         ImageView img_memuback = (ImageView) rootView.findViewById(R.id.img_memuback);
@@ -103,10 +107,10 @@ public class MenuFragment extends FitFragment {
                                     int position, long id) {
 
                 // ListView Clicked item index
-                final int itemPosition     = position;
+                final int itemPosition = position;
 
                 // ListView Clicked item value
-                String  itemValue    = (String) listView.getItemAtPosition(position);
+                String itemValue = (String) listView.getItemAtPosition(position);
                 String mType = getArguments().getString("type");
                 int type = Integer.parseInt(mType);
 
@@ -118,17 +122,15 @@ public class MenuFragment extends FitFragment {
 
                 if (type == 101) // Car Elevator - Request Car Elevator
                 {
-                    if (getArguments().containsKey("SelectedCar"))
-                    {
-                        String selectedCar=getArguments().getString("SelectedCar");
+                    if (getArguments().containsKey("SelectedCar")) {
+                        String selectedCar = getArguments().getString("SelectedCar");
                         fragment = new ElevatorControlFragment();
                         Bundle bd = new Bundle();
                         bd.putString("SelectedCar", selectedCar);
                         if (position == 0) {
                             bd.putString("valet", "ridedown");
                             bd.putInt("delayTime", 0);
-                        }
-                        else {
+                        } else {
                             bd.putString("valet", "valet");
                             bd.putInt("delayTime", 95);
                         }
@@ -139,8 +141,7 @@ public class MenuFragment extends FitFragment {
                         Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
                     }
 
-                }
-                else if (type == 102) // Car Elevator - Schedule
+                } else if (type == 102) // Car Elevator - Schedule
                 {
                     fragment = new CalendarFragment();
                     Bundle bd = new Bundle();
@@ -149,8 +150,7 @@ public class MenuFragment extends FitFragment {
                     UserUtils.storeValet(getActivity(), mTitlesArray[itemPosition]);
                     fragment.setArguments(bd);
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                }
-                else if (type == 1021) // Car Elevator - Repeat Schedule - Selecting Car -> RideDown /Valet -> Select DateTime ->
+                } else if (type == 1021) // Car Elevator - Repeat Schedule - Selecting Car -> RideDown /Valet -> Select DateTime ->
                 {
                     UserObject owner = UserUtils.getSession(getActivity());
                     JSONObject objectCar = UserUtils.getSelectedCar(getActivity());
@@ -191,32 +191,42 @@ public class MenuFragment extends FitFragment {
                             repeat = "none";
                             break;
                     }
+                    Map<String, String> requestParam = new HashMap<>();
+//                    RequestParams params = new RequestParams();
+                    requestParam.put("car", carIndex);
+                    requestParam.put("valet", valet);
+                    requestParam.put("elevator", elevator);
+                    requestParam.put("request_time", datetimeString);
+                    requestParam.put("repeat", repeat);
 
-                    RequestParams params = new RequestParams();
-                    params.put("car", carIndex);
-                    params.put("valet", valet);
-                    params.put("elevator", elevator);
-                    params.put("request_time", datetimeString);
-                    params.put("repeat", repeat);
-
-                    AsyncHttpClient client = new AsyncHttpClient();
-                    String functName = "schedule_car_elevator";
-                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                    APIClient.get().schedule_car_elevator(requestParam).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                         @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            super.onSuccess(statusCode, headers, response);
-
+                        public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                            JSONObject response = convertResponseToJson(responsebody);
                             if (response != null) {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_has_been_pickup));
                             }
                         }
                     });
+
+
+//                    AsyncHttpClient client = new AsyncHttpClient();
+//                    String functName = "schedule_car_elevator";
+//                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                        @Override
+//                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                            super.onSuccess(statusCode, headers, response);
+//
+//                            if (response != null) {
+//                                Utils.showAlert(getActivity(), getResources().getString(R.string.msg_has_been_pickup));
+//                            }
+//                        }
+//                    });
                     fragment = new HomeFragment();
                     UserUtils.storeSelectedCategory(getActivity(), "100");
                     Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                }
-                else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage
+                } else if (type == 301 || type == 302 || type == 303) // Car Concierge - Detailing / Service / Storage
                 {
                     String serviceType = null;
                     if (type == 301)
@@ -231,10 +241,9 @@ public class MenuFragment extends FitFragment {
                     bd.putInt("index", itemPosition);
                     bd.putBoolean("hasCall", false);
                     openDescriptionFragment(bd);
-                }
-                else if (type  == 1) // Car Elevator
+                } else if (type == 1) // Car Elevator
                 {
-                    switch(position){
+                    switch (position) {
                         case 0:
                             fragment = new ShowroomFragment();
                             mTypeBundle = new Bundle();
@@ -255,15 +264,14 @@ public class MenuFragment extends FitFragment {
                             break;
                     }
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                }
-                else if (type == 2) // In-Unit
+                } else if (type == 2) // In-Unit
                 {
                     switch (position) { //Request Maintenance
                         case 0:
                             Calendar c = Calendar.getInstance();
                             int ampm = c.get(Calendar.AM_PM);
 
-                            int year, month, day, hour, minute,second;
+                            int year, month, day, hour, minute, second;
 
                             year = c.get(Calendar.YEAR);
                             month = c.get(Calendar.MONTH) + 1;
@@ -274,30 +282,40 @@ public class MenuFragment extends FitFragment {
                             if (ampm == 1)
                                 hour = hour + 12;
 
-                            String dateTimeString =  year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + "00";
+                            String dateTimeString = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + "00";
                             String index_num = "5";
                             String request_type = "request_maintenance";
+                            Map<String, String> requestParam = new HashMap<>();
+//                            RequestParams params = new RequestParams();
+                            requestParam.put("type", request_type);
+                            requestParam.put("index", index_num);
+                            UserObject object = UserUtils.getSession((HomeActivity) getActivity());
+                            requestParam.put("owner", object.getIndex() + "");
+                            requestParam.put("date_time", dateTimeString);
 
-                            RequestParams params = new RequestParams();
-                            params.put("type", request_type);
-                            params.put("index", index_num);
-                            UserObject object = UserUtils.getSession((HomeActivity)getActivity());
-                            params.put("owner", object.getIndex());
-                            params.put("date_time", dateTimeString);
-
-
-                            AsyncHttpClient client = new AsyncHttpClient();
-                            String functName = "send_schedule_request";
-                            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                            APIClient.get().send_schedule_request(requestParam).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                                 @Override
-                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                    super.onSuccess(statusCode, headers, response);
+                                public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                                    JSONObject response = convertResponseToJson(responsebody);
                                     if (response != null) {
                                         Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                                     }
                                 }
                             });
+
+
+//                            AsyncHttpClient client = new AsyncHttpClient();
+//                            String functName = "send_schedule_request";
+//                            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                                @Override
+//                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                    super.onSuccess(statusCode, headers, response);
+//                                    if (response != null) {
+//                                        Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+//                                    }
+//                                }
+//                            });
                             break;
                         case 1:
                             Utils.showAlertWithTitleNoCancel(getActivity(), getResources().getString(R.string.msg_front_desk_req_confirmed),
@@ -311,10 +329,8 @@ public class MenuFragment extends FitFragment {
                             break;
                     }
 //                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                }
-                else if (type == 3)
-                {
-                    switch (position){
+                } else if (type == 3) {
+                    switch (position) {
                         case 0:
                             fragment = new ShowroomFragment();
                             mTypeBundle = new Bundle();
@@ -337,17 +353,13 @@ public class MenuFragment extends FitFragment {
                             fragment = new Fragment();
                     }
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
-                }
-                else if (type ==4) //Pool-Beach Requests
+                } else if (type == 4) //Pool-Beach Requests
                 {
                     Bundle bd = new Bundle();
                     bd.putString(SCHEDULEDATA, "pool_beach");
-                    if (itemPosition == 0)
-                    {
+                    if (itemPosition == 0) {
                         bd.putString("Location", "Pool");
-                    }
-                    else
-                    {
+                    } else {
                         bd.putString("Location", "Beach");
                     }
                     SelectTimeFragment select_timefragment = new SelectTimeFragment();
@@ -360,37 +372,29 @@ public class MenuFragment extends FitFragment {
                     bd.putInt(DAYOFMONTH, currentDay);
 
                     select_timefragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(select_timefragment, (HomeActivity)getActivity(), true);
-                }
-                else if (type == 5) //Wellness
+                    Utils.addFragmentToBackstack(select_timefragment, (HomeActivity) getActivity(), true);
+                } else if (type == 5) //Wellness
                 {
                     Bundle bd = new Bundle();
                     String[] menuTitles;
 
-                    if (itemPosition == 1)
-                    {
+                    if (itemPosition == 1) {
                         menuTitles = getResources().getStringArray(R.array.gym_titles);
                         bd.putString(MENU_TYPE, "SubMenu");
                         bd.putStringArray(TITLES, menuTitles);
                         bd.putString("type", "502");
                         fragment = new MenuFragment();
                         fragment.setArguments(bd);
-                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
-                    }
-                    else if (itemPosition == 0)
-                    {
-                        RequestParams params = new RequestParams();
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                    } else if (itemPosition == 0) {
+//                        RequestParams params = new RequestParams();
+//                        Map<String, String> requestParam = new HashMap<>();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
-                        String functName = "get_spa";
-
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+//                        params.put("owner", user);
+                        APIClient.get().get_spa(user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
-
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray("spa_list");
@@ -408,22 +412,56 @@ public class MenuFragment extends FitFragment {
                                         bd.putStringArray("titles", menuTitles);
                                         bd.putString("type", "501");
                                         fragment.setArguments(bd);
-                                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
                                     } catch (JSONException e) {
                                     }
+
                                 }
                             }
-
                         });
+
+//                        AsyncHttpClient client = new AsyncHttpClient();
+//                        String functName = "get_spa";
+//
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray("spa_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                menuTitles[i] = object.getString("service");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "501");
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
                     }
-                }
-                else if (type == 501 || type == 502) // Wellness -> Salon Spa || Fitness
+                } else if (type == 501 || type == 502) // Wellness -> Salon Spa || Fitness
                 {
-                    if (type == 502){
-                        RequestParams params = new RequestParams();
+                    if (type == 502) {
+//                        Map<String,String> requestParam = new HashMap<>();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
+//                        params.put("owner", user);
+//                        AsyncHttpClient client = new AsyncHttpClient();
                         if (itemPosition == 0)
                             tempReqType = "gym_trainers";
                         else if (itemPosition == 1)
@@ -431,12 +469,10 @@ public class MenuFragment extends FitFragment {
 
                         String functName = "get_" + tempReqType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        APIClient.get().gym_trainers(functName, user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
-
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(tempReqType + "_list");
@@ -457,57 +493,83 @@ public class MenuFragment extends FitFragment {
                                         bd.putStringArray("titles", menuTitles);
                                         bd.putString("type", "502" + String.valueOf(itemPosition + 1));
                                         fragment.setArguments(bd);
-                                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
                                     } catch (JSONException e) {
                                     }
                                 }
                             }
-
                         });
-                    }
-                    else if (type == 501)
-                    {
+
+
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray(tempReqType + "_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                if (itemPosition == 0)
+//                                                    menuTitles[i] = object.getString("staff_name");
+//                                                else //itemposition == 1
+//                                                    menuTitles[i] = object.getString("gym_class_name");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "502" + String.valueOf(itemPosition + 1));
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
+                    } else if (type == 501) {
                         Bundle bd = new Bundle();
                         bd.putString("type", "spa");
                         bd.putInt("index", itemPosition);
                         bd.putBoolean("hasCall", false);
                         openDescriptionFragment(bd);
                     }
-                }
-                else if (type == 5021 || type == 5022)
-                {
+                } else if (type == 5021 || type == 5022) {
                     Bundle bd = new Bundle();
-                    if (type == 5021){ // Personal Trainers
+                    if (type == 5021) { // Personal Trainers
                         bd.putString("type", "gym_trainers");
-                    }
-                    else if (type == 5022) // Classes
+                    } else if (type == 5022) // Classes
                     {
                         bd.putString("type", "gym_trainers");
                     }
                     bd.putInt("index", itemPosition);
                     fragment = new GymserviceFragment();
                     fragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
-                }
-                else if (type == 6) { //Activities
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                } else if (type == 6) { //Activities
                     fragment = new MenuFragment();
                     Bundle bd = new Bundle();
                     bd.putString("menu_type", "SubMenu");
                     bd.putString("type", "60" + String.valueOf(itemPosition + 1));
 
-                    if (itemPosition == 2)
-                    {
+                    if (itemPosition == 2) {
                         String[] menuTitles = getResources().getStringArray(R.array.theatre_titles);
                         bd.putStringArray("titles", menuTitles);
                         fragment.setArguments(bd);
                         Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
-                    }
-                    else {
+                    } else {
 
-                        RequestParams params = new RequestParams();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
+//                        params.put("owner", user);
+//                        AsyncHttpClient client = new AsyncHttpClient();
                         final String strType;
                         if (itemPosition == 0)
                             strType = "golf_sim";
@@ -518,12 +580,11 @@ public class MenuFragment extends FitFragment {
 
                         String functName = "get_" + strType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        APIClient.get().community_roomOrracing_simOrgolf_sim(functName, user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(strType + "_list");
@@ -545,15 +606,44 @@ public class MenuFragment extends FitFragment {
                                     } catch (JSONException e) {
                                     }
                                 }
+
                             }
-
                         });
-                    }
-                }
-                else if (type == 603) { //theatre
 
-                }
-                else if (type == 601 || type == 602 || type == 604){ // Golfsim / racingsim / community room
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                menuTitles[i] = object.getString("service");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "60" + String.valueOf(itemPosition + 1));
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
+                    }
+                } else if (type == 603) { //theatre
+
+                } else if (type == 601 || type == 602 || type == 604) { // Golfsim / racingsim / community room
                     Bundle bd = new Bundle();
                     String strType;
                     if (type == 601)
@@ -566,25 +656,23 @@ public class MenuFragment extends FitFragment {
                     bd.putInt("index", itemPosition);
                     bd.putBoolean("hasCall", false);
                     openDescriptionFragment(bd);
-                }
-                else if (type == 7) { //Dining
+                } else if (type == 7) { //Dining
                     if (itemPosition == 0) { // In House Dining
                         fragment = new MenuFragment();
                         Bundle bd = new Bundle();
-                        RequestParams params = new RequestParams();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
+//                        params.put("owner", user);
+//                        AsyncHttpClient client = new AsyncHttpClient();
                         final String strType = "restaurants_in_house";
 
-                        String functName = "get_" + strType;
+//                        String functName = "get_" + strType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        APIClient.get().get_restaurants_in_house(user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(strType + "_list");
@@ -606,43 +694,69 @@ public class MenuFragment extends FitFragment {
                                     } catch (JSONException e) {
                                     }
                                 }
-                            }
 
+                            }
                         });
-                    }
-                    else if (itemPosition == 1){ // Request a call
+
+
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                menuTitles[i] = object.getString("name");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "701");
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
+                    } else if (itemPosition == 1) { // Request a call
                         Utils.showAlertWithTitle(getActivity(), getResources().getString(R.string.msg_order_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
                         return;
                     }
-                }
-                else if (type == 701) { // In House Dining
+                } else if (type == 701) { // In House Dining
                     Bundle bd = new Bundle();
                     bd.putString("type", "restaurants_in_house");
                     bd.putInt("index", itemPosition);
                     fragment = new DiningFragment();
                     fragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
                     return;
-                }
-                else if (type == 8) { //Documents
+                } else if (type == 8) { //Documents
                     if (itemPosition == 0) //Documents
                     {
                         fragment = new MenuFragment();
                         Bundle bd = new Bundle();
-                        RequestParams params = new RequestParams();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
+//                        params.put("owner", user);
+//                        AsyncHttpClient client = new AsyncHttpClient();
                         final String strType = "document";
 
-                        String functName = "get_" + strType;
-
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        APIClient.get().get_document(user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(strType + "_list");
@@ -664,26 +778,55 @@ public class MenuFragment extends FitFragment {
                                     } catch (JSONException e) {
                                     }
                                 }
+
                             }
-
                         });
-                    }
-                    else if (itemPosition == 1)//Documents -> Unit Manual
+
+//                        String functName = "get_" + strType;
+
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                menuTitles[i] = object.getString("name");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "801");
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
+                    } else if (itemPosition == 1)//Documents -> Unit Manual
                     {
-                        RequestParams params = new RequestParams();
+                        Map<String, String> requestparm = new HashMap<>();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user.getIndex());
-
-                        AsyncHttpClient client = new AsyncHttpClient();
-                        String functName = "get_unit_manual";
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        requestparm.put("owner", user.getIndex() + "");
+                        APIClient.get().get_unit_manual(requestparm).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
-                                    try{
+                                    try {
                                         JSONArray menu_info_array = response.getJSONArray("unit_manual");
                                         JSONObject objectDocument = menu_info_array.getJSONObject(0);
                                         String docURL = objectDocument.getString("doc_url");
@@ -692,11 +835,32 @@ public class MenuFragment extends FitFragment {
                                     } catch (JSONException e) {
                                     }
                                 }
+
                             }
                         });
+
+//                        AsyncHttpClient client = new AsyncHttpClient();
+//                        String functName = "get_unit_manual";
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray("unit_manual");
+//                                        JSONObject objectDocument = menu_info_array.getJSONObject(0);
+//                                        String docURL = objectDocument.getString("doc_url");
+//                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(docURL));
+//                                        startActivity(browserIntent);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//                        });
                     }
-                }
-                else if (type == 801) { ////Documents -> Documents ->select Item
+                } else if (type == 801) { ////Documents -> Documents ->select Item
                     String scheduleString = UserUtils.getScheduleData(getActivity());
                     try {
                         JSONArray scheduleArray = new JSONArray(scheduleString);
@@ -708,75 +872,59 @@ public class MenuFragment extends FitFragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }
-
-                else if (type == 9) { // Information Board
+                } else if (type == 9) { // Information Board
                     String infoType = "";
-                    if (itemPosition == 1)
-                    {
+                    if (itemPosition == 1) {
                         infoType = "personal_notifications";
-                    }
-                    else if (itemPosition == 2)
-                    {
+                    } else if (itemPosition == 2) {
                         infoType = "building_maintenance";
-                    }
-                    else if (itemPosition == 3)
-                    {
+                    } else if (itemPosition == 3) {
                         infoType = "event_notifications";
                     }
                     Bundle bd = new Bundle();
                     bd.putString("type", infoType);
                     fragment = new InformationFragment();
                     fragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
                     return;
-                }
-
-                else if (type == 10) // Local Info
+                } else if (type == 10) // Local Info
                 {
                     if (itemPosition == 0) //Local Info -> Weather
                     {
                         fragment = new WeatherFragment();
-                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
-                    }
-                    else if (itemPosition == 1) // Local Info -> View Weather
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                    } else if (itemPosition == 1) // Local Info -> View Weather
                     {
                         String weatherURL = "https://www.wunderground.com/webcams/zafer/7/show.html";
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(weatherURL));
                         startActivity(browserIntent);
                     }
-                }
-                else if (type == 0) { //Concierge
+                } else if (type == 0) { //Concierge
                     if (itemPosition == 0) //Request HouseKeeping
                     {
-                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
+                        Utils.showAlertWithTitle((HomeActivity) getActivity(),
                                 getResources().getString(R.string.msg_housekeeping_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
                         return;
-                    }
-                    else if (itemPosition == 1) //Request Transporation
+                    } else if (itemPosition == 1) //Request Transporation
                     {
-                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
+                        Utils.showAlertWithTitle((HomeActivity) getActivity(),
                                 getResources().getString(R.string.msg_transportation_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
                         return;
-                    }
-                    else if (itemPosition == 2)// Dry Cleaning
+                    } else if (itemPosition == 2)// Dry Cleaning
                     {
                         fragment = new MenuFragment();
                         Bundle bd = new Bundle();
-                        RequestParams params = new RequestParams();
+//                        RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
-                        AsyncHttpClient client = new AsyncHttpClient();
+//                        params.put("owner", user);
+//                        AsyncHttpClient client = new AsyncHttpClient();
                         final String strType = "dry_cleaning";
 
-                        String functName = "get_" + strType;
-
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        APIClient.get().get_dry_cleaning(user).enqueue(new CustomCall<ResponseBody>(MenuFragment.this.getActivity()) {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                super.onSuccess(statusCode, headers, response);
+                            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                                JSONObject response = convertResponseToJson(responsebody);
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(strType + "_list");
@@ -798,20 +946,52 @@ public class MenuFragment extends FitFragment {
                                     } catch (JSONException e) {
                                     }
                                 }
-                            }
 
+
+                            }
                         });
+
+//                        String functName = "get_" + strType;
+
+//                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                                super.onSuccess(statusCode, headers, response);
+//
+//                                if (response != null) {
+//                                    try {
+//                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
+//                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
+//                                        String[] menuTitles = new String[menu_info_array.length()];
+//                                        if (menu_info_array.length() > 0) {
+//                                            for (int i = 0; i < menu_info_array.length(); i++) {
+//                                                JSONObject object = menu_info_array.getJSONObject(i);
+//                                                menuTitles[i] = object.getString("name");
+//                                            }
+//                                        }
+//                                        MenuFragment fragment = new MenuFragment();
+//                                        Bundle bd = new Bundle();
+//                                        bd.putString("menu_type", "SubMenu");
+//                                        bd.putStringArray("titles", menuTitles);
+//                                        bd.putString("type", "1003");
+//                                        fragment.setArguments(bd);
+//                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                                    } catch (JSONException e) {
+//                                    }
+//                                }
+//                            }
+//
+//                        });
                     }
-                }
-                else if (type ==  1003) //Concierge -> Dry Cleaning
+                } else if (type == 1003) //Concierge -> Dry Cleaning
                 {
                     Bundle bd = new Bundle();
                     bd.putString("type", "dry_cleaning");
                     bd.putInt("index", itemPosition);
                     bd.putBoolean("hasCall", false);
                     openDescriptionFragment(bd);
-                }
-                else {
+                } else {
                     fragment = new MenuFragment();
 //                    String[] mTitlesString = {"abc", "def", "wer"};
 //                    Bundle bundle = new Bundle();
@@ -826,8 +1006,7 @@ public class MenuFragment extends FitFragment {
         return rootView;
     }
 
-    private void openDescriptionFragment(Bundle bd)
-    {
+    private void openDescriptionFragment(Bundle bd) {
         DescriptionFragment fragment = new DescriptionFragment();
         fragment.setArguments(bd);
         Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);

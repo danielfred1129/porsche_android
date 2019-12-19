@@ -1,5 +1,6 @@
 package com.pos.porschetower.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,32 +11,33 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
-import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.PickupsItem;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
-import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by buddy on 10/24/2016.
  */
 
-public class PickupsListAdapter  extends BaseAdapter {
+public class PickupsListAdapter extends BaseAdapter {
     ArrayList<PickupsItem> listdata;
-    private Context mContext;
+    private Activity mContext;
 
-    public PickupsListAdapter(Context context, ArrayList <PickupsItem> listdata) {
+    public PickupsListAdapter(Activity context, ArrayList<PickupsItem> listdata) {
         mContext = context;
         this.listdata = listdata;
     }
@@ -89,9 +91,10 @@ public class PickupsListAdapter  extends BaseAdapter {
         holder.btn_pickup_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestParams params = new RequestParams();
+//                RequestParams params = new RequestParams();
+                Map<String, String> requestParam = new HashMap<>();
                 UserObject user = UserUtils.getSession(mContext);
-                params.put("owner", user.getIndex());
+                requestParam.put("owner", user.getIndex() + "");
                 String scheduled_pickups = UserUtils.getScheduleData(mContext);
                 String index = "";
                 JSONArray pickupsArray = null;
@@ -102,11 +105,9 @@ public class PickupsListAdapter  extends BaseAdapter {
                     JSONArray changedArray = new JSONArray();
                     int len = pickupsArray.length();
                     if (pickupsArray != null) {
-                        for (int i=0;i<len;i++)
-                        {
+                        for (int i = 0; i < len; i++) {
                             //Excluding the item at position
-                            if (i != position)
-                            {
+                            if (i != position) {
                                 changedArray.put(pickupsArray.get(i));
                             }
                         }
@@ -117,39 +118,46 @@ public class PickupsListAdapter  extends BaseAdapter {
                     e.printStackTrace();
                 }
 
-                params.put("pickup", index);
+                requestParam.put("pickup", index);
                 String funcName = "cancel_scheduled_car_elevator";
-                AsyncHttpClient client = new AsyncHttpClient();
-                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler((HomeActivity)mContext) {
-
+                APIClient.get().cancel_scheduled_car_elevator(requestParam).enqueue(new CustomCall<ResponseBody>(mContext) {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
+                    public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
                         listdata.remove(position);
                         notifyDataSetChanged();
-                        if (response != null) {
-                        }
-                    }
 
+                    }
                 });
+
+
+//                AsyncHttpClient client = new AsyncHttpClient();
+//                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler((HomeActivity)mContext) {
+//
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        super.onSuccess(statusCode, headers, response);
+//                        listdata.remove(position);
+//                        notifyDataSetChanged();
+//                        if (response != null) {
+//                        }
+//                    }
+//
+//                });
             }
         });
 
 
         int backColor;
-        if (position % 2 == 0)
-        {
+        if (position % 2 == 0) {
             backColor = Color.rgb(0, 0, 0);
-        }
-        else
-        {
+        } else {
             backColor = Color.rgb(40, 43, 47);
         }
         view.setBackgroundColor(backColor);
         return view;
     }
 
-    public ArrayList <PickupsItem> getData() {
+    public ArrayList<PickupsItem> getData() {
         return this.listdata;
     }
 

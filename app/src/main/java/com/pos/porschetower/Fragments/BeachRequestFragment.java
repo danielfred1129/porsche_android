@@ -11,17 +11,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
+
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.UserObject;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 
 public class BeachRequestFragment extends Fragment {
@@ -70,15 +78,14 @@ public class BeachRequestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView =  inflater.inflate(R.layout.fragment_beach_request, container, false);
+        rootView = inflater.inflate(R.layout.fragment_beach_request, container, false);
         txt_chair_count = (TextView) rootView.findViewById(R.id.txt_chair_count);
 
         ImageButton btn_count_plus = (ImageButton) rootView.findViewById(R.id.btn_count_plus);
         btn_count_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (chairs < 99)
-                {
+                if (chairs < 99) {
                     chairs++;
                     txt_chair_count.setText(String.valueOf(chairs));
                 }
@@ -88,8 +95,7 @@ public class BeachRequestFragment extends Fragment {
         btn_count_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (chairs > 0)
-                {
+                if (chairs > 0) {
                     chairs--;
                     txt_chair_count.setText(String.valueOf(chairs));
                 }
@@ -100,30 +106,45 @@ public class BeachRequestFragment extends Fragment {
         btn_send_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestParams params = new RequestParams();
+                Map<String, String> requestParam = new HashMap<>();
+//                RequestParams params = new RequestParams();
                 UserObject owner = UserUtils.getSession(getActivity());
-                params.put("owner", owner.getIndex());
-                params.put("location", mLocation);
-                params.put("date_time", mDatetime);
-                params.put("chairs", chairs);
-                params.put("towels", towels);
-                params.put("umbrella", umbrellas);
+                requestParam.put("owner", owner.getIndex() + "");
+                requestParam.put("location", mLocation);
+                requestParam.put("date_time", mDatetime);
+                requestParam.put("chairs", chairs + "");
+                requestParam.put("towels", towels + "");
+                requestParam.put("umbrella", umbrellas + "");
 
-                AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_schedule_request_for_pool_beach";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                APIClient.get().send_schedule_request_for_pool_beach(requestParam).enqueue(new CustomCall<ResponseBody>(getActivity()) {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
+                    public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
                         Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                         UserUtils.storeSelectedCategory(getActivity(), "100");
 
                         HomeFragment fragment = new HomeFragment();
-                        Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+                        Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), false);
+
                     }
                 });
+
+
+//                AsyncHttpClient client = new AsyncHttpClient();
+//                String functName = "send_schedule_request_for_pool_beach";
+//                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        super.onSuccess(statusCode, headers, response);
+//
+//                        Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+//                        UserUtils.storeSelectedCategory(getActivity(), "100");
+//
+//                        HomeFragment fragment = new HomeFragment();
+//                        Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+//                    }
+//                });
             }
         });
 

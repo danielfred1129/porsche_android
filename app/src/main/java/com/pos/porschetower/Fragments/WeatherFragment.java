@@ -9,17 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.R;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClientWeather;
+import com.pos.porschetower.network.CustomCall;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.util.Date;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class WeatherFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -110,17 +112,16 @@ public class WeatherFragment extends Fragment {
     }
 
     private void showWeatherInformation() {
-        RequestParams params = new RequestParams();
+//        RequestParams params = new RequestParams();
 
-        AsyncHttpClient client = new AsyncHttpClient();
+//        AsyncHttpClient client = new AsyncHttpClient();
         String weatherAPIKey = "e0d2184799fefb0c";
-        String url = "http://api.wunderground.com/api/" + weatherAPIKey + "/conditions/q/FL/Miami.json";
-        client.post(url, null, new PorscheTowerResponseHandler(getActivity()) {
 
+        APIClientWeather.get().getWeatherCondition(weatherAPIKey).enqueue(new CustomCall<ResponseBody>(getActivity()) {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
 
+                JSONObject response = convertResponseToJson(responsebody);
                 if (response != null) {
                     try {
                         JSONObject currentObservation = response.getJSONObject("current_observation");
@@ -142,8 +143,40 @@ public class WeatherFragment extends Fragment {
                     }
 
                 }
+
             }
         });
+
+//        String url = "http://api.wunderground.com/api/" + weatherAPIKey + "/conditions/q/FL/Miami.json";
+//        client.post(url, null, new PorscheTowerResponseHandler(getActivity()) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//
+//                if (response != null) {
+//                    try {
+//                        JSONObject currentObservation = response.getJSONObject("current_observation");
+//
+//                        float currentTemperature = Float.valueOf(currentObservation.getString("temp_f"));
+//                        int temperature = (int)currentTemperature;
+//
+//                        txt_temperature.setText(String.valueOf(temperature) + "F");
+//                        txt_feellike_temperature.setText(currentObservation.getString("feelslike_f"));
+//                        txt_weather.setText(currentObservation.getString("weather"));
+//                        txt_wind.setText(currentObservation.getString("wind_mph") + " mph");
+//                        txt_humidity.setText(currentObservation.getString("relative_humidity"));
+//                        txt_uvindex.setText(currentObservation.getString("UV"));
+//                        txt_visibility.setText(currentObservation.getString("visibility_mi") + " mi");
+//                        txt_nexthourprecip.setText(currentObservation.getString("precip_1hr_in") + " in");
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }
+//        });
     }
 
     @Override
