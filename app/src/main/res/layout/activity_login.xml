@@ -139,17 +139,6 @@
                     android:textSize="@dimen/button_text_size"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/activity_login_btntest"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_loginbutton_height"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/btn_signin_color"
-                    android:onClick="onOtherLogin"
-                    android:text="Login"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/button_text_size"
-                    android:textStyle="bold" />
             </LinearLayout>
 
         </RelativeLayout>

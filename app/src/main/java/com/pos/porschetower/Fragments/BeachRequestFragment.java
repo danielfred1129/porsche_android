@@ -11,18 +11,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.UserObject;
 import com.pos.porschetower.network.APIClient;
 import com.pos.porschetower.network.CustomCall;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
-
-import org.apache.http.Header;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -10,12 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-import com.google.gson.JsonElement;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -23,24 +18,19 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.pos.porschetower.datamodel.UserObject;
 import com.pos.porschetower.network.APIClient;
 import com.pos.porschetower.network.CustomCall;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
@@ -101,83 +91,83 @@ public class LoginActivity extends AppCompatActivity {
         ImageLoader.getInstance().clearDiskCache();
     }
 
-    public void onOtherLogin(View v){
-
-        if (edtEmail.getText().toString().isEmpty()) {
-            edtEmail.setError("Cannot be blank");
-            return;
-        }
-        if (edtPassword.getText().toString().isEmpty()) {
-            edtPassword.setError("Cannot be blank");
-            return;
-        }
-
-        RequestParams params = new RequestParams();
-        params.put("email", edtEmail.getText().toString());
-        params.put("password", edtPassword.getText().toString());
-        params.put("device_token", "1324325435346346456546");
-        params.put("os_type", "android");
-
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.post(Utils.BASE_URL + "login", params, new PorscheTowerResponseHandler(this) {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-
-                if (response != null) {
-                    try {
-
-                        if (!(response.isNull("owner"))) {
-                            JSONArray jsonArray = response.getJSONArray("owner");
-                            JSONObject json = jsonArray.getJSONObject(0);
-
-                            UserObject user = new UserObject();
-                            user.setIndex(json.getInt("index"));
-                            user.setFirstName(json.getString("first_name"));
-                            user.setLastName(json.getString("last_name"));
-                            user.setEmail(json.getString("email"));
-                            user.setUserPass(json.getString("password"));
-                            user.setPhone(json.getString("phone"));
-                            user.setUnit(json.getJSONObject("unit"));
-                            user.setId(json.getString("id"));
-                            user.setLanguage(json.getString("language"));
-                            user.setCatID(json.getInt("cat_id"));
-
-                            if (tempLocale == null) {
-                                Locale current = getResources().getConfiguration().locale;
-                                user.setLocale(current.toString());
-                            } else {
-                                user.setLocale(tempLocale);
-                            }
-
-                            if (tempLogoutTime == 0) {
-                                user.setLogoutTime(1);
-                            } else {
-                                user.setLogoutTime(tempLogoutTime);
-                            }
-
-                            UserUtils.storeSession(LoginActivity.this, user);
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        } else {
-                            String login_url = Utils.LOGIN_BASE_URL + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
-//                            String login_url = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
-
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(login_url));
-                            startActivity(browserIntent);
-                        }
-                    } catch (JSONException e) {
-                        Utils.showAlert(LoginActivity.this, "Happen some issues on the server. Please try again!");
-                    }
-                }
-            }
-
-        });
-
-    }
+//    public void onOtherLogin(View v){
+//
+//        if (edtEmail.getText().toString().isEmpty()) {
+//            edtEmail.setError("Cannot be blank");
+//            return;
+//        }
+//        if (edtPassword.getText().toString().isEmpty()) {
+//            edtPassword.setError("Cannot be blank");
+//            return;
+//        }
+//
+//        RequestParams params = new RequestParams();
+//        params.put("email", edtEmail.getText().toString());
+//        params.put("password", edtPassword.getText().toString());
+//        params.put("device_token", "1324325435346346456546");
+//        params.put("os_type", "android");
+//
+//
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        client.post(Utils.BASE_URL + "login", params, new PorscheTowerResponseHandler(this) {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//
+//                if (response != null) {
+//                    try {
+//
+//                        if (!(response.isNull("owner"))) {
+//                            JSONArray jsonArray = response.getJSONArray("owner");
+//                            JSONObject json = jsonArray.getJSONObject(0);
+//
+//                            UserObject user = new UserObject();
+//                            user.setIndex(json.getInt("index"));
+//                            user.setFirstName(json.getString("first_name"));
+//                            user.setLastName(json.getString("last_name"));
+//                            user.setEmail(json.getString("email"));
+//                            user.setUserPass(json.getString("password"));
+//                            user.setPhone(json.getString("phone"));
+//                            user.setUnit(json.getJSONObject("unit"));
+//                            user.setId(json.getString("id"));
+//                            user.setLanguage(json.getString("language"));
+//                            user.setCatID(json.getInt("cat_id"));
+//
+//                            if (tempLocale == null) {
+//                                Locale current = getResources().getConfiguration().locale;
+//                                user.setLocale(current.toString());
+//                            } else {
+//                                user.setLocale(tempLocale);
+//                            }
+//
+//                            if (tempLogoutTime == 0) {
+//                                user.setLogoutTime(1);
+//                            } else {
+//                                user.setLogoutTime(tempLogoutTime);
+//                            }
+//
+//                            UserUtils.storeSession(LoginActivity.this, user);
+//                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//                            startActivity(intent);
+//                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                        } else {
+//                            String login_url = Utils.LOGIN_BASE_URL + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
+////                            String login_url = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=" + edtEmail.getText().toString() + "&password=" + edtPassword.getText().toString();
+//
+//                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(login_url));
+//                            startActivity(browserIntent);
+//                        }
+//                    } catch (JSONException e) {
+//                        Utils.showAlert(LoginActivity.this, "Happen some issues on the server. Please try again!");
+//                    }
+//                }
+//            }
+//
+//        });
+//
+//    }
 
     public void onLogin(View v) {
         if (edtEmail.getText().toString().isEmpty()) {

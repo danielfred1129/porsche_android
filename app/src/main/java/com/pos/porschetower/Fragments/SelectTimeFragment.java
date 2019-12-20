@@ -10,21 +10,25 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.customview.PorscheTextView;
 import com.pos.porschetower.datamodel.UserObject;
-import com.pos.porschetower.network.PorscheTowerResponseHandler;
+import com.pos.porschetower.network.APIClient;
+import com.pos.porschetower.network.CustomCall;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class SelectTimeFragment extends Fragment {
     private View rootView;
@@ -34,7 +38,7 @@ public class SelectTimeFragment extends Fragment {
     private static final String SCHEDULEDATA = "scheduleData";
 
     // TODO: Rename and change types of parameters
-    private int myear, mmonth, mdayOfMonth ;
+    private int myear, mmonth, mdayOfMonth;
     private String mScheduleData;
 
 
@@ -72,11 +76,10 @@ public class SelectTimeFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_select_time, container, false);
         initializeControl();
-        return  rootView;
+        return rootView;
     }
 
-    private void initializeControl()
-    {
+    private void initializeControl() {
         final TimePicker timePicker = (TimePicker) rootView.findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
         PorscheTextView txt_date_selecttime = (PorscheTextView) rootView.findViewById(R.id.txt_date_selecttime);
@@ -88,7 +91,7 @@ public class SelectTimeFragment extends Fragment {
                 Calendar c = Calendar.getInstance();
                 int currentHour = c.get(Calendar.HOUR);
                 int currentMinute = c.get(Calendar.MINUTE);
-                int currentAMPM= c.get(Calendar.AM_PM);
+                int currentAMPM = c.get(Calendar.AM_PM);
                 if (currentAMPM > 0)
                     currentHour = currentHour + 12;
                 int hour = timePicker.getCurrentHour();
@@ -100,16 +103,14 @@ public class SelectTimeFragment extends Fragment {
                 int currentMonth = c.get(Calendar.MONTH) + 1;
                 int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
-                if (myear > currentYear || (myear >= currentYear && mmonth > currentMonth) || (myear >= currentYear && mmonth >= currentMonth && mdayOfMonth >= currentDayOfMonth))
-                {
+                if (myear > currentYear || (myear >= currentYear && mmonth > currentMonth) || (myear >= currentYear && mmonth >= currentMonth && mdayOfMonth >= currentDayOfMonth)) {
 
                 }
 
-                int intervalSinceNow =  (minute - currentMinute) + (hour - currentHour) * 60 + (mdayOfMonth - currentDayOfMonth) * 24 *60 +
+                int intervalSinceNow = (minute - currentMinute) + (hour - currentHour) * 60 + (mdayOfMonth - currentDayOfMonth) * 24 * 60 +
                         (mmonth - currentMonth) * 30 * 24 * 60 + (myear - currentYear) * 365 * 30 * 24 * 60;
 
-                if (intervalSinceNow < 5)
-                {
+                if (intervalSinceNow < 5) {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_cant_select_time), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -123,55 +124,67 @@ public class SelectTimeFragment extends Fragment {
                     bd.putString("menu_type", "SubMenu");
                     bd.putString("Datetime", myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
                     fragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), false);
-                }
-                else if (mScheduleData.equals("pool_beach")) {
+                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), false);
+                } else if (mScheduleData.equals("pool_beach")) {
                     String location = getArguments().getString("Location");
                     Bundle bd = new Bundle();
                     bd.putString(SCHEDULEDATA, location);
                     bd.putString("Datetime", myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
                     BeachRequestFragment beachRequestFragment = new BeachRequestFragment();
                     beachRequestFragment.setArguments(bd);
-                    Utils.addFragmentToBackstack(beachRequestFragment, (HomeActivity)getActivity(), true);
-                }
-                else
-                {
+                    Utils.addFragmentToBackstack(beachRequestFragment, (HomeActivity) getActivity(), true);
+                } else {
                     UserObject owner = UserUtils.getSession(getActivity());
 
                     String scheduleString = UserUtils.getScheduleData(getActivity());
-                    RequestParams params = new RequestParams();
+//                    RequestParams params = new RequestParams();
+                    Map<String, String> requestparam = new HashMap<>();
                     try {
                         JSONObject scheduleObject = new JSONObject(scheduleString);
-                        params.put("type", mScheduleData);
-                        params.put("index", scheduleObject.getString("index"));
-                        params.put("owner", owner.getIndex());
-                        params.put("date_time",myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
+                        requestparam.put("type", mScheduleData);
+                        requestparam.put("index", scheduleObject.getString("index"));
+                        requestparam.put("owner", owner.getIndex() + "");
+                        requestparam.put("date_time", myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
-                    AsyncHttpClient client = new AsyncHttpClient();
-                    String functName = "send_schedule_request";
-                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                    APIClient.get().send_schedule_request(requestparam).enqueue(new CustomCall<ResponseBody>(SelectTimeFragment.this.getActivity()) {
                         @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            super.onSuccess(statusCode, headers, response);
-                            if (mScheduleData.equals("storage"))
-                            {
+                        public void handleResponse(Call<ResponseBody> call, Response<ResponseBody> responsebody) {
+
+                            if (mScheduleData.equals("storage")) {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_car_scheduled_for_storage));
-                            }
-                            else
-                            {
+                            } else {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                             }
                             UserUtils.storeSelectedCategory(getActivity(), "100");
                             HomeFragment fragment = new HomeFragment();
-                            Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+                            Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), false);
+
                         }
                     });
+
+//                    AsyncHttpClient client = new AsyncHttpClient();
+//                    String functName = "send_schedule_request";
+//                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+//
+//                        @Override
+//                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                            super.onSuccess(statusCode, headers, response);
+//                            if (mScheduleData.equals("storage"))
+//                            {
+//                                Utils.showAlert(getActivity(), getResources().getString(R.string.msg_car_scheduled_for_storage));
+//                            }
+//                            else
+//                            {
+//                                Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
+//                            }
+//                            UserUtils.storeSelectedCategory(getActivity(), "100");
+//                            HomeFragment fragment = new HomeFragment();
+//                            Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
+//                        }
+//                    });
                 }
 
             }
