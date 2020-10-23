@@ -1,10 +1,11 @@
 package com.pos.porschetower.Fragments;
 
-import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 /**
- * Created by buddy on 10/3/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class BaseFragment extends Fragment {

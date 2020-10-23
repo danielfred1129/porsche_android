@@ -11,16 +11,17 @@ import android.graphics.Point;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -42,11 +43,13 @@ public class Utils {
 	public static String GYM_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyDR-3g9gQvYcZM7uVJiUPazVjNIIBq8RZE&types=gym&query=gyms+in+";
     //public static String GYM_NEAR_ME = "https://maps.googleapis.com/maps/api/place/search/json?radius=50000&types=gym&sensor=false&key=AIzaSyDR-3g9gQvYcZM7uVJiUPazVjNIIBq8RZE&location=";
 //	public static String BASE_URL = "http://192.168.0.87/porsche/index.php/mobile/Mobile/";
-	public static String BASE_URL = "http://pdtowerapp.com/index.php/mobile/Mobile/";
+	public static String BASE_URL = "http://192.168.0.170/index.php/mobile/Mobile/";
+//	public static String BASE_URL = "http://porsche.local/index.php/mobile/Mobile/";
+//	public static String BASE_URL = "http://pdtowerapp.com/index.php/mobile/Mobile/";
 //	public static String LOGIN_BASE_URL = "http://192.168.0.87/porsche/index.php/Login/LoginProcess?email=";
 	public static String LOGIN_BASE_URL = "http://pdtowerapp.com/index.php/Login/LoginProcess?email=";
 
-    public static String[] categories = new String[]{"ALL", "WEIGHT", "BENCH", "SQUAT",
+    public static  String[] categories = new String[]{"ALL", "WEIGHT", "BENCH", "SQUAT",
                                                 "DEADLIFT", "PULLUPS", "PUSHUPS", "MILERUN"};
     public static String[] units = new String[]{"kg", "lbs", "sec"};
 	/**
@@ -54,7 +57,7 @@ public class Utils {
 	 *
 	 * @return return height
 	 */
-	public static int gettingScreentwidth(Activity context) {
+	public static int gettingScreenWidth(Activity context) {
 		Display display = context.getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
@@ -63,14 +66,11 @@ public class Utils {
 		return height;
 	}
 
-
-
-	public static boolean isCallActive(Context context){
+	public static boolean isCallActive(Context context) {
 		AudioManager manager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-		if(manager.getMode()== AudioManager.MODE_IN_CALL){
+		if (manager.getMode()== AudioManager.MODE_IN_CALL) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}
@@ -83,7 +83,6 @@ public class Utils {
 	 * @param addToBackStack    should add to back stack
 	 */
 	public static void addFragmentToBackstack(Fragment fragment, AppCompatActivity appCompatActivity, boolean addToBackStack) {
-
 		FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
 		FragmentTransaction mFragmentTransaction = fragmentManager.beginTransaction();
 		if (addToBackStack) {
@@ -91,11 +90,9 @@ public class Utils {
 		}
 		mFragmentTransaction.add(R.id.home_fragment, fragment);
 		mFragmentTransaction.commit();
-
 	}
 
 	public static void replaceFragmentToBackStack(Fragment fragment, AppCompatActivity appCompatActivity, boolean addToBackStack) {
-
 		FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
 		FragmentTransaction mFragmentTransaction = fragmentManager.beginTransaction();
 		if (addToBackStack) {
@@ -103,9 +100,7 @@ public class Utils {
 		}
 		mFragmentTransaction.replace(R.id.home_fragment, fragment);
 		mFragmentTransaction.commit();
-
 	}
-
 	
 	public static void showAlert(Context context, String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -143,7 +138,6 @@ public class Utils {
 		});
 		builder.show();
 	}
-
 
 	public static boolean isNetworkAvailable(Context context) {
 		ConnectivityManager connectivity = (ConnectivityManager) context
@@ -209,8 +203,7 @@ public class Utils {
 
 	    v.getLayoutParams().height = 0;
 	    v.setVisibility(View.VISIBLE);
-	    Animation a = new Animation()
-	    {
+	    Animation a = new Animation() {
 	        @Override
 	        protected void applyTransformation(float interpolatedTime, Transformation t) {
 	            v.getLayoutParams().height = interpolatedTime == 1
@@ -233,8 +226,7 @@ public class Utils {
 	public static void collapse(final View v) {
 	    final int initialHeight = v.getMeasuredHeight();
 
-	    Animation a = new Animation()
-	    {
+	    Animation a = new Animation() {
 	        @Override
 	        protected void applyTransformation(float interpolatedTime, Transformation t) {
 	            if(interpolatedTime == 1){
@@ -262,7 +254,6 @@ public class Utils {
     }
 
     private static class AnimateFirstDisplayListener extends SimpleImageLoadingListener {
-
         static final List<String> displayedImages = Collections.synchronizedList(new LinkedList<String>());
 
         @Override

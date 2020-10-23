@@ -13,7 +13,7 @@ import com.pos.porschetower.R;
 import com.pos.porschetower.customview.PorscheTextView;
 
 /**
- * Created by buddy on 10/5/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class PorscheListAdapter extends BaseAdapter {

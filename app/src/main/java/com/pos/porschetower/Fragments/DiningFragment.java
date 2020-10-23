@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.method.ScrollingMovementMethod;
@@ -16,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.pos.porschetower.HomeActivity;
@@ -25,12 +26,13 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class DiningFragment extends Fragment {

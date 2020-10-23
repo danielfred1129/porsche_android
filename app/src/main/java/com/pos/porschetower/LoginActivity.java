@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -22,12 +24,13 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtPassword;
@@ -44,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
 
         edtEmail = (EditText) findViewById(R.id.activity_login_email);
         edtPassword = (EditText) findViewById(R.id.activity_login_password);
+        edtEmail.setText("daniel@foxysun.com");
+        edtPassword.setText("test");
 
         Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
         activity_login_btn = (Button) findViewById(R.id.activity_login_btn);
@@ -107,9 +112,10 @@ public class LoginActivity extends AppCompatActivity {
         client.post(Utils.BASE_URL + "login", params, new PorscheTowerResponseHandler(this) {
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers,	JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
 
+                Log.d("login success", response.toString());
                 if (response != null) {
                     try {
 

@@ -1,11 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.pos.porschetower.Fragments.CalendarFragment">
-    <CalendarView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/calendarView"
-        android:background="#000"/>
-</FrameLayout>
+        android:gravity="bottom|center_horizontal">
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_calendar_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#000"
+        android:text="@string/txt_btn_cancel"
+        android:textColor="#f00"
+        android:textSize="@dimen/button_text_size" />
+</RelativeLayout>

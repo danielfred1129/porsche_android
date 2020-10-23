@@ -2,13 +2,15 @@ package com.pos.porschetower.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -20,11 +22,12 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SelectTimeFragment extends Fragment {
     private View rootView;
@@ -37,11 +40,9 @@ public class SelectTimeFragment extends Fragment {
     private int myear, mmonth, mdayOfMonth ;
     private String mScheduleData;
 
-
     public SelectTimeFragment() {
         // Required empty public constructor
     }
-
 
     // TODO: Rename and change types and number of parameters
     public static SelectTimeFragment newInstance(int year, int month, int dayOfMonth, String scheduleData) {
@@ -75,12 +76,11 @@ public class SelectTimeFragment extends Fragment {
         return  rootView;
     }
 
-    private void initializeControl()
-    {
+    private void initializeControl() {
         final TimePicker timePicker = (TimePicker) rootView.findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
         PorscheTextView txt_date_selecttime = (PorscheTextView) rootView.findViewById(R.id.txt_date_selecttime);
-        txt_date_selecttime.setText(String.valueOf(myear) + "-" + String.valueOf(mmonth) + "-" + String.valueOf(mdayOfMonth));
+        txt_date_selecttime.setText(myear + "-" + mmonth + "-" + mdayOfMonth);
         Button btnSave = (Button) rootView.findViewById(R.id.btn_time_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,16 +100,13 @@ public class SelectTimeFragment extends Fragment {
                 int currentMonth = c.get(Calendar.MONTH) + 1;
                 int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
-                if (myear > currentYear || (myear >= currentYear && mmonth > currentMonth) || (myear >= currentYear && mmonth >= currentMonth && mdayOfMonth >= currentDayOfMonth))
-                {
-
-                }
+//                if (myear > currentYear || (myear >= currentYear && mmonth > currentMonth) || (myear >= currentYear && mmonth >= currentMonth && mdayOfMonth >= currentDayOfMonth)) {
+//                }
 
                 int intervalSinceNow =  (minute - currentMinute) + (hour - currentHour) * 60 + (mdayOfMonth - currentDayOfMonth) * 24 *60 +
                         (mmonth - currentMonth) * 30 * 24 * 60 + (myear - currentYear) * 365 * 30 * 24 * 60;
 
-                if (intervalSinceNow < 5)
-                {
+                if (intervalSinceNow < 5) {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_cant_select_time), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -124,8 +121,7 @@ public class SelectTimeFragment extends Fragment {
                     bd.putString("Datetime", myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
                     fragment.setArguments(bd);
                     Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), false);
-                }
-                else if (mScheduleData.equals("pool_beach")) {
+                } else if (mScheduleData.equals("pool_beach")) {
                     String location = getArguments().getString("Location");
                     Bundle bd = new Bundle();
                     bd.putString(SCHEDULEDATA, location);
@@ -133,9 +129,7 @@ public class SelectTimeFragment extends Fragment {
                     BeachRequestFragment beachRequestFragment = new BeachRequestFragment();
                     beachRequestFragment.setArguments(bd);
                     Utils.addFragmentToBackstack(beachRequestFragment, (HomeActivity)getActivity(), true);
-                }
-                else
-                {
+                } else {
                     UserObject owner = UserUtils.getSession(getActivity());
 
                     String scheduleString = UserUtils.getScheduleData(getActivity());
@@ -146,25 +140,19 @@ public class SelectTimeFragment extends Fragment {
                         params.put("index", scheduleObject.getString("index"));
                         params.put("owner", owner.getIndex());
                         params.put("date_time",myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-
                     AsyncHttpClient client = new AsyncHttpClient();
                     String functName = "send_schedule_request";
                     client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             super.onSuccess(statusCode, headers, response);
-                            if (mScheduleData.equals("storage"))
-                            {
+                            if (mScheduleData.equals("storage")) {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_car_scheduled_for_storage));
-                            }
-                            else
-                            {
+                            } else {
                                 Utils.showAlert(getActivity(), getResources().getString(R.string.msg_request_sent));
                             }
                             UserUtils.storeSelectedCategory(getActivity(), "100");
@@ -173,23 +161,21 @@ public class SelectTimeFragment extends Fragment {
                         }
                     });
                 }
-
             }
         });
         Button btnCancel = (Button) rootView.findViewById(R.id.btn_time_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack();
             }
         });
-
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override

@@ -3,13 +3,14 @@ package com.pos.porschetower.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -20,8 +21,9 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class BeachRequestFragment extends Fragment {

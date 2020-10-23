@@ -1,7 +1,7 @@
 package com.pos.porschetower.customview;
 
 /**
- * Created by buddy on 10/9/2016.
+ * Created by coala on 10/19/2020.
  */
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PorscheTower</string>
+    <string name="default_notification_channel_id">porsche</string>
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="title_login">SIGN-IN</string>
@@ -318,5 +319,6 @@
     <string name="txt_date">DATE</string>
     <string name="txt_time">TIME</string>
     <string name="txt_cancel">CANCEL</string>
+    <string name="click_me">Click Me</string>
 
 </resources>

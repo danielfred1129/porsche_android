@@ -1,39 +1,37 @@
 {
   "project_info": {
-    "project_number": "838805772031",
-    "firebase_url": "https://porsche-tower-application.firebaseio.com",
-    "project_id": "porsche-tower-application",
-    "storage_bucket": "porsche-tower-application.appspot.com"
+    "project_number": "964417439134",
+    "firebase_url": "https://porsche-news.firebaseio.com",
+    "project_id": "porsche-news",
+    "storage_bucket": "porsche-news.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:838805772031:android:405dc57174411472",
+        "mobilesdk_app_id": "1:964417439134:android:d83feca8e09cfed9d2c28f",
         "android_client_info": {
           "package_name": "com.pos.porschetower"
         }
       },
       "oauth_client": [
         {
-          "client_id": "838805772031-ghpl03mjaqii1ok6djdsihle0saqpdkp.apps.googleusercontent.com",
+          "client_id": "964417439134-nvbd7cvb9e5se9j77el76na8ebruhu0h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAV7dP9cW8nWI-fbNDIUzd1ZLxB5PrVfF4"
+          "current_key": "AIzaSyCDQooRVyL0DsIr33PbXN6GlspZzA_C14w"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964417439134-nvbd7cvb9e5se9j77el76na8ebruhu0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

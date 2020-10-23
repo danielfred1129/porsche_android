@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -23,12 +26,15 @@ import com.pos.porschetower.utils.FitFragment;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+
+import cz.msebera.android.httpclient.Header;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class MenuFragment extends FitFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -46,6 +52,7 @@ public class MenuFragment extends FitFragment {
     private String tempReqType;
 
     private View rootView;
+    private ImageButton btnSettings;
 
 
     public MenuFragment() {
@@ -82,6 +89,7 @@ public class MenuFragment extends FitFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
+        btnSettings = (ImageButton) getActivity().findViewById(R.id.activity_home_settings_btn);
 
         final ListView listView ;
         listView = (ListView) rootView.findViewById(R.id.menu_list_view);
@@ -106,7 +114,7 @@ public class MenuFragment extends FitFragment {
                 final int itemPosition     = position;
 
                 // ListView Clicked item value
-                String  itemValue    = (String) listView.getItemAtPosition(position);
+                String itemValue = (String) listView.getItemAtPosition(position);
                 String mType = getArguments().getString("type");
                 int type = Integer.parseInt(mType);
 
@@ -232,9 +240,9 @@ public class MenuFragment extends FitFragment {
                     bd.putBoolean("hasCall", false);
                     openDescriptionFragment(bd);
                 }
-                else if (type  == 1) // Car Elevator
+                else if (type == 1) // Car Elevator
                 {
-                    switch(position){
+                    switch(position) {
                         case 0:
                             fragment = new ShowroomFragment();
                             mTypeBundle = new Bundle();
@@ -254,6 +262,7 @@ public class MenuFragment extends FitFragment {
                             fragment = new Fragment();
                             break;
                     }
+                    hideSettingsButton();
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
                 else if (type == 2) // In-Unit
@@ -759,7 +768,7 @@ public class MenuFragment extends FitFragment {
                                 getResources().getString(R.string.msg_transportation_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
                         return;
                     }
-                    else if (itemPosition == 2)// Dry Cleaning
+                    else if (itemPosition == 2) // Dry Cleaning
                     {
                         fragment = new MenuFragment();
                         Bundle bd = new Bundle();
@@ -833,6 +842,9 @@ public class MenuFragment extends FitFragment {
         Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
     }
 
+    void hideSettingsButton() {
+        btnSettings.setVisibility(View.GONE);
+    }
 
     @Override
     public void onAttach(Context context) {

@@ -10,6 +10,8 @@
     <color name="title_login_color">#4f4e55</color>
     <color name="btn_signin_color">#a3a3a3</color>
     <color name="colorBlack">#000000</color>
+    <color name="caldroid_darker_gray">#aaa</color>
+    <color name="caldroid_transparent">#00000000</color>
 
     <!-- Forgot -->
     <color name="forgot_desc_color">#656565</color>

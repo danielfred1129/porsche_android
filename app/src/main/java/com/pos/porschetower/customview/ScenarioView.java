@@ -12,9 +12,9 @@ import com.pos.porschetower.R;
 import java.util.Random;
 
 /**
- * Created by buddy on 9/8/2016.
+ * Created by coala on 10/19/2020.
  */
-public class ScenarioView extends ImageView {
+public class ScenarioView extends androidx.appcompat.widget.AppCompatImageView {
     Bitmap city1;
     Bitmap city2;
     Bitmap city3;

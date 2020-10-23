@@ -1,8 +1,6 @@
 package com.pos.porschetower.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pos.porschetower.R;
-import com.pos.porschetower.customview.PorscheTextView;
 import com.pos.porschetower.datamodel.ShowroomItem;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by buddy on 10/8/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class ShowroomListAdapter  extends BaseAdapter {
@@ -63,7 +53,7 @@ public class ShowroomListAdapter  extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        ShowroomListAdapter.ViewHolder holder = new ShowroomListAdapter.ViewHolder();
+        ViewHolder holder = new ViewHolder();
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

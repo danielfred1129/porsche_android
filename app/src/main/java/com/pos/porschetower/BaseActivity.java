@@ -1,10 +1,11 @@
 package com.pos.porschetower;
 
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
- * Created by buddy on 10/3/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class BaseActivity extends AppCompatActivity {

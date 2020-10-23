@@ -6,7 +6,7 @@ import android.location.Location;
 import com.pos.porschetower.R;
 
 /**
- * Created by Adrien on 12/30/2014.
+ * Created by coala on 10/19/2020.
  */
 public final class LocationUtils {
     // Debugging tag for the application

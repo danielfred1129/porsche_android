@@ -3,18 +3,23 @@ package com.pos.porschetower.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
 import com.pos.porschetower.utils.Utils;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class CalendarFragment extends Fragment {
 
@@ -44,9 +49,9 @@ public class CalendarFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            if (getArguments().containsKey(TYPE))
+            if (getArguments().containsKey(TYPE)) {
                 type = getArguments().getString(TYPE);
-
+            }
         }
     }
 
@@ -59,8 +64,7 @@ public class CalendarFragment extends Fragment {
         return rootView;
     }
 
-    private void initializeControl()
-    {
+    private void initializeControl() {
         CalendarView calendarView = (CalendarView) rootView.findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -69,8 +73,7 @@ public class CalendarFragment extends Fragment {
                 int currentYear = c.get(Calendar.YEAR);
                 int currentMonth = c.get(Calendar.MONTH);
                 int currentDayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-                if (year > currentYear || (year >= currentYear && month > currentMonth) || (year >= currentYear && month >= currentMonth && dayOfMonth >= currentDayOfMonth))
-                {
+                if (year > currentYear || (year >= currentYear && month > currentMonth) || (year >= currentYear && month >= currentMonth && dayOfMonth >= currentDayOfMonth)) {
                     SelectTimeFragment selectTimeFragment = new SelectTimeFragment();
                     Bundle bd = new Bundle();
                     bd.putInt("year", year);
@@ -78,24 +81,27 @@ public class CalendarFragment extends Fragment {
                     bd.putInt("dayOfMonth", dayOfMonth);
                     bd.putString("scheduleData", type);
                     selectTimeFragment.setArguments(bd);
-                    Utils.replaceFragmentToBackStack(selectTimeFragment, (HomeActivity)getActivity(), true);
-                }
-                else
-                {
+                    Utils.replaceFragmentToBackStack(selectTimeFragment, (HomeActivity) Objects.requireNonNull(getActivity()), true);
+                } else {
                     Toast.makeText(getActivity(), getResources().getString(R.string.msg_cant_select_date), Toast.LENGTH_SHORT).show();
-                    return;
                 }
-//                if (currentYear > year || (currentYear <= year && currentMonth > month) || (currentYear <= year && currentMonth <= month && currentDayOfMonth > dayOfMonth))
-//                {
-//
+//                if (currentYear > year || (currentYear <= year && currentMonth > month) || (currentYear <= year && currentMonth <= month && currentDayOfMonth > dayOfMonth)) {
 //                    return;
 //                }
+            }
+        });
+        Button btnCancel = (Button) rootView.findViewById(R.id.btn_calendar_cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack();
             }
         });
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 

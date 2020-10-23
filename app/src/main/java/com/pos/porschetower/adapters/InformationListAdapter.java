@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pos.porschetower.R;
 import com.pos.porschetower.datamodel.InformationItem;
 import com.pos.porschetower.datamodel.ShowroomItem;
@@ -31,8 +29,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pos.porschetower.R;
 import com.pos.porschetower.customview.PorscheTextView;
 import com.pos.porschetower.datamodel.ShowroomItem;
@@ -46,7 +42,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by buddy on 10/8/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class InformationListAdapter  extends BaseAdapter {

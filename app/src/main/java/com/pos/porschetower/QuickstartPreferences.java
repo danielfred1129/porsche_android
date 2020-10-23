@@ -1,7 +1,7 @@
 package com.pos.porschetower;
 
 /**
- * Created by buddy on 11/3/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class QuickstartPreferences {

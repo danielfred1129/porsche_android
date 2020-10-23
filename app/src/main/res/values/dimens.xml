@@ -2,7 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <!--LogIn Activity-->
     <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="nav_bar_height">80dp</dimen>
+    <dimen name="nav_bar_height">55dp</dimen>
     <dimen name="title_text_size1">16sp</dimen>
     <dimen name="title_text_size2">24sp</dimen>
     <dimen name="title_text_margin">20dp</dimen>

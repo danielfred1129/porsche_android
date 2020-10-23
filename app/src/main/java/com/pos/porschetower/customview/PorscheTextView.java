@@ -1,7 +1,7 @@
 package com.pos.porschetower.customview;
 
 /**
- * Created by buddy on 10/5/2016.
+ * Created by coala on 10/19/2020.
  */
 
 import android.content.Context;
@@ -9,7 +9,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class PorscheTextView extends TextView{
+
+public class PorscheTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     public PorscheTextView(Context context) {
         super(context);
@@ -17,7 +18,7 @@ public class PorscheTextView extends TextView{
 
     public PorscheTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface typeface= Typeface.createFromAsset(getResources().getAssets(), "porschedesignfont.otf");
+        Typeface typeface = Typeface.createFromAsset(getResources().getAssets(), "porschedesignfont.otf");
         this.setTypeface(typeface);
     }
 

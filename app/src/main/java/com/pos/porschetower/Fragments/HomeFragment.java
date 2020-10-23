@@ -4,16 +4,18 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,7 +31,7 @@ import com.pos.porschetower.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment {
 //    SubCategory Button on top left
     ImageButton btnSubCategory;
     /**
-     * this text will show title for given desgin
+     * this text will show title for given design
      */
     TextView mDesginShowingTxt;
 
@@ -74,10 +76,11 @@ public class HomeFragment extends Fragment {
      * use to handle click on image to show subtitle
      */
     private int pagerCurrentPos = 0;
-    String[] mPorschoDesginStringArray;
+    String[] mPorscheDesignStringArray;
     TypedArray mMenuTitleTypedArray;
 
-    int[] frontviewarry = {R.drawable._concierge_,
+    int[] frontviewarry = {
+            R.drawable._concierge_,
             R.drawable.elevator,
             R.drawable.apartament,
             R.drawable.garage,
@@ -89,7 +92,6 @@ public class HomeFragment extends Fragment {
             R.drawable.info,
             R.drawable.cloud
     };
-
 
     int[] backviewarray = {R.drawable.elevator_,
             R.drawable.apartment,
@@ -126,25 +128,24 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-        initializaControl();
+        initializeControl();
         return rootView;
     }
 
-    private void initializaControl()
+    private void initializeControl()
     {
-        UserUtils.storeSelectedCategory(getActivity(), "100");
+//        UserUtils.storeSelectedCategory(Objects.requireNonNull(getActivity()), "100");
 
         // Set SubCategory Button with Car Elevator Image
-        btnSubCategory = (ImageButton) getActivity().findViewById(R.id.activity_home_sub);
+        btnSubCategory = Objects.requireNonNull(getActivity()).findViewById(R.id.activity_home_sub);
         btnSubCategory.setImageResource(frontviewarry[1]);
 
-        mFrontViewPager = (CustomPager) rootView.findViewById(R.id.front_vp);
-        mBackViewPager = (CustomPager) rootView.findViewById(R.id.backgroup_vp);
-        mPorschoDesginStringArray = (String[]) getActivity().getResources().getStringArray(R.array.title_string_array);
+        mFrontViewPager = rootView.findViewById(R.id.front_vp);
+        mBackViewPager = rootView.findViewById(R.id.backgroup_vp);
+        mPorscheDesignStringArray = getActivity().getResources().getStringArray(R.array.title_string_array);
         mMenuTitleTypedArray = getActivity().getResources().obtainTypedArray(R.array.menutitles_array);
-        PorscheTextView txt_sub_title = (PorscheTextView) getActivity().findViewById(R.id.txt_sub_title);
-        txt_sub_title.setText(mPorschoDesginStringArray[0]);
+        PorscheTextView txt_sub_title = getActivity().findViewById(R.id.txt_sub_title);
+        txt_sub_title.setText(mPorscheDesignStringArray[0]);
     }
 
     @Override
@@ -152,7 +153,6 @@ public class HomeFragment extends Fragment {
     {
         super.onResume();
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -163,9 +163,8 @@ public class HomeFragment extends Fragment {
         }
     }
 
-
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 
@@ -186,17 +185,16 @@ public class HomeFragment extends Fragment {
      */
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         settingMeasures();
         settingDataInList();
-        settingUpPagerAdatpers();
+        settingUpPagerAdapters();
         setListeners();
     }
 
@@ -205,11 +203,8 @@ public class HomeFragment extends Fragment {
      */
     private void settingMeasures() {
 
-        int screenwidth = Utils.gettingScreentwidth(getActivity());
+        int screenwidth = Utils.gettingScreenWidth(Objects.requireNonNull(getActivity()));
 
-        /**
-         * synchronizing both viewpagers
-         */
         mFrontViewPager.setViewPager(mBackViewPager);
         mBackViewPager.setViewPager(mFrontViewPager);
 
@@ -218,13 +213,10 @@ public class HomeFragment extends Fragment {
         mFrontViewPager.setPageTransformer(false, new FrontPageTransformer());
         mBackViewPager.setPageTransformer(false, new BackPageTransformer());
 
-        int mfrontPageMargin = (int) ((int) screenwidth * (float) 7.4 / 100);
+        int mfrontPageMargin = (int) (screenwidth * (float) 7.4 / 100);
         mFrontViewPager.setPageMargin(mfrontPageMargin);
-        mBackViewPager.setPageMargin(-(int) screenwidth / 3 - PAGE_MARGEN);
-
-
+        mBackViewPager.setPageMargin(-screenwidth / 3 - PAGE_MARGEN);
     }
-
 
     /**
      * setting data for both viewpagers
@@ -234,20 +226,16 @@ public class HomeFragment extends Fragment {
         mBackList = new ArrayList<>();
 
         for (int i = 0; i < backviewarray.length; i++) {
-
             mFrontList.add(frontviewarry[i]);
             mBackList.add(backviewarray[i]);
         }
-
     }
 
-    private void settingUpPagerAdatpers() {
-
+    private void settingUpPagerAdapters() {
         mBackViewPager.setAdapter(new BackViewPagerAdatper());
         mFrontViewPager.setAdapter(new FrontViewPagerAdapter());
         mFrontViewPager.setCurrentItem(298);
         mBackViewPager.setCurrentItem(297);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -257,10 +245,7 @@ public class HomeFragment extends Fragment {
         }, 1000);
     }
 
-
     private void setListeners() {
-
-
         mFrontViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -274,13 +259,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {
             }
-//            }
         });
 
         mBackViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -288,8 +271,8 @@ public class HomeFragment extends Fragment {
                 int pos = position % mFrontList.size();
                 int tempPos = (pos + 1) % 11;
                 pagerCurrentPos = pos;
-                PorscheTextView txt_sub_title = (PorscheTextView) getActivity().findViewById(R.id.txt_sub_title);
-                txt_sub_title.setText(mPorschoDesginStringArray[pos]);
+                PorscheTextView txt_sub_title = Objects.requireNonNull(getActivity()).findViewById(R.id.txt_sub_title);
+                txt_sub_title.setText(mPorscheDesignStringArray[pos]);
 
                 //Change SubCategory button on HomeActivity
                 btnSubCategory.setVisibility(View.VISIBLE);
@@ -298,7 +281,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -306,7 +288,6 @@ public class HomeFragment extends Fragment {
 
 
     private class FrontViewPagerAdapter extends PagerAdapter {
-
 
         @Override
         public int getCount() {
@@ -318,20 +299,20 @@ public class HomeFragment extends Fragment {
             return 0.31f;
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
             final int pos = position % mFrontList.size();
 
-            View view = getActivity().getLayoutInflater().inflate(R.layout.front_view_row, container, false);
-            ImageView image = (ImageView) view.findViewById(R.id.front_iamge);
+            View view = Objects.requireNonNull(getActivity()).getLayoutInflater().inflate(R.layout.front_view_row, container, false);
+            ImageView image = view.findViewById(R.id.front_iamge);
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     int posss = pagerCurrentPos >= 10 ? -1 : pagerCurrentPos;
                     if ((posss + 1) == pos) {
-//                        Toast.makeText(getActivity(), mPorschoDesginStringArray[pagerCurrentPos], Toast.LENGTH_SHORT).show();
                         //Get TitleArray as a CharSequence
                         int tempPos = 0;
                         if (pos == 0)
@@ -369,51 +350,46 @@ public class HomeFragment extends Fragment {
             return view;
         }
 
-
         @Override
-        public void destroyItem(ViewGroup container, int position, Object view) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object view) {
             container.removeView((View) view);
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
     }
 
     private class BackViewPagerAdatper extends PagerAdapter {
 
-
         @Override
         public int getCount() {
             return mBackList.size() * LOOP;
         }
 
-
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
             int pos = position % mFrontList.size();
-            View view = getActivity().getLayoutInflater().inflate(R.layout.back_view, container, false);
-            ImageView image = (ImageView) view.findViewById(R.id.back_iamge);
+            View view = Objects.requireNonNull(getActivity()).getLayoutInflater().inflate(R.layout.back_view, container, false);
+            ImageView image = view.findViewById(R.id.back_iamge);
             ImageLoader.getInstance().displayImage("drawable://" + mBackList.get(pos), image, setUpDisplayOptions());
             container.addView(view);
-
 
             return view;
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object view) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object view) {
             container.removeView((View) view);
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
     }
-
 
     private DisplayImageOptions setUpDisplayOptions() {
         return new DisplayImageOptions.Builder()

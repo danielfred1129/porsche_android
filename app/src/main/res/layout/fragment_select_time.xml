@@ -8,18 +8,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:background="#000">
+
         <Button
             android:id="@+id/btn_time_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:background="#000"
-            android:textColor="#f00"
             android:text="@string/txt_btn_cancel"
-            android:textSize="@dimen/button_text_size"/>
+            android:textColor="#f00"
+            android:textSize="@dimen/button_text_size" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,10 +33,13 @@
                 android:text="2016 - 1 - 12"
                 android:textSize="@dimen/button_text_size"
                 />
+
             <TimePicker
                 android:id="@+id/timePicker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scaleX="0.9"
+                android:scaleY="0.9" />
         </LinearLayout>
         <Button
             android:id="@+id/btn_time_save"

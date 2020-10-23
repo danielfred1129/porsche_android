@@ -8,13 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,9 +17,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.pos.porschetower.BaseActivity;
 import com.pos.porschetower.Fragments.HomeFragment;
 import com.pos.porschetower.Fragments.MenuFragment;
 import com.pos.porschetower.Fragments.SettingsFragment;
@@ -36,9 +35,6 @@ import com.pos.porschetower.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-//import com.google.android.gms.appindexing.Action;
-//import com.google.android.gms.appindexing.Thing;
-
 public class HomeActivity extends BaseActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -47,10 +43,9 @@ public class HomeActivity extends BaseActivity {
     List<Integer> bottom_buttons = new ArrayList<Integer>();
     TypedArray mMenuTitleTypedArray;
 
-    public ImageButton btnSubCategory, btnPlus;
-    public TextView txt_main_title, txt_sub_title;
+    public ImageButton btnSubCategory, btnSettings, btnHome, btnPlus;
+    private LinearLayout bottom_buttons_layout;
     public PorscheTextView txt_current_time;
-    LinearLayout bottom_buttons_layout;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -96,49 +91,17 @@ public class HomeActivity extends BaseActivity {
 //            startService(intent);
 //        }
 
-        btnSubCategory = (ImageButton) findViewById(R.id.activity_home_sub);
-        btnSubCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")){
-                    return;
-                }
-                int pos = Integer.valueOf(UserUtils.getSelectedCategory(HomeActivity.this));
-                int tempPos = 0;
-                if (pos == 0)
-                    tempPos = 10;
-                else
-                    tempPos = pos - 1;
-                CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
-                // Convert CharSequence[] to String[]
-                String[] mTitlesString = new String[mMenuTitleArray.length];
-                int i=0;
-                for(CharSequence ch: mMenuTitleArray){
-                    mTitlesString[i++] = ch.toString();
-                }
-                MenuFragment picker_fragment = new MenuFragment();
-                Bundle bundle = new Bundle();
-                bundle.putStringArray("titles", mTitlesString);
-                bundle.putString("menu_type", "MainMenu");
-                bundle.putString("type", String.valueOf(pos));
-                picker_fragment.setArguments(bundle);
 
-                HomeFragment home_fragment = new HomeFragment();
-                String strStatus = UserUtils.getSelectedCategory(HomeActivity.this);
-                UserUtils.storeSelectedCategory(HomeActivity.this, String.valueOf(pos));
-
-                Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
-                Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
-            }
-        });
-//        btnSubCategory.setVisibility(View.GONE);
+        btnSettings = findViewById(R.id.activity_home_settings_btn);
+        btnPlus = findViewById(R.id.activity_home_plus_button);
+        btnHome = findViewById(R.id.activity_home_home_button);
+        bottom_buttons_layout = findViewById(R.id.bottom_buttons_layout);
+        btnSubCategory = findViewById(R.id.activity_home_sub);
 
         txt_current_time = (PorscheTextView) findViewById(R.id.txt_current_time);
         txt_current_time.setVisibility(View.GONE);
 
         bottom_buttons_layout = (LinearLayout) findViewById(R.id.bottom_buttons_layout);
-
-        Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
 
         String[] mPorschoDesginStringArray = getResources().getStringArray(R.array.title_string_array);
         mMenuTitleTypedArray = getResources().obtainTypedArray(R.array.menutitles_array);
@@ -199,7 +162,7 @@ public class HomeActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             // do something
-            PorscheTextView txt_currenttime = (PorscheTextView) findViewById(R.id.txt_current_time);
+            PorscheTextView txt_currenttime = findViewById(R.id.txt_current_time);
             txt_currenttime.setVisibility(View.GONE);
         }
         return super.onKeyDown(keyCode, event);
@@ -212,12 +175,14 @@ public class HomeActivity extends BaseActivity {
         ft.addToBackStack(null);
         ft.commit();
     }
+
     public void onPlus(View v) {
         Log.d("onPlus", "Plus button clicked");
         addBottomButton();
     }
+
     private void addBottomButton() {
-        int status = Integer.valueOf(UserUtils.getSelectedCategory(HomeActivity.this));
+        int status = Integer.parseInt(UserUtils.getSelectedCategory(HomeActivity.this));
         if (status == 100)
             return;
         if (bottom_buttons.size() < 11)
@@ -231,6 +196,7 @@ public class HomeActivity extends BaseActivity {
             addItemToBottomArray(status);
         }
     }
+
     private void updateBottomBar()
     {
         if (bottom_buttons_layout.getChildCount() > 0)
@@ -239,6 +205,7 @@ public class HomeActivity extends BaseActivity {
             addItemToBottomArray(status);
         }
     }
+
     private void addItemToBottomArray(int status) {
         ImageButton btnNewBottom = new ImageButton(this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams((int)getResources().getDimension(R.dimen.settings_button_width),
@@ -296,6 +263,7 @@ public class HomeActivity extends BaseActivity {
         });
         bottom_buttons_layout.addView(btnNewBottom);
     }
+
     private void showAlertForRemoveBottomButton(final int status) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
         builder.setTitle("Are you sure to remove this button?");
@@ -322,13 +290,23 @@ public class HomeActivity extends BaseActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    private void setTopBottomButtons() {
+        btnSettings.setVisibility(View.VISIBLE);
+        btnHome.setVisibility(View.VISIBLE);
+        bottom_buttons_layout.setVisibility(View.VISIBLE);
+        btnPlus.setVisibility(View.VISIBLE);
+    }
+
     public void onHome(View v) {
         Log.d("onHome", "Home button clicked");
+        setTopBottomButtons();
         HomeFragment fragment = new HomeFragment();
-        PorscheTextView txt_currenttime = (PorscheTextView) findViewById(R.id.txt_current_time);
+        PorscheTextView txt_currenttime = findViewById(R.id.txt_current_time);
         txt_currenttime.setVisibility(View.GONE);
 
         UserUtils.storeSelectedCategory(HomeActivity.this, "100");
+        removePreviousFragments();
         Utils.replaceFragmentToBackStack(fragment, this, false);
     }
 
@@ -339,9 +317,45 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void onSubCategory(View v) {
-        Log.d("onSubCategory", "SubCategory button clicked");
+        String strStatus = UserUtils.getSelectedCategory(HomeActivity.this);
+        if (strStatus.equals("100")) {
+            return;
+        }
+        setTopBottomButtons();
+        int pos = Integer.parseInt(strStatus);
+        int tempPos;
+        if (pos == 0)
+            tempPos = 10;
+        else
+            tempPos = pos - 1;
+        CharSequence[] mMenuTitleArray = mMenuTitleTypedArray.getTextArray(tempPos);
+        // Convert CharSequence[] to String[]
+        String[] mTitlesString = new String[mMenuTitleArray.length];
+        int i = 0;
+        for (CharSequence ch: mMenuTitleArray) {
+            mTitlesString[i++] = ch.toString();
+        }
+        MenuFragment picker_fragment = new MenuFragment();
+        Bundle bundle = new Bundle();
+        bundle.putStringArray("titles", mTitlesString);
+        bundle.putString("menu_type", "MainMenu");
+        bundle.putString("type", String.valueOf(pos));
+        picker_fragment.setArguments(bundle);
+
+        HomeFragment home_fragment = new HomeFragment();
+        UserUtils.storeSelectedCategory(HomeActivity.this, String.valueOf(pos));
+
+        removePreviousFragments();
+        Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
+        Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
     }
 
+    void removePreviousFragments() {
+        FragmentManager fm = this.getSupportFragmentManager();
+        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
+    }
 
     @Override
     public void onStart() {

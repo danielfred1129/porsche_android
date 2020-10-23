@@ -36,13 +36,12 @@ public class UserUtils {
 				json.put("logoutTime", session.getLogoutTime());
 
 				context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit()
-						.putString(SESSION_KEY, json.toString()).commit();
+						.putString(SESSION_KEY, json.toString()).apply();
 			} else {
 				context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit()
-						.putString(SESSION_KEY, null).commit();
+						.putString(SESSION_KEY, null).apply();
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -79,40 +78,36 @@ public class UserUtils {
 		return user;
 	}
 	public static void storeValet(Context context, String valet) {
-		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(VALET, valet).commit();
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(VALET, valet).apply();
 	}
 	public static String getValet(Context context) {
-		String valet = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(VALET, null);
-		return valet;
+		return context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(VALET, null);
 	}
 	public static void storeScheduleDataArray(Context context, String scheduleString) {
-		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).commit();
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).apply();
 	}
 	public static String getScheduleDataArray(Context context) {
-		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SCHEDULE_DATA, null);
-		return scheduleString;
+		return context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SCHEDULE_DATA, null);
 	}
 	public static void storeScheduleData(Context context, String scheduleString) {
-		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SCHEDULE_DATA, scheduleString).commit();
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CAR, scheduleString).apply();
 	}
 	public static String getScheduleData(Context context) {
-		String scheduleString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
-		return scheduleString;
+		return context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
 	}
 	public static void storeSelectedCar(Context context, JSONObject selectedCar) {
-		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CAR, selectedCar.toString()).commit();
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CAR, selectedCar.toString()).apply();
 	}
 	public static String getSelectedCategory(Context context) {
-		String categoryString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CATEGORY, null);
-		return categoryString;
+		return context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CATEGORY, null);
 	}
 	public static void storeSelectedCategory(Context context, String selectedCategory) {
-		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CATEGORY, selectedCategory).commit();
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CATEGORY, selectedCategory).apply();
 	}
 
 	public static JSONObject getSelectedCar(Context context) {
 		String jsString = context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(SELECTED_CAR, null);
-		JSONObject jsonObject = null;
+		JSONObject jsonObject;
 		try {
 			if (jsString != null) {
 				jsonObject = new JSONObject(jsString);
@@ -124,7 +119,7 @@ public class UserUtils {
 
 		} catch (JSONException e) {
 			e.printStackTrace();
-			return jsonObject;
+			return null;
 		}
 		return jsonObject;
 	}

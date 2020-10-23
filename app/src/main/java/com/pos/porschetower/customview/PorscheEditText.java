@@ -6,10 +6,10 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 /**
- * Created by buddy on 10/5/2016.
+ * Created by coala on 10/19/2020.
  */
 
-public class PorscheEditText extends EditText{
+public class PorscheEditText extends androidx.appcompat.widget.AppCompatEditText {
     public PorscheEditText(Context context)
     {
         super(context);

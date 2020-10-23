@@ -4,11 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestHandle;
@@ -17,13 +18,14 @@ import com.pos.porschetower.R;
 import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import cz.msebera.android.httpclient.Header;
 
 public class WeatherFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

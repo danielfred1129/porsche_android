@@ -1,15 +1,15 @@
 package com.pos.porschetower.Fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -22,15 +22,13 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SchedulePickupsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -39,6 +37,8 @@ public class SchedulePickupsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+    private ImageButton btnHome, btnPlus;
+    private LinearLayout bottom_buttons_layout;
     private String mParam1;
     private String mParam2;
 
@@ -83,7 +83,7 @@ public class SchedulePickupsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView =inflater.inflate(R.layout.fragment_schedule_pickups, container, false);
+        rootView = inflater.inflate(R.layout.fragment_schedule_pickups, container, false);
         initializeControl();
         return rootView;
     }
@@ -102,19 +102,16 @@ public class SchedulePickupsFragment extends Fragment {
         String funcName = "get_scheduled_pickups";
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-
                 if (response != null) {
                     try {
                         information_array = response.getJSONArray("scheduled_pickups");
                         UserUtils.storeScheduleData((HomeActivity)getActivity(), information_array.toString());
                         adapter.clearData();
                         if (information_array.length() > 0) {
-                            for (int i=0; i<information_array.length(); i++) {
-
+                            for (int i = 0; i < information_array.length(); i++) {
                                 PickupsItem item = new PickupsItem();
                                 JSONObject object = information_array.getJSONObject(i);
                                 JSONObject car_object = object.getJSONObject("car");
@@ -127,22 +124,35 @@ public class SchedulePickupsFragment extends Fragment {
                                 item.time = splited[1];
                                 adapter.addData(item);
                             }
-                      }
+                        }
                     } catch (JSONException e) {
                     }
                 }
             }
-
         });
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        btnHome = (ImageButton) getActivity().findViewById(R.id.activity_home_home_button);
+        btnPlus = (ImageButton) getActivity().findViewById(R.id.activity_home_plus_button);
+        bottom_buttons_layout = (LinearLayout) getActivity().findViewById(R.id.bottom_buttons_layout);
+        btnHome.setVisibility(View.GONE);
+        btnPlus.setVisibility(View.GONE);
+        bottom_buttons_layout.setVisibility(View.GONE);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        btnHome.setVisibility(View.VISIBLE);
+        btnPlus.setVisibility(View.VISIBLE);
+        bottom_buttons_layout.setVisibility(View.VISIBLE);
     }
 }

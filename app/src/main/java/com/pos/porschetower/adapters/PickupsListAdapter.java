@@ -1,7 +1,10 @@
 package com.pos.porschetower.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +23,16 @@ import com.pos.porschetower.network.PorscheTowerResponseHandler;
 import com.pos.porschetower.utils.UserUtils;
 import com.pos.porschetower.utils.Utils;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cz.msebera.android.httpclient.Header;
+
 /**
- * Created by buddy on 10/24/2016.
+ * Created by coala on 10/19/2020.
  */
 
 public class PickupsListAdapter  extends BaseAdapter {
@@ -89,49 +93,67 @@ public class PickupsListAdapter  extends BaseAdapter {
         holder.btn_pickup_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestParams params = new RequestParams();
-                UserObject user = UserUtils.getSession(mContext);
-                params.put("owner", user.getIndex());
-                String scheduled_pickups = UserUtils.getScheduleData(mContext);
-                String index = "";
-                JSONArray pickupsArray = null;
-                try {
-                    pickupsArray = new JSONArray(scheduled_pickups);
-                    index = pickupsArray.getJSONObject(position).getString("index");
-
-                    JSONArray changedArray = new JSONArray();
-                    int len = pickupsArray.length();
-                    if (pickupsArray != null) {
-                        for (int i=0;i<len;i++)
-                        {
-                            //Excluding the item at position
-                            if (i != position)
-                            {
-                                changedArray.put(pickupsArray.get(i));
-                            }
-                        }
-                    }
-                    UserUtils.storeScheduleData(mContext, changedArray.toString());
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                params.put("pickup", index);
-                String funcName = "cancel_scheduled_car_elevator";
-                AsyncHttpClient client = new AsyncHttpClient();
-                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler((HomeActivity)mContext) {
-
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        listdata.remove(position);
-                        notifyDataSetChanged();
-                        if (response != null) {
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                RequestParams params = new RequestParams();
+                                UserObject user = UserUtils.getSession(mContext);
+                                params.put("owner", user.getIndex());
+                                String scheduled_pickups = UserUtils.getScheduleData(mContext);
+                                String index = "";
+                                JSONArray pickupsArray = null;
+                                try {
+//                                    pickupsArray = new JSONArray((String) null);
+                                    pickupsArray = new JSONArray(scheduled_pickups);
+                                    index = pickupsArray.getJSONObject(position).getString("index");
+
+                                    JSONArray changedArray = new JSONArray();
+                                    int len = pickupsArray.length();
+                                    if (pickupsArray != null) {
+                                        for (int i = 0; i < len; i++) {
+                                            //Excluding the item at position
+                                            if (i != position) {
+                                                changedArray.put(pickupsArray.get(i));
+                                            }
+                                        }
+                                    }
+                                    UserUtils.storeScheduleData(mContext, changedArray.toString());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                params.put("pickup", index);
+                                String funcName = "cancel_scheduled_car_elevator";
+                                AsyncHttpClient client = new AsyncHttpClient();
+                                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler((HomeActivity)mContext) {
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                        super.onSuccess(statusCode, headers, response);
+                                        listdata.remove(position);
+                                        notifyDataSetChanged();
+                                        if (response != null) {
+                                        }
+                                    }
+                                });
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
                         }
                     }
-
-                });
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle("Cancel Pick-Up")
+                        .setMessage("Are you sure you want to cancel this event?")
+                        .setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("Cancel", dialogClickListener);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
+                dialog.setCanceledOnTouchOutside(false);
             }
         });
 

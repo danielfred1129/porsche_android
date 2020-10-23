@@ -1,6 +1,5 @@
 package com.pos.porschetower.network;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +9,8 @@ import android.app.ProgressDialog;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+
+import cz.msebera.android.httpclient.Header;
 
 public class PorscheTowerResponseHandler extends JsonHttpResponseHandler {
 
@@ -63,7 +64,7 @@ public class PorscheTowerResponseHandler extends JsonHttpResponseHandler {
 	}
 
 	@Override
-	public void onFailure(int statusCode, Header[] headers,	Throwable throwable, JSONObject errorResponse) {
+	public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
 		super.onFailure(statusCode, headers, throwable,	errorResponse);
         if (errorResponse == null) {
             Toast.makeText(context, "Please check your network status", Toast.LENGTH_LONG).show();

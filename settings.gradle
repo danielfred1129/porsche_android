@@ -1,2 +1,2 @@
-include ':imageLoaderLibrary'
 include ':app'
+rootProject.name = "porsche_new"
