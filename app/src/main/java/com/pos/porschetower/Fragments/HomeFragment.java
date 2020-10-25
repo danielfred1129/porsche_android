@@ -196,6 +196,8 @@ public class HomeFragment extends Fragment {
         settingDataInList();
         settingUpPagerAdapters();
         setListeners();
+        mFrontViewPager.setCurrentItem(Utils.nLastClickedFrontItem);
+        mBackViewPager.setCurrentItem(Utils.nLastClickedBackItem);
     }
 
     /**
@@ -234,6 +236,7 @@ public class HomeFragment extends Fragment {
     private void settingUpPagerAdapters() {
         mBackViewPager.setAdapter(new BackViewPagerAdatper());
         mFrontViewPager.setAdapter(new FrontViewPagerAdapter());
+
         mFrontViewPager.setCurrentItem(298);
         mBackViewPager.setCurrentItem(297);
         new Handler().postDelayed(new Runnable() {
@@ -313,6 +316,8 @@ public class HomeFragment extends Fragment {
 
                     int posss = pagerCurrentPos >= 10 ? -1 : pagerCurrentPos;
                     if ((posss + 1) == pos) {
+                        Utils.nLastClickedFrontItem = mFrontViewPager.getCurrentItem();
+                        Utils.nLastClickedBackItem = mBackViewPager.getCurrentItem();
                         //Get TitleArray as a CharSequence
                         int tempPos = 0;
                         if (pos == 0)

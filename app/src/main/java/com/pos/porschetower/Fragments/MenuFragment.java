@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -30,11 +31,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class MenuFragment extends FitFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -89,16 +93,16 @@ public class MenuFragment extends FitFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
-        btnSettings = (ImageButton) getActivity().findViewById(R.id.activity_home_settings_btn);
+        btnSettings = getActivity().findViewById(R.id.activity_home_settings_btn);
 
         final ListView listView ;
-        listView = (ListView) rootView.findViewById(R.id.menu_list_view);
+        listView = rootView.findViewById(R.id.menu_list_view);
 
-        ImageView img_memuback = (ImageView) rootView.findViewById(R.id.img_memuback);
+        ImageView img_menuback = (ImageView) rootView.findViewById(R.id.img_menuback);
         if (mMenuType.equals("MainMenu"))
-            img_memuback.setAlpha(0.85f);
+            img_menuback.setAlpha(0.85f);
         else if (mMenuType.equals("SubMenu"))
-            img_memuback.setAlpha(1.0f);
+            img_menuback.setAlpha(1.0f);
 
         PorscheListAdapter adapter = new PorscheListAdapter(mTitlesArray);
         // Assign adapter to ListView
@@ -111,7 +115,7 @@ public class MenuFragment extends FitFragment {
                                     int position, long id) {
 
                 // ListView Clicked item index
-                final int itemPosition     = position;
+                final int itemPosition = position;
 
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
@@ -162,8 +166,8 @@ public class MenuFragment extends FitFragment {
                 {
                     UserObject owner = UserUtils.getSession(getActivity());
                     JSONObject objectCar = UserUtils.getSelectedCar(getActivity());
-                    String carIndex = new String();
-                    String elevator = new String();
+                    String carIndex = "";
+                    String elevator = "";
                     try {
                         carIndex = objectCar.getString("index");
                         elevator = owner.getUnit().getString("elevator1");
@@ -173,16 +177,13 @@ public class MenuFragment extends FitFragment {
 
                     String valet = UserUtils.getValet(getActivity());
 
-                    String datetimeString = new String();
+                    String datetimeString = "";
                     String repeat = "";
 
                     if (getArguments().containsKey("Datetime"))
                         datetimeString = getArguments().getString("Datetime");
 
                     switch (itemPosition) {
-                        case 0:
-                            repeat = "none";
-                            break;
                         case 1:
                             repeat = "daily";
                             break;
@@ -321,33 +322,26 @@ public class MenuFragment extends FitFragment {
                     }
 //                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
-                else if (type == 3)
+                else if (type == 3) // Car Concierge
                 {
+                    fragment = new ShowroomFragment();
+                    mTypeBundle = new Bundle();
                     switch (position){
                         case 0:
-                            fragment = new ShowroomFragment();
-                            mTypeBundle = new Bundle();
                             mTypeBundle.putString("car_request_type", "detailing");
-                            fragment.setArguments(mTypeBundle);
                             break;
                         case 1:
-                            fragment = new ShowroomFragment();
-                            mTypeBundle = new Bundle();
                             mTypeBundle.putString("car_request_type", "service_car");
-                            fragment.setArguments(mTypeBundle);
                             break;
                         case 2:
-                            fragment = new ShowroomFragment();
-                            mTypeBundle = new Bundle();
                             mTypeBundle.putString("car_request_type", "storage");
-                            fragment.setArguments(mTypeBundle);
                             break;
-                        default:
-                            fragment = new Fragment();
                     }
+                    hideSettingsButton();
+                    fragment.setArguments(mTypeBundle);
                     Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
-                else if (type ==4) //Pool-Beach Requests
+                else if (type == 4) //Pool-Beach Requests
                 {
                     Bundle bd = new Bundle();
                     bd.putString(SCHEDULEDATA, "pool_beach");
@@ -384,18 +378,17 @@ public class MenuFragment extends FitFragment {
                         bd.putString("type", "502");
                         fragment = new MenuFragment();
                         fragment.setArguments(bd);
-                        Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
+                        Utils.addFragmentToBackstack(fragment, (HomeActivity) Objects.requireNonNull(getActivity()), true);
                     }
                     else if (itemPosition == 0)
                     {
                         RequestParams params = new RequestParams();
-                        UserObject user = UserUtils.getSession(getActivity());
+                        UserObject user = UserUtils.getSession(Objects.requireNonNull(getActivity()));
                         params.put("owner", user);
                         AsyncHttpClient client = new AsyncHttpClient();
                         String functName = "get_spa";
 
                         client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
@@ -418,19 +411,18 @@ public class MenuFragment extends FitFragment {
                                         bd.putString("type", "501");
                                         fragment.setArguments(bd);
                                         Utils.addFragmentToBackstack(fragment, (HomeActivity)getActivity(), true);
-                                    } catch (JSONException e) {
+                                    } catch (JSONException ignored) {
                                     }
                                 }
                             }
-
                         });
                     }
                 }
                 else if (type == 501 || type == 502) // Wellness -> Salon Spa || Fitness
                 {
-                    if (type == 502){
+                    if (type == 502) {
                         RequestParams params = new RequestParams();
-                        UserObject user = UserUtils.getSession(getActivity());
+                        UserObject user = UserUtils.getSession(Objects.requireNonNull(getActivity()));
                         params.put("owner", user);
                         AsyncHttpClient client = new AsyncHttpClient();
                         if (itemPosition == 0)
@@ -445,7 +437,6 @@ public class MenuFragment extends FitFragment {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
-
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(tempReqType + "_list");
@@ -471,7 +462,6 @@ public class MenuFragment extends FitFragment {
                                     }
                                 }
                             }
-
                         });
                     }
                     else if (type == 501)
@@ -486,7 +476,7 @@ public class MenuFragment extends FitFragment {
                 else if (type == 5021 || type == 5022)
                 {
                     Bundle bd = new Bundle();
-                    if (type == 5021){ // Personal Trainers
+                    if (type == 5021) { // Personal Trainers
                         bd.putString("type", "gym_trainers");
                     }
                     else if (type == 5022) // Classes
@@ -512,7 +502,6 @@ public class MenuFragment extends FitFragment {
                         Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
                     }
                     else {
-
                         RequestParams params = new RequestParams();
                         UserObject user = UserUtils.getSession(getActivity());
                         params.put("owner", user);
@@ -528,11 +517,9 @@ public class MenuFragment extends FitFragment {
                         String functName = "get_" + strType;
 
                         client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
-
                                 if (response != null) {
                                     try {
                                         JSONArray menu_info_array = response.getJSONArray(strType + "_list");
@@ -621,7 +608,6 @@ public class MenuFragment extends FitFragment {
                     }
                     else if (itemPosition == 1){ // Request a call
                         Utils.showAlertWithTitle(getActivity(), getResources().getString(R.string.msg_order_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
-                        return;
                     }
                 }
                 else if (type == 701) { // In House Dining
@@ -755,60 +741,106 @@ public class MenuFragment extends FitFragment {
                         startActivity(browserIntent);
                     }
                 }
-                else if (type == 0) { //Concierge
-                    if (itemPosition == 0) //Request HouseKeeping
+                else if (type == 0) { // Concierge
+                    if (itemPosition == 0) // Call Concierge
                     {
-                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
-                                getResources().getString(R.string.msg_housekeeping_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
-                        return;
-                    }
-                    else if (itemPosition == 1) //Request Transporation
-                    {
-                        Utils.showAlertWithTitle((HomeActivity)getActivity(),
-                                getResources().getString(R.string.msg_transportation_req_confirmed), getResources().getString(R.string.msg_req_sent_staff_member));
-                        return;
-                    }
-                    else if (itemPosition == 2) // Dry Cleaning
-                    {
-                        fragment = new MenuFragment();
-                        Bundle bd = new Bundle();
                         RequestParams params = new RequestParams();
-                        UserObject user = UserUtils.getSession(getActivity());
-                        params.put("owner", user);
+                        params.put("name", "Concierge");
                         AsyncHttpClient client = new AsyncHttpClient();
-                        final String strType = "dry_cleaning";
+                        String funcName = "get_staff";
 
-                        String functName = "get_" + strType;
-
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
-
                                 if (response != null) {
                                     try {
-                                        JSONArray menu_info_array = response.getJSONArray(strType + "_list");
-                                        UserUtils.storeScheduleDataArray(getActivity(), menu_info_array.toString());
-                                        String[] menuTitles = new String[menu_info_array.length()];
-                                        if (menu_info_array.length() > 0) {
-                                            for (int i = 0; i < menu_info_array.length(); i++) {
-                                                JSONObject object = menu_info_array.getJSONObject(i);
-                                                menuTitles[i] = object.getString("name");
+                                        JSONObject staffObj = response.getJSONObject("staff");
+                                        String phoneNumber = staffObj.getString("phone");
+                                        String strPhone = phoneNumber.replace(" ", "");
+                                        Log.d("strPhone", strPhone);
+                                        if (response.getString("status").equals("success")) {
+                                            String URL_REGEX = "^((https?|ftp)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";
+                                            Pattern p = Pattern.compile(URL_REGEX);
+                                            Matcher m = p.matcher(strPhone);//replace with string to compare
+                                            if(m.find()) {
+                                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strPhone));
+                                                startActivity(browserIntent);
+                                            } else {
+                                                Utils.showAlertWithTitle(getActivity(), "Alert", getResources().getString(R.string.msg_call_not_available));
                                             }
                                         }
-                                        MenuFragment fragment = new MenuFragment();
-                                        Bundle bd = new Bundle();
-                                        bd.putString("menu_type", "SubMenu");
-                                        bd.putStringArray("titles", menuTitles);
-                                        bd.putString("type", "1003");
-                                        fragment.setArguments(bd);
-                                        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+                                    } catch (JSONException e) {
+                                        Log.d("my exception", String.valueOf(e));
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    else if (itemPosition == 1) // Request Transportation
+                    {
+                        UserObject user = UserUtils.getSession(getActivity());
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+                        String datetimeString = dateFormat.format(new Date());
+                        String typeStr = "transportation";
+
+                        RequestParams params = new RequestParams();
+                        params.put("type", typeStr);
+                        params.put("index", typeStr);
+                        params.put("owner", user.getIndex());
+                        params.put("date_time", datetimeString);
+
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        String funcName = "send_schedule_request";
+
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+                                Log.d("send_schedule_request", String.valueOf(response));
+                                if (response != null) {
+                                    try {
+                                        if (response.getString("status").equals("success")) {
+                                            Utils.showAlertWithTitle(getActivity(), getResources().getString(R.string.msg_transportation_req_confirmed),
+                                                    getResources().getString(R.string.msg_req_sent_staff_member));
+                                        }
                                     } catch (JSONException e) {
                                     }
                                 }
                             }
+                        });
+                    }
+                    else if (itemPosition == 2) // Dry Cleaning
+                    {
+                        UserObject user = UserUtils.getSession(getActivity());
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+                        String datetimeString = dateFormat.format(new Date());
+                        String typeStr = "dry_cleaning";
 
+                        RequestParams params = new RequestParams();
+                        params.put("type", typeStr);
+                        params.put("index", typeStr);
+                        params.put("owner", user.getIndex());
+                        params.put("date_time", datetimeString);
+
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        String funcName = "send_schedule_request";
+
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+                                Log.d("send_schedule_request", String.valueOf(response));
+                                if (response != null) {
+                                    try {
+                                        if (response.getString("status").equals("success")) {
+                                            Utils.showAlertWithTitle(getActivity(), "Dry Cleaning Request Confirmed",
+                                                    "Your request was sent. A staff member will call you shortly.");
+                                        }
+                                    } catch (JSONException e) {
+                                    }
+                                }
+                            }
                         });
                     }
                 }
@@ -839,7 +871,7 @@ public class MenuFragment extends FitFragment {
     {
         DescriptionFragment fragment = new DescriptionFragment();
         fragment.setArguments(bd);
-        Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+        Utils.addFragmentToBackstack(fragment, (HomeActivity) Objects.requireNonNull(getActivity()), true);
     }
 
     void hideSettingsButton() {
@@ -847,7 +879,7 @@ public class MenuFragment extends FitFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 

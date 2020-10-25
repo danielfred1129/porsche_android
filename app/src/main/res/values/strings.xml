@@ -203,9 +203,9 @@
 
     <!--Concierge Strings-->
     <string-array name="concierge_titles">
-        <item>Request HouseKeeping</item>
+        <item>Call Concierge</item>
         <item>Request Transportation</item>
-        <item>Dry Cleaning</item>
+        <item>Request Dry Cleaning</item>
     </string-array>
 
     <!--Wellness Strings-->

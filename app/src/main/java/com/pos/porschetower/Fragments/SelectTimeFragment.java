@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -139,14 +140,14 @@ public class SelectTimeFragment extends Fragment {
                         params.put("type", mScheduleData);
                         params.put("index", scheduleObject.getString("index"));
                         params.put("owner", owner.getIndex());
-                        params.put("date_time",myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
+                        params.put("date_time", myear + "-" + mmonth + "-" + mdayOfMonth + " " + hour + ":" + minute + ":" + "00");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                     AsyncHttpClient client = new AsyncHttpClient();
-                    String functName = "send_schedule_request";
-                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                    String funcName = "send_schedule_request";
+                    client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             super.onSuccess(statusCode, headers, response);
@@ -163,7 +164,7 @@ public class SelectTimeFragment extends Fragment {
                 }
             }
         });
-        Button btnCancel = (Button) rootView.findViewById(R.id.btn_time_cancel);
+        Button btnCancel = rootView.findViewById(R.id.btn_time_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +175,7 @@ public class SelectTimeFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 

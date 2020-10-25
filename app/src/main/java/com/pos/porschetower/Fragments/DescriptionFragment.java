@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.pos.porschetower.HomeActivity;
 import com.pos.porschetower.R;
@@ -20,9 +22,7 @@ import com.pos.porschetower.utils.Utils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +46,7 @@ public class DescriptionFragment extends Fragment {
 
     private View rootView;
     private TextView txt_description;
-    private Button btn_select;
+    private Button btn_select, btn_close;
 
     public DescriptionFragment() {
         // Required empty public constructor
@@ -77,24 +77,23 @@ public class DescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView =inflater.inflate(R.layout.fragment_description, container, false);
+        rootView = inflater.inflate(R.layout.fragment_description, container, false);
         initializeControl();
         return rootView;
     }
 
     private void initializeControl()
     {
-        btn_select = (Button) rootView.findViewById(R.id.btn_description_select);
-        txt_description = (TextView) rootView.findViewById(R.id.txt_description);
+        btn_close = rootView.findViewById(R.id.btn_close);
+        btn_select = rootView.findViewById(R.id.btn_description_select);
+        txt_description = rootView.findViewById(R.id.txt_description);
         txt_description.setMovementMethod(new ScrollingMovementMethod());
-        String descriptionStr = UserUtils.getScheduleDataArray(getActivity());
+        String descriptionStr = UserUtils.getScheduleDataArray(Objects.requireNonNull(getActivity()));
         try {
             JSONArray scheduleArray = new JSONArray(descriptionStr);
             JSONObject object = scheduleArray.getJSONObject(mIndex);
             txt_description.setText(object.getString("description"));
-        }
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
         }
 
         btn_select.setOnClickListener(new View.OnClickListener() {
@@ -113,15 +112,22 @@ public class DescriptionFragment extends Fragment {
                 Bundle bd = new Bundle();
                 bd.putString(TYPE, mType);
                 fragment.setArguments(bd);
-                Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
+                Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), true);
+//                Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), true);
+            }
+        });
 
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                fm.popBackStack();
             }
         });
     }
 
-
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 

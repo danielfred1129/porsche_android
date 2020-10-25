@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "porsche_new"
+rootProject.name = "porsche_android"
