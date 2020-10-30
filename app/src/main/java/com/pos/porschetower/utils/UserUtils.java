@@ -14,6 +14,7 @@ public class UserUtils {
 	private static final String VALET = "valet";
 	private static final String SCHEDULE_DATA = "scheduleData";
 	private static final String SELECTED_CATEGORY = "selected_category";
+	private static final String PARKING_SPACE_ID = "parking_space_id";
 	private static final String APP = "com.pos.porschetower";
 
 	public static void storeSession(Context context, UserObject session) {
@@ -103,6 +104,14 @@ public class UserUtils {
 	}
 	public static void storeSelectedCategory(Context context, String selectedCategory) {
 		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(SELECTED_CATEGORY, selectedCategory).apply();
+	}
+
+	public static void storeParkingSpaceID(Context context, String parkingSpaceID) {
+		context.getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putString(PARKING_SPACE_ID, parkingSpaceID).apply();
+	}
+
+	public static String getParkingSpaceID(Context context) {
+		return context.getSharedPreferences(APP, Context.MODE_PRIVATE).getString(PARKING_SPACE_ID, null);
 	}
 
 	public static JSONObject getSelectedCar(Context context) {

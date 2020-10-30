@@ -81,8 +81,8 @@ public class HomeActivity extends BaseActivity {
                         .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
             }
         };
-        // Registering BroadcastReceiver
 
+        // Registering BroadcastReceiver
         registerReceiver();
 
 //        if (checkPlayServices()) {
@@ -90,7 +90,6 @@ public class HomeActivity extends BaseActivity {
 //            Intent intent = new Intent(this, RegistrationIntentService.class);
 //            startService(intent);
 //        }
-
 
         btnSettings = findViewById(R.id.activity_home_settings_btn);
         btnPlus = findViewById(R.id.activity_home_plus_button);
@@ -183,22 +182,22 @@ public class HomeActivity extends BaseActivity {
 
     private void addBottomButton() {
         int status = Integer.parseInt(UserUtils.getSelectedCategory(HomeActivity.this));
-        if (status == 100)
+        if (status == 100) {
             return;
-        if (bottom_buttons.size() < 11)
-        {
-            for (int i = 0; i < bottom_buttons.size(); i++)
-            {
-                if (bottom_buttons.get(i) == status)
+        }
+
+        if (bottom_buttons.size() < 11) {
+            for (int i = 0; i < bottom_buttons.size(); i++) {
+                if (bottom_buttons.get(i) == status) {
                     return;
+                }
             }
             bottom_buttons.add(status);
             addItemToBottomArray(status);
         }
     }
 
-    private void updateBottomBar()
-    {
+    private void updateBottomBar() {
         if (bottom_buttons_layout.getChildCount() > 0)
             bottom_buttons_layout.removeAllViews();
         for (int status = 0; status < bottom_buttons.size(); status++) {
@@ -212,7 +211,6 @@ public class HomeActivity extends BaseActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
         lp.setMargins((int)getResources().getDimension(R.dimen.bottom_button_margin),0,0,0);
         btnNewBottom.setClickable(true);
-
         btnNewBottom.setBackgroundResource(button_images[status]);
         btnNewBottom.setLayoutParams(lp);
         btnNewBottom.setId(status);
@@ -250,14 +248,17 @@ public class HomeActivity extends BaseActivity {
                 picker_fragment.setArguments(bundle);
 
                 HomeFragment home_fragment = new HomeFragment();
-                String strStatus = UserUtils.getSelectedCategory(HomeActivity.this);
-                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")) {
-                    Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
-                    Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
-                }
-                else {
-                    Utils.replaceFragmentToBackStack(picker_fragment, HomeActivity.this, true);
-                }
+//                String strStatus = UserUtils.getSelectedCategory(HomeActivity.this);
+//                if (UserUtils.getSelectedCategory(HomeActivity.this).equals("100")) {
+//                    Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
+//                    Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
+//                }
+//                else {
+//                    Utils.replaceFragmentToBackStack(picker_fragment, HomeActivity.this, true);
+//                }
+                removePreviousFragments();
+                Utils.replaceFragmentToBackStack(home_fragment, HomeActivity.this, true);
+                Utils.addFragmentToBackstack(picker_fragment, HomeActivity.this, true);
                 UserUtils.storeSelectedCategory(HomeActivity.this, String.valueOf(pos));
             }
         });
@@ -299,7 +300,6 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void onHome(View v) {
-        Log.d("onHome", "Home button clicked");
         setTopBottomButtons();
         HomeFragment fragment = new HomeFragment();
         PorscheTextView txt_currenttime = findViewById(R.id.txt_current_time);
@@ -311,7 +311,6 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void onSettings(View v) {
-        Log.d("onSettings", "Settings button clicked");
         SettingsFragment fragment = new SettingsFragment();
         Utils.replaceFragmentToBackStack(fragment, this, true);
     }

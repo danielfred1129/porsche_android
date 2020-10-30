@@ -118,8 +118,8 @@ public class DiningFragment extends Fragment {
 
 
                 AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_schedule_request";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                String funcName = "send_schedule_request";
+                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

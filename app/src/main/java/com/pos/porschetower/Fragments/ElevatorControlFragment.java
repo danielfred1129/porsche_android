@@ -142,7 +142,6 @@ public class ElevatorControlFragment extends Fragment {
         resetArrivalTime(0, 0);
         resetCountdown(0, 0);
 
-
         if (getArguments().containsKey(VALET))
         {
             if (valet.equals("ridedown"))
@@ -156,8 +155,8 @@ public class ElevatorControlFragment extends Fragment {
             RequestParams params = new RequestParams();
             params.put("car", strCarIndex);
             AsyncHttpClient client = new AsyncHttpClient();
-            String functName = "get_pickup";
-            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+            String funcName = "get_pickup";
+            client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -169,7 +168,7 @@ public class ElevatorControlFragment extends Fragment {
                             delayTime = response.getInt("delay");
                             sendTime = response.getString("send_time");
                             int queueSize = response.getInt("queue_size");
-                            txt_cars_in_queue.setText(String.valueOf(queueSize) + "\n");
+                            txt_cars_in_queue.setText(queueSize + "\n");
 
                             int countdown = response.getInt("countdown");
 
@@ -187,8 +186,8 @@ public class ElevatorControlFragment extends Fragment {
             RequestParams params = new RequestParams();
             params.put("elevator", strOwnerElevator);
             AsyncHttpClient client = new AsyncHttpClient();
-            String functName = "get_elevator_queue_size";
-            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+            String funcName = "get_elevator_queue_size";
+            client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -198,7 +197,7 @@ public class ElevatorControlFragment extends Fragment {
                         try {
                             int queueSize = response.getInt("queue_size");
                             int queueTime = response.getInt("queue_time");
-                            txt_cars_in_queue.setText(String.valueOf(queueSize) + "\n");
+                            txt_cars_in_queue.setText(queueSize + "\n");
 
                             int totalDelay = calculateTotalDelayBySecond(queueTime);
                             totalMinute = totalDelay / 60;
@@ -244,7 +243,7 @@ public class ElevatorControlFragment extends Fragment {
             currentTimer = null;
         }
         txt_current_time.setVisibility(View.GONE);
-        if (getActivity() != null && state == true) {
+        if (getActivity() != null && state) {
             HomeFragment fragment = new HomeFragment();
             UserUtils.storeSelectedCategory(getActivity(), "100");
             Utils.replaceFragmentToBackStack(fragment, (HomeActivity)getActivity(), false);
@@ -308,7 +307,7 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "0";
         else
             strZeroSecond = "";
-        txt_arrival_time.setText(String.valueOf(arrivalHour) + ":" + strZeroMinute + String.valueOf(arrivalMinute) + "\n");
+        txt_arrival_time.setText(arrivalHour + ":" + strZeroMinute + arrivalMinute + "\n");
     }
     private void resetCountdown(int minutes, int seconds){
         String strZeroSecond;
@@ -316,7 +315,7 @@ public class ElevatorControlFragment extends Fragment {
             strZeroSecond = "0";
         else
             strZeroSecond = "";
-        txt_countdowntime.setText(String.valueOf(minutes) + ":" + strZeroSecond + String.valueOf(seconds));
+        txt_countdowntime.setText(minutes + ":" + strZeroSecond + seconds);
     }
     private void startCountdown(int minutes, int seconds) {
         currentMinute = minutes;
@@ -338,11 +337,11 @@ public class ElevatorControlFragment extends Fragment {
                            strZeroSecond = "0";
                        else
                             strZeroSecond = "";
-                       txt_countdowntime.setText(String.valueOf(currentMinute) + ":" + strZeroSecond + String.valueOf(currentSecond));
+                       txt_countdowntime.setText(currentMinute + ":" + strZeroSecond + currentSecond);
                    }
                }
                 else {
-                   if (newtimer != null && state == true) {
+                   if (newtimer != null && state) {
                        if (getActivity() != null) {
                            Utils.showAlertWithTitleNoCancel((HomeActivity) getActivity(), getString(R.string.title_car_ready_pickup), getString(R.string.msg_car_delivered_ready_to_pickup));
                            successElevator();
@@ -358,23 +357,22 @@ public class ElevatorControlFragment extends Fragment {
         };
         newtimer.start();
     }
+
     private void updateCountdown() {
         RequestParams params = new RequestParams();
         params.put("pickup", pickup);
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "get_time_increase";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+        String funcName = "get_time_increase";
+        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-
                 if (response != null) {
                     try {
                         int timeIncrease = Integer.parseInt(response.getString("time_increase"));
                         String send_time = response.getString("send_time");
-                        if (timeIncrease > 0 && !send_time.equals(sendTime) && state == true) {
+                        if (timeIncrease > 0 && !send_time.equals(sendTime) && state) {
                             sendTime = send_time;
                             int countdown = currentMinute * 60 + currentSecond + timeIncrease;
                             currentMinute = countdown / 60;
@@ -385,26 +383,25 @@ public class ElevatorControlFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         });
     }
+
     private void sendRequest() {
         RequestParams params = new RequestParams();
         params.put("car", indexSelectedCar);
         params.put("valet", valet);
         params.put("elevator", strOwnerElevator);
         params.put("delay", delayTime);
+        params.put("parkingSpaceID", UserUtils.getParkingSpaceID(getActivity()));
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "request_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
-
+        String funcName = "request_car_elevator";
+        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-
                 if (response != null) {
                     try {
                         pickup = response.getString("pickup");
@@ -422,8 +419,8 @@ public class ElevatorControlFragment extends Fragment {
         params.put("pickup", pickup);
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "cancel_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+        String funcName = "cancel_car_elevator";
+        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -435,11 +432,9 @@ public class ElevatorControlFragment extends Fragment {
     private void successElevator() {
         RequestParams params = new RequestParams();
         params.put("pickup", pickup);
-
         AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "success_car_elevator";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler((HomeActivity)getActivity()) {
-
+        String funcName = "success_car_elevator";
+        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler((HomeActivity)getActivity()) {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -448,7 +443,7 @@ public class ElevatorControlFragment extends Fragment {
         });
     }
     private void onBtnStart() {
-        if (state == false) {
+        if (!state) {
             activeStatus();
             sendRequest();
         }
@@ -471,7 +466,6 @@ public class ElevatorControlFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override

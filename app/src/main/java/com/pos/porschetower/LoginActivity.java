@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -45,10 +47,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setApplicationId("1:838805772031:android:405dc57174411472") // Required for Analytics.
+                .setProjectId("porsche-tower-application") // Required for Firebase Installations.
+                .build();
+        FirebaseApp.initializeApp(this, options, "porsche");
+
         edtEmail = (EditText) findViewById(R.id.activity_login_email);
         edtPassword = (EditText) findViewById(R.id.activity_login_password);
-        edtEmail.setText("daniel@foxysun.com");
-        edtPassword.setText("test");
 
         Typeface font = Typeface.createFromAsset(getAssets(), "porschedesignfont.otf");
         activity_login_btn = (Button) findViewById(R.id.activity_login_btn);

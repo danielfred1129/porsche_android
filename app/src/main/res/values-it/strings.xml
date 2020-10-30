@@ -246,6 +246,8 @@
     <string name="msg_unavailable_contact_valet">Non è attualmente disponibile. Si prega di contattare il Valet per informazioni addizionali sulla consegna.</string>
     <string name="title_car_in_gargage">Auto in garage</string>
     <string name="msg_parked_gargage_contact_valet">È parcheggiata nel garage. Si prega di contattare il Valet di avere la vostra auto porta a porta consegnato.</string>
+    <string name="title_close">Vicino</string>
+    <string name="msg_car_unavailable">Spiacenti, questa macchina è al momento disponibile. Si prega di Contatto Auto portineria Ulteriori informazioni.</string>
     <string name="msg_has_been_pickup">La vostra auto è stata fissata per pick-up</string>
     <string name="msg_request_sent">La tua richiesta è stata inviata.</string>
     <string name="msg_front_desk_req_confirmed">Front Desk Richiesta Confermato</string>

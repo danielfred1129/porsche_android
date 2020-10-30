@@ -246,6 +246,8 @@
     <string name="msg_unavailable_contact_valet">is currently unavailable. Please contact the Valet for futher information.</string>
     <string name="title_car_in_gargage">Car in Garage</string>
     <string name="msg_parked_gargage_contact_valet">is parked in the Garage. Please contact the Valet to have your Car delivered curbside.</string>
+    <string name="title_close">Close</string>
+    <string name="msg_car_unavailable">Oops! This Car is Currently Unavailable. Please Contact Car Concierge For More Information.</string>
     <string name="msg_has_been_pickup">Your Car Has Been Scheduled For Pick-up</string>
     <string name="msg_request_sent">Your Request has been sent.</string>
     <string name="msg_front_desk_req_confirmed">Front Desk Request Confirmed</string>
@@ -257,7 +259,6 @@
     <string name="msg_req_sent_staff_member">Your request was sent. A staff member will call you shortly.</string>
     <string name="msg_transportation_req_confirmed">Transportation Request Confirmed</string>
     <string name="msg_order_req_confirmed">Order Request Confirmed</string>
-
 
     <!--Request Car elevator-->
     <string-array name="menu_request_car_elevator">
@@ -281,6 +282,7 @@
     <string name="title_error">Error</string>
     <string name="msg_cant_select_date">You can not select this date</string>
     <string name="msg_cant_select_time">You can not select this time</string>
+
     <!--SelectTimeFragment-->
     <string name="txt_btn_cancel">Cancel</string>
     <string name="txt_btn_save">Save</string>
@@ -319,6 +321,5 @@
     <string name="txt_date">DATE</string>
     <string name="txt_time">TIME</string>
     <string name="txt_cancel">CANCEL</string>
-    <string name="click_me">Click Me</string>
 
 </resources>

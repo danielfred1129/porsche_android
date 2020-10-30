@@ -246,6 +246,8 @@
     <string name="msg_unavailable_contact_valet">Ist zur Zeit nicht verfügbar. Bitte kontaktieren Sie das Valet für weitere Informationen.</string>
     <string name="title_car_in_gargage">Auto in der Garage</string>
     <string name="msg_parked_gargage_contact_valet">Befindet sich in der Garage geparkt. Bitte geben Sie die Park kontaktieren Sie Ihren Auto Bordsteinkante geliefert zu haben.</string>
+    <string name="title_close">Schließen</string>
+    <string name="msg_car_unavailable">Oops! Dieses Auto ist derzeit nicht verfügbar. Bitte Kontakt Auto Concierge Weitere Informationen.</string>
     <string name="msg_has_been_pickup">Ihr Fahrzeug ist für Pick-up geplant</string>
     <string name="msg_request_sent">Ihre Anfrage wurde verschickt.</string>
     <string name="msg_front_desk_req_confirmed">Rezeption Anfrage bestätigt</string>

@@ -246,6 +246,8 @@
     <string name="msg_unavailable_contact_valet">No se encuentra disponible. Por favor, póngase en contacto con el Valet de información adicional de entrega.</string>
     <string name="title_car_in_gargage">Coche en el garaje</string>
     <string name="msg_parked_gargage_contact_valet">Está aparcado en el garaje. Por favor, póngase en contacto con el Valet de tener la acera entregado su coche.</string>
+    <string name="title_close">Cerca</string>
+    <string name="msg_car_unavailable">Vaya! Este coche no está disponible actualmente. Póngase en contacto con conserje de coches Para más información.</string>
     <string name="msg_has_been_pickup">Su coche ha sido programada para ser recogidos</string>
     <string name="msg_request_sent">Tu solicitud ha sido enviada.</string>
     <string name="msg_front_desk_req_confirmed">Frente Solicitud turística Confirmado.</string>

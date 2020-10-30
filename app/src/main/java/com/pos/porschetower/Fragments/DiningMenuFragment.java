@@ -147,8 +147,8 @@ public class DiningMenuFragment extends Fragment {
 
 
                 AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_restaurant_request";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                String funcName = "send_restaurant_request";
+                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -221,8 +221,8 @@ public class DiningMenuFragment extends Fragment {
             e.printStackTrace();
         }
         AsyncHttpClient client = new AsyncHttpClient();
-        String functName = "get_restaurant_menu";
-        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+        String funcName = "get_restaurant_menu";
+        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

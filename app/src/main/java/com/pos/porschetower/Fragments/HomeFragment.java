@@ -196,8 +196,10 @@ public class HomeFragment extends Fragment {
         settingDataInList();
         settingUpPagerAdapters();
         setListeners();
-        mFrontViewPager.setCurrentItem(Utils.nLastClickedFrontItem);
-        mBackViewPager.setCurrentItem(Utils.nLastClickedBackItem);
+        if (Utils.nLastClickedFrontItem != 0 && Utils.nLastClickedBackItem != 0) {
+            mFrontViewPager.setCurrentItem(Utils.nLastClickedFrontItem);
+            mBackViewPager.setCurrentItem(Utils.nLastClickedBackItem);
+        }
     }
 
     /**

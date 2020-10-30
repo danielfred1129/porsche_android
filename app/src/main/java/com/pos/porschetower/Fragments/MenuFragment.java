@@ -209,8 +209,8 @@ public class MenuFragment extends FitFragment {
                     params.put("repeat", repeat);
 
                     AsyncHttpClient client = new AsyncHttpClient();
-                    String functName = "schedule_car_elevator";
-                    client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                    String funcName = "schedule_car_elevator";
+                    client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -264,7 +264,7 @@ public class MenuFragment extends FitFragment {
                             break;
                     }
                     hideSettingsButton();
-                    Utils.addFragmentToBackstack(fragment, (HomeActivity) getActivity(), addToBackStack);
+                    Utils.replaceFragmentToBackStack(fragment, (HomeActivity) getActivity(), addToBackStack);
                 }
                 else if (type == 2) // In-Unit
                 {
@@ -297,8 +297,8 @@ public class MenuFragment extends FitFragment {
 
 
                             AsyncHttpClient client = new AsyncHttpClient();
-                            String functName = "send_schedule_request";
-                            client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                            String funcName = "send_schedule_request";
+                            client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -386,9 +386,9 @@ public class MenuFragment extends FitFragment {
                         UserObject user = UserUtils.getSession(Objects.requireNonNull(getActivity()));
                         params.put("owner", user);
                         AsyncHttpClient client = new AsyncHttpClient();
-                        String functName = "get_spa";
+                        String funcName = "get_spa";
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
@@ -430,9 +430,9 @@ public class MenuFragment extends FitFragment {
                         else if (itemPosition == 1)
                             tempReqType = "gym_classes";
 
-                        String functName = "get_" + tempReqType;
+                        String funcName = "get_" + tempReqType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -514,9 +514,9 @@ public class MenuFragment extends FitFragment {
                         else
                             strType = "community_room";
 
-                        String functName = "get_" + strType;
+                        String funcName = "get_" + strType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
@@ -573,9 +573,9 @@ public class MenuFragment extends FitFragment {
                         AsyncHttpClient client = new AsyncHttpClient();
                         final String strType = "restaurants_in_house";
 
-                        String functName = "get_" + strType;
+                        String funcName = "get_" + strType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -630,9 +630,9 @@ public class MenuFragment extends FitFragment {
                         AsyncHttpClient client = new AsyncHttpClient();
                         final String strType = "document";
 
-                        String functName = "get_" + strType;
+                        String funcName = "get_" + strType;
 
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -670,8 +670,8 @@ public class MenuFragment extends FitFragment {
                         params.put("owner", user.getIndex());
 
                         AsyncHttpClient client = new AsyncHttpClient();
-                        String functName = "get_unit_manual";
-                        client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                        String funcName = "get_unit_manual";
+                        client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -746,9 +746,9 @@ public class MenuFragment extends FitFragment {
                     {
                         RequestParams params = new RequestParams();
                         params.put("name", "Concierge");
+
                         AsyncHttpClient client = new AsyncHttpClient();
                         String funcName = "get_staff";
-
                         client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -792,7 +792,6 @@ public class MenuFragment extends FitFragment {
 
                         AsyncHttpClient client = new AsyncHttpClient();
                         String funcName = "send_schedule_request";
-
                         client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -825,7 +824,6 @@ public class MenuFragment extends FitFragment {
 
                         AsyncHttpClient client = new AsyncHttpClient();
                         String funcName = "send_schedule_request";
-
                         client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

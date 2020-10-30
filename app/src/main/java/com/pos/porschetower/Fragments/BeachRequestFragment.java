@@ -112,8 +112,8 @@ public class BeachRequestFragment extends Fragment {
                 params.put("umbrella", umbrellas);
 
                 AsyncHttpClient client = new AsyncHttpClient();
-                String functName = "send_schedule_request_for_pool_beach";
-                client.post(Utils.BASE_URL + functName, params, new PorscheTowerResponseHandler(getActivity()) {
+                String funcName = "send_schedule_request_for_pool_beach";
+                client.post(Utils.BASE_URL + funcName, params, new PorscheTowerResponseHandler(getActivity()) {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
